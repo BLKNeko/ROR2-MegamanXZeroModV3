@@ -150,7 +150,7 @@ namespace ZeroModV3.Modules
         internal static void PassiveSetup(GameObject targetPrefab)
         {
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
-            string prefix = ZeroModV3Plugin.DEVELOPER_PREFIX + "_ZERO_BODY_";
+            string prefix = ZeroModV3Plugin.DEVELOPER_PREFIX + "_ZERO_V3_BODY_";
             skillLocator.passiveSkill.enabled = true;
             skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";

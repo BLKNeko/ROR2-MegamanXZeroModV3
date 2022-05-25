@@ -80,7 +80,7 @@ namespace ZeroModV3.SkillStates
 
             if (modelTransform)
             {
-                hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "ZSword");
+                hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "ZSaberHitBox");
             }
 
             //if (this.swingIndex == 0) base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
@@ -231,15 +231,15 @@ namespace ZeroModV3.SkillStates
         {
             base.FixedUpdate();
 
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSword", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.iceeffect, base.gameObject, "ZSaber", true);
 
             this.hitPauseTimer -= Time.fixedDeltaTime;
 

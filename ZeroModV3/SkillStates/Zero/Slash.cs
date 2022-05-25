@@ -13,7 +13,7 @@ namespace ZeroModV3.SkillStates
     {
         public static float damageCoefficient = 1.5f;
         public static float buffDamageCoefficient = 1f;
-        public float baseDuration = 0.8f;
+        public float baseDuration = 0.6f;
         public static float attackRecoil = 0.5f;
         public static float hitHopVelocity = 5.5f;
         public static float baseEarlyExit = 0.25f;
@@ -46,14 +46,14 @@ namespace ZeroModV3.SkillStates
             base.StartAimMode(0.5f + this.duration, false);
             //base.characterBody.isSprinting = false;
 
-            base.characterBody.healthComponent.AddBarrier(base.characterBody.damage);
+            base.characterBody.healthComponent.AddBarrier(base.characterBody.damage / 10);
 
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
 
             if (modelTransform)
             {
-                hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "ZSword");
+                hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "ZSaberHitBox");
             }
 
             //if (this.swingIndex == 0) base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
@@ -117,6 +117,7 @@ namespace ZeroModV3.SkillStates
 
                     if (this.attack.Fire())
                     {
+
                         Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
                         //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
 

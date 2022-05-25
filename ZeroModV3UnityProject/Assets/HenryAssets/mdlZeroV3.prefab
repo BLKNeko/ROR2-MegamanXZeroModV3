@@ -647,6 +647,51 @@ Transform:
   m_Father: {fileID: 5040887920061605591}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &985614832124764896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4006853602031563211}
+  - component: {fileID: 8947561968480564232}
+  m_Layer: 0
+  m_Name: ZSaberHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006853602031563211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985614832124764896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5512438528786365984}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8947561968480564232
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985614832124764896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25079307
+  m_Height: 1.4258156
+  m_Direction: 1
+  m_Center: {x: 0.0000026808395, y: 0.637506, z: -0.0002737679}
 --- !u!1 &1097044355892203422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1178,36 @@ Transform:
   m_Father: {fileID: 7271202339715455957}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1866982309664336460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4828898092473095597}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4828898092473095597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866982309664336460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.024, y: 1.292, z: 0.019}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8410481207326038280}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003722374178633347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1626,51 @@ Transform:
   m_Father: {fileID: 7210825941790920110}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3526484454834744354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2799188518613064248}
+  - component: {fileID: 5313876099956521586}
+  m_Layer: 0
+  m_Name: GroundImpact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2799188518613064248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526484454834744354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8410481207326038280}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5313876099956521586
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526484454834744354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.0210814
+  m_Height: 4.042163
+  m_Direction: 1
+  m_Center: {x: 0.08870262, y: 0.7246313, z: 0}
 --- !u!1 &3549981627646114535
 GameObject:
   m_ObjectHideFlags: 0
@@ -4393,6 +4513,8 @@ Transform:
   - {fileID: 3473490643314416901}
   - {fileID: 1558890261659550983}
   - {fileID: 1602723416330276941}
+  - {fileID: 4828898092473095597}
+  - {fileID: 2799188518613064248}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4495,12 +4617,14 @@ MonoBehaviour:
     transform: {fileID: 3473490643314416901}
   - name: HandMeshRM
     transform: {fileID: 1558890261659550983}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
+  - name: Center
+    transform: {fileID: 4828898092473095597}
+  - name: GroundImpact
+    transform: {fileID: 2799188518613064248}
+  - name: ZSaber
+    transform: {fileID: 5512438528786365984}
+  - name: ZSaberHitBox
+    transform: {fileID: 4006853602031563211}
 --- !u!114 &3235978636610589486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4590,6 +4714,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b71b0144a2be34d9fa9c79f64a725d, type: 3}
+--- !u!4 &5512438528786365984 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1151388028547126963, guid: 46b71b0144a2be34d9fa9c79f64a725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4862358095454316691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4967516089403690872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 46b71b0144a2be34d9fa9c79f64a725d,

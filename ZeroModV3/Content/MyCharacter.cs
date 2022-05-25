@@ -127,6 +127,22 @@ namespace ZeroModV3.Modules.Survivors
             //example of how to create a hitbox
             //Transform hitboxTransform = childLocator.FindChild("SwordHitbox");
             //Modules.Prefabs.SetupHitbox(model, hitboxTransform, "Sword");
+
+            ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
+            GameObject model = childLocator.gameObject;
+
+            Transform hitboxTransform = childLocator.FindChild("ZSaberHitBox");
+            Modules.Prefabs.SetupHitbox(model, hitboxTransform, "ZSaberHitBox");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransform.localScale = new Vector3(4f, 4f, 4f);
+
+            //----------------------------------
+
+
+            Transform hitboxTransformGI = childLocator.FindChild("GroundImpact");
+            Modules.Prefabs.SetupHitbox(model, hitboxTransformGI, "GroundImpact");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransformGI.localScale = new Vector3(4f, 4f, 4f);
         }
 
         public override void InitializeSkills()
