@@ -99,7 +99,13 @@ namespace ZeroModV3.Modules.Survivors
 
         public override UnlockableDef characterUnlockableDef => null;
 
-        public override Type characterMainState => typeof(EntityStates.GenericCharacterMain);
+        //public override Type characterMainState => typeof(EntityStates.GenericCharacterMain);
+        public override Type characterMainState => typeof(SkillStates.BaseStates.LearningSystem);
+
+        public override Type characterDeathState => typeof(SkillStates.BaseStates.DeathState);
+
+        public override Type characterSpawnState => typeof(SkillStates.BaseStates.SpawnState);
+
 
         public override ItemDisplaysBase itemDisplays => new HenryItemDisplays();
 

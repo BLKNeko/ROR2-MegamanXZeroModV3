@@ -56,9 +56,6 @@ namespace ZeroModV3.SkillStates
             //else base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
             base.PlayAnimation("Gesture, Override", "ZSlash4", "attackSpeed", this.duration);
 
-            if (Util.CheckRoll((30f + base.characterBody.level), base.characterBody.master))
-                base.characterBody.healthComponent.AddBarrier(base.characterBody.damage);
-
 
 
             float dmg = Slash4.damageCoefficient;
@@ -91,8 +88,8 @@ namespace ZeroModV3.SkillStates
             {
                 this.hasFired = true;
                 //Util.PlayScaledSound(EntityStates.Merc.GroundLight.comboAttackSoundString, base.gameObject, 0.5f);
-                Util.PlaySound(Sounds.zSlash3Voice, base.gameObject);
-                Util.PlaySound(Sounds.zSlash3SFX, base.gameObject);
+                Util.PlaySound(Sounds.zSlash4Voice, base.gameObject);
+                Util.PlaySound(Sounds.zSlash4SFX, base.gameObject);
 
 
                 // EffectManager.SimpleMuzzleFlash(Modules.Assets.swordSwing, base.gameObject, muzzleString, true);
@@ -110,7 +107,8 @@ namespace ZeroModV3.SkillStates
 
                     if (this.attack.Fire())
                     {
-                        base.characterBody.healthComponent.AddBarrier(base.characterBody.damage / 8);
+                        if (Util.CheckRoll((50f + base.characterBody.level), base.characterBody.master))
+                            base.characterBody.healthComponent.AddBarrier(base.characterBody.damage / 8);
                         Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
                         //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
 

@@ -17,6 +17,7 @@
     <None Remove="Modules\Characters\Henry.cs~RF6221a098.TMP" />
     <None Remove="myassetbundle" />
     <None Remove="zerov3bundle" />
+    <None Remove="ZeroV3SB.bnk" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -33,6 +34,7 @@
     <EmbeddedResource Include="HenryBank.bnk" />
     <EmbeddedResource Include="myassetbundle" />
     <EmbeddedResource Include="zerov3bundle" />
+    <EmbeddedResource Include="ZeroV3SB.bnk" />
   </ItemGroup>
 
   <ItemGroup>

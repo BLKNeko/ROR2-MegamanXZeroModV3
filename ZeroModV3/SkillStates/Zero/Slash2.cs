@@ -106,6 +106,8 @@ namespace ZeroModV3.SkillStates
 
                     if (this.attack.Fire())
                     {
+                        if (Util.CheckRoll((30f + base.characterBody.level), base.characterBody.master))
+                            base.characterBody.healthComponent.AddBarrier(base.characterBody.damage / 10);
 
                         Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
                         //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);

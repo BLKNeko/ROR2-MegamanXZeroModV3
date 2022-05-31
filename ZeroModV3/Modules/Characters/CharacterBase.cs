@@ -16,6 +16,7 @@ namespace ZeroModV3.Modules.Characters
         public abstract CustomRendererInfo[] customRendererInfos { get; set; }
 
         public abstract Type characterMainState { get; }
+        public abstract Type characterDeathState { get; }
         public virtual Type characterSpawnState { get; }
 
         public abstract ItemDisplaysBase itemDisplays { get; }
@@ -61,12 +62,17 @@ namespace ZeroModV3.Modules.Characters
         protected virtual void InitializeEntityStateMachine()
         {
             bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(characterMainState);
-            Modules.Content.AddEntityState(characterMainState);
-            if (characterSpawnState != null)
-            {
-                bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new EntityStates.SerializableEntityStateType(characterSpawnState);
-                Modules.Content.AddEntityState(characterSpawnState);
-            }
+
+            bodyPrefab.GetComponent<CharacterDeathBehavior>().deathState = new EntityStates.SerializableEntityStateType(characterDeathState);
+
+            bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new EntityStates.SerializableEntityStateType(characterSpawnState);
+
+            //Modules.Content.AddEntityState(characterMainState);
+            //if (characterSpawnState != null)
+            //{
+            //    bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new EntityStates.SerializableEntityStateType(characterSpawnState);
+            //    Modules.Content.AddEntityState(characterSpawnState);
+            //}
         }
 
         public abstract void InitializeSkills();

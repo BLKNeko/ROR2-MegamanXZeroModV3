@@ -17,16 +17,17 @@ namespace ZeroModV3.SkillStates.BaseStates
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = this.baseDuration / this.attackSpeedStat;
+            this.duration = this.baseDuration;
+            
 
-
-            base.PlayAnimation("Gesture, Override", "TBSwap", "attackSpeed", this.duration);
-            //base.PlayAnimation("FullBody, Override", "Death", "attackSpeed", this.duration);
+            //base.PlayAnimation("Gesture, Override", "TBSwap", "attackSpeed", this.duration);
+            base.PlayAnimation("FullBody, Override", "ZeroSpawn", "attackSpeed", this.duration);
 
         }
         public override void OnExit()
         {
             //Util.PlaySound(Sounds.HaseoSpawn, base.gameObject);
+            Util.PlaySound(Sounds.zReady, base.gameObject);
             base.OnExit();
         }
         public override void FixedUpdate()

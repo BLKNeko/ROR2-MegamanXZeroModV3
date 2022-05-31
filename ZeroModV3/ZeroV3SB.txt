@@ -1,0 +1,47 @@
+Event	ID	Name			Wwise Object Path	Notes
+	168933265	CallZeroBuster1			\Default Work Unit\CallZeroBuster1	
+	168933266	CallZeroBuster2			\Default Work Unit\CallZeroBuster2	
+	206981571	CallZeroSlash1Voice			\Default Work Unit\CallZeroSlash1Voice	
+	246820042	CallZeroILost			\Default Work Unit\CallZeroILost	
+	801878737	CallZeroSlash3Voice			\Default Work Unit\CallZeroSlash3Voice	
+	1170734454	CallZeroTakeThis			\Default Work Unit\CallZeroTakeThis	
+	1223468522	CallZReady			\Default Work Unit\CallZReady	
+	1255215368	CallZeroEnkoujinSFXEND			\Default Work Unit\CallZeroEnkoujinSFXEND	
+	1533338313	CallZeroEnkoujinSFX			\Default Work Unit\CallZeroEnkoujinSFX	
+	1654784168	CallCharging			\Default Work Unit\CallCharging	
+	1868878308	CallZeroEnkoujin			\Default Work Unit\CallZeroEnkoujin	
+	2087232622	CallZeroGuard			\Default Work Unit\CallZeroGuard	
+	2903204454	CallZeroRasetsusen			\Default Work Unit\CallZeroRasetsusen	
+	3028828019	CallZeroDash			\Default Work Unit\CallZeroDash	
+	3695652088	CallZeroSlash4Voice			\Default Work Unit\CallZeroSlash4Voice	
+	4000213070	CallFullCharge			\Default Work Unit\CallFullCharge	
+	4218539586	CallZeroSlash4			\Default Work Unit\CallZeroSlash4	
+	4218539588	CallZeroSlash2			\Default Work Unit\CallZeroSlash2	
+	4218539589	CallZeroSlash3			\Default Work Unit\CallZeroSlash3	
+	4218539591	CallZeroSlash1			\Default Work Unit\CallZeroSlash1	
+	4285598546	CallZeroSlash2Voice			\Default Work Unit\CallZeroSlash2Voice	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	9915182	ZeroFireSFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroFireSFX_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroFireSFX		13509
+	166694051	X8ChargeIn3	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\X8ChargeIn3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\X8ChargeIn3		36050
+	172879631	ZSlash4SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash4SFX_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZSlash4SFX		5019
+	228001974	ZeroShoot2	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroShoot2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroShoot2		8420
+	290973369	ZeroFireSFXEND	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroFireSFXEND_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroFireSFXEND		5404
+	356958557	ZSlash2Voice	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash2Voice_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZSlash2Voice		3385
+	404963693	ZSlash2SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash2SFX_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZSlash2SFX		4809
+	412168758	X8ChargeLoop2	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\X8ChargeLoop2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\X8ChargeLoop2		10652
+	421130572	ZSlash4Voice	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash4Voice_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZSlash4Voice		7626
+	424779122	ZSlash3SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash3SFX_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZSlash3SFX		5419
+	445646316	ZSlash1SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash1SFX_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZSlash1SFX		5601
+	585633468	ZSlash1Voice	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash1Voice_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZSlash1Voice		4039
+	609029610	ZeroShoot1	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroShoot1_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroShoot1		6142
+	618068901	ZeroTogh	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroTogh_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroGuard\ZeroTogh		15479
+	625781341	ZDash	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZDash_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZDash		5181
+	664845022	ZeroIWontLose	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroIWontLose_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroGuard\ZeroIWontLose		13928
+	768603177	ZeroRasetsusen	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroRasetsusen_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroRasetsusen		11243
+	821678620	ZeroTakeThis	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroTakeThis_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroTakeThis		14536
+	837163583	ZSlash3Voice	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash3Voice_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZSlash3Voice		4978
+	855874235	ZeroILost	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroILost_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroILost		11726
+	903523147	ZeroEnkoujin	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroEnkoujin_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ZeroEnkoujin		9816
+	970460224	Ready	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\Ready_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ready		7165
+

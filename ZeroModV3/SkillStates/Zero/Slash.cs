@@ -46,7 +46,7 @@ namespace ZeroModV3.SkillStates
             base.StartAimMode(0.5f + this.duration, false);
             //base.characterBody.isSprinting = false;
 
-            base.characterBody.healthComponent.AddBarrier(base.characterBody.damage / 10);
+            //base.characterBody.healthComponent.AddBarrier(base.characterBody.damage / 10);
 
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
@@ -117,6 +117,9 @@ namespace ZeroModV3.SkillStates
 
                     if (this.attack.Fire())
                     {
+
+                        if (Util.CheckRoll((30f + base.characterBody.level), base.characterBody.master))
+                            base.characterBody.healthComponent.AddBarrier(base.characterBody.damage / 10);
 
                         Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
                         //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
