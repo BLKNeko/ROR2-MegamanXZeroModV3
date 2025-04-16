@@ -1,0 +1,294 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\zero\\slash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\zero\\slash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\zero\\downslash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\zero\\downslash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\zero\\slash4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\zero\\slash4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\zero\\zdefense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\zero\\zdefense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\modules\\states.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\modules\\states.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\modules\\sounds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\modules\\sounds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\zero\\slash3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\zero\\slash3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\zero\\slash2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\zero\\slash2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\modules\\assets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\modules\\assets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\basestates\\spawnstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\basestates\\spawnstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\content\\mycharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\content\\mycharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\modules\\characters\\characterbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\modules\\characters\\characterbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\basestates\\learningsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\basestates\\learningsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\basestates\\deathstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\basestates\\deathstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\modules\\skills.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\modules\\skills.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\zero\\upslash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\zero\\upslash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|a:\\mods\\risk of rain 2\\ror2 megamanxzeromodv3\\ror2-megamanxzeromodv3\\zeromodv3\\skillstates\\zero\\zdash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AC35CBB-F7EC-4C41-A458-59417F576A41}|ZeroModV3\\ZeroModV3.csproj|solutionrelative:zeromodv3\\skillstates\\zero\\zdash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ZDefense.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\ZDefense.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\Zero\\ZDefense.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\ZDefense.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\Zero\\ZDefense.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAiwEUAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-30T23:52:05.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Sounds.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\Sounds.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\Modules\\Sounds.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\Sounds.cs",
+              "RelativeToolTip": "ZeroModV3\\Modules\\Sounds.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-30T22:37:37.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Assets.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\Assets.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\Modules\\Assets.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\Assets.cs",
+              "RelativeToolTip": "ZeroModV3\\Modules\\Assets.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwF0AAACGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-30T22:36:07.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SpawnState.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\BaseStates\\SpawnState.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\BaseStates\\SpawnState.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\BaseStates\\SpawnState.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\BaseStates\\SpawnState.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T01:28:20.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DeathState.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\BaseStates\\DeathState.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\BaseStates\\DeathState.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\BaseStates\\DeathState.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\BaseStates\\DeathState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T01:25:51.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Skills.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\Skills.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\Modules\\Skills.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\Skills.cs",
+              "RelativeToolTip": "ZeroModV3\\Modules\\Skills.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAJgAAABQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T01:22:51.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DownSlash.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\DownSlash.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\Zero\\DownSlash.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\DownSlash.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\Zero\\DownSlash.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAQwDwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T01:17:22.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UpSlash.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\UpSlash.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\Zero\\UpSlash.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\UpSlash.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\Zero\\UpSlash.cs",
+              "ViewState": "AQIAAMgAAAAAAAAAAAAIwJkAAABfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T01:16:46.898Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ZDash.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\ZDash.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\Zero\\ZDash.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\ZDash.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\Zero\\ZDash.cs",
+              "ViewState": "AQIAACQBAAAAAAAAAAAcwPEAAABnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T01:15:26.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Slash4.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\Slash4.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\Zero\\Slash4.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\Slash4.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\Zero\\Slash4.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAQwFsAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T00:57:31.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Slash3.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\Slash3.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\Zero\\Slash3.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\Slash3.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\Zero\\Slash3.cs",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAwwG0AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T00:57:28.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MyCharacter.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Content\\MyCharacter.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\Content\\MyCharacter.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Content\\MyCharacter.cs",
+              "RelativeToolTip": "ZeroModV3\\Content\\MyCharacter.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAwwGsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T00:52:06.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Slash.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\Slash.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\Zero\\Slash.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\Slash.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\Zero\\Slash.cs",
+              "ViewState": "AQIAAK0AAAAAAAAAAAAIwBMAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T00:57:15.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Slash2.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\Slash2.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\Zero\\Slash2.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\Zero\\Slash2.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\Zero\\Slash2.cs",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAwwG0AAABqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T00:57:25.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "States.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\States.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\Modules\\States.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\States.cs",
+              "RelativeToolTip": "ZeroModV3\\Modules\\States.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACIAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-25T01:24:28.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CharacterBase.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\Characters\\CharacterBase.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\Modules\\Characters\\CharacterBase.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\Modules\\Characters\\CharacterBase.cs",
+              "RelativeToolTip": "ZeroModV3\\Modules\\Characters\\CharacterBase.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAADwvz8AAACLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-30T22:38:29.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LearningSystem.cs",
+              "DocumentMoniker": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\BaseStates\\LearningSystem.cs",
+              "RelativeDocumentMoniker": "ZeroModV3\\SkillStates\\BaseStates\\LearningSystem.cs",
+              "ToolTip": "A:\\MODS\\Risk Of Rain 2\\ROR2 MegamanXZeroModV3\\ROR2-MegamanXZeroModV3\\ZeroModV3\\SkillStates\\BaseStates\\LearningSystem.cs",
+              "RelativeToolTip": "ZeroModV3\\SkillStates\\BaseStates\\LearningSystem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-30T22:40:02.672Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
