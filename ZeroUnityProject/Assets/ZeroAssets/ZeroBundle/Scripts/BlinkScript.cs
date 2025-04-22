@@ -12,7 +12,7 @@ public class BlinkScript : MonoBehaviour
     void Start()
     {
 
-        if (blinkObject != null)
+        if (blinkObject != null && blinkObject2 != null)
         {
             blinkObject.transform.localScale = new Vector3(0, 0, 0);
             blinkObject2.transform.localScale = new Vector3(0, 0, 0);
@@ -30,10 +30,11 @@ public class BlinkScript : MonoBehaviour
 
         if (timeBetweenBlink <= 0f)
         {
-            if (blinkObject != null)
+            if (blinkObject != null && blinkObject2 != null)
             {
                 blinkObject.transform.localScale = new Vector3(1, 1, 1);
                 blinkObject2.transform.localScale = new Vector3(1, 1, 1);
+
             }
 
             StartCoroutine("ResetBlink");
@@ -45,7 +46,7 @@ public class BlinkScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.15f);
 
-        if (blinkObject != null)
+        if (blinkObject != null && blinkObject2 != null)
         {
             blinkObject.transform.localScale = new Vector3(0, 0, 0);
             blinkObject2.transform.localScale = new Vector3(0, 0, 0);

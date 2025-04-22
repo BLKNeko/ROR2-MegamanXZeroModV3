@@ -2,7 +2,7 @@
 using RoR2.CharacterAI;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry
+namespace ZeroMod.Survivors.Henry
 {
     public static class HenryAI
     {

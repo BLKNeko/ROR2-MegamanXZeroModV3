@@ -1,5 +1,5 @@
 ﻿using BepInEx;
-using HenryMod.Survivors.Henry;
+using ZeroMod.Survivors.Henry;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Security.Permissions;
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
 //rename this namespace
-namespace HenryMod
+namespace ZeroMod
 {
     //[BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]

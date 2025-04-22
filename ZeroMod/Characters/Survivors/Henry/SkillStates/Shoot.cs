@@ -1,9 +1,9 @@
 ﻿using EntityStates;
-using HenryMod.Survivors.Henry;
+using ZeroMod.Survivors.Henry;
 using RoR2;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Henry.SkillStates
 {
     public class Shoot : BaseSkillState
     {

@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry
+namespace ZeroMod.Survivors.Henry
 {
     public static class HenryBuffs
     {

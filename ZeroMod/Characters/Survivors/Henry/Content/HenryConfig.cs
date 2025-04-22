@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
-using HenryMod.Modules;
+using ZeroMod.Modules;
 
-namespace HenryMod.Survivors.Henry
+namespace ZeroMod.Survivors.Henry
 {
     public static class HenryConfig
     {

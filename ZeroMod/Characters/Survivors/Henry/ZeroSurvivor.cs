@@ -1,15 +1,15 @@
 ﻿using BepInEx.Configuration;
-using HenryMod.Modules;
-using HenryMod.Modules.Characters;
-using HenryMod.Survivors.Henry.Components;
-using HenryMod.Survivors.Henry.SkillStates;
+using ZeroMod.Modules;
+using ZeroMod.Modules.Characters;
+using ZeroMod.Survivors.Henry.Components;
+using ZeroMod.Survivors.Henry.SkillStates;
 using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry
+namespace ZeroMod.Survivors.Henry
 {
     public class ZeroSurvivor : SurvivorBase<ZeroSurvivor>
     {
@@ -38,17 +38,23 @@ namespace HenryMod.Survivors.Henry
             subtitleNameToken = HENRY_PREFIX + "SUBTITLE",
 
             characterPortrait = assetBundle.LoadAsset<Texture>("texHenryIcon"),
-            bodyColor = Color.white,
+            bodyColor = new Color(0.55f, 0.15f, 0.15f),
             sortPosition = 100,
 
             crosshair = Asset.LoadCrosshair("Standard"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
-            maxHealth = 110f,
+            maxHealth = 140f,
+            healthGrowth = 28f,
             healthRegen = 1.5f,
-            armor = 0f,
-
-            jumpCount = 1,
+            armor = 20f,
+            armorGrowth = 1.5f,
+            damage = 22f,
+            shieldGrowth = 0.3f,
+            jumpPowerGrowth = 0.3f,
+            jumpCount = 2,
+            attackSpeed = 1.15f,
+            attackSpeedGrowth = 0.04f,
         };
 
         public override CustomRendererInfo[] customRendererInfos => new CustomRendererInfo[]
@@ -57,15 +63,17 @@ namespace HenryMod.Survivors.Henry
                 {
                     childName = "ZeroBodyMesh",
                     material = assetBundle.LoadMaterial("matZero"),
+                },
+                new CustomRendererInfo
+                {
+                    childName = "ZSaberMesh",
+                    material = assetBundle.LoadMaterial("matZSaber"),
+                },
+                new CustomRendererInfo
+                {
+                    childName = "ZBusterMesh",
+                    material = assetBundle.LoadMaterial("matZeroBuster"),
                 }
-                //new CustomRendererInfo
-                //{
-                //    childName = "GunModel",
-                //},
-                //new CustomRendererInfo
-                //{
-                //    childName = "Model",
-                //}
         };
 
         public override UnlockableDef characterUnlockableDef => HenryUnlockables.characterUnlockableDef;
@@ -118,7 +126,7 @@ namespace HenryMod.Survivors.Henry
 
         private void AdditionalBodySetup()
         {
-            //AddHitboxes();
+            AddHitboxes();
             bodyPrefab.AddComponent<HenryWeaponComponent>();
             //bodyPrefab.AddComponent<HuntressTrackerComopnent>();
             //anything else here
@@ -127,7 +135,21 @@ namespace HenryMod.Survivors.Henry
         public void AddHitboxes()
         {
             //example of how to create a HitBoxGroup. see summary for more details
-            Prefabs.SetupHitBoxGroup(characterModelObject, "SwordGroup", "SwordHitbox");
+            // Prefabs.SetupHitBoxGroup(characterModelObject, "SwordGroup", "SwordHitbox");
+
+            ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
+            GameObject model = childLocator.gameObject;
+
+            Transform hitboxTransform = childLocator.FindChild("ZSaberHitBox");
+            Prefabs.SetupHitBoxGroup(model, "ZSaberHitBox", "ZSaberHitBox");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransform.localScale = new Vector3(6f, 6f, 6f);
+
+            Transform hitboxTransform2 = childLocator.FindChild("KuuenzanHitBox");
+            Prefabs.SetupHitBoxGroup(model, "KuuenzanHitBox", "KuuenzanHitBox");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransform.localScale = new Vector3(6f, 6f, 6f);
+
         }
 
         public override void InitializeEntityStateMachines() 
@@ -224,12 +246,12 @@ namespace HenryMod.Survivors.Henry
                     HENRY_PREFIX + "PRIMARY_SLASH_NAME",
                     HENRY_PREFIX + "PRIMARY_SLASH_DESCRIPTION",
                     assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
-                    new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)),
+                    new EntityStates.SerializableEntityStateType(typeof(SkillStates.ZSSlashCombo)),
                     "Weapon",
                     true
                 ));
             //custom Skilldefs can have additional fields that you can set manually
-            primarySkillDef1.stepCount = 2;
+            primarySkillDef1.stepCount = 5;
             primarySkillDef1.stepGraceDuration = 0.5f;
 
             Skills.AddPrimarySkills(bodyPrefab, primarySkillDef1);
@@ -287,7 +309,7 @@ namespace HenryMod.Survivors.Henry
                 skillDescriptionToken = HENRY_PREFIX + "UTILITY_ROLL_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(Roll)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ZDash)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
 
@@ -358,21 +380,87 @@ namespace HenryMod.Survivors.Henry
                 prefabCharacterModel.gameObject);
 
             //these are your Mesh Replacements. The order here is based on your CustomRendererInfos from earlier
-                //pass in meshes as they are named in your assetbundle
+            //pass in meshes as they are named in your assetbundle
             //currently not needed as with only 1 skin they will simply take the default meshes
-                //uncomment this when you have another skin
-            //defaultSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
-            //    "meshHenrySword",
-            //    "meshHenryGun",
-            //    "meshHenry");
+            //uncomment this when you have another skin
+            defaultSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                null,
+                null,
+                null);
 
             //add new skindef to our list of skindefs. this is what we'll be passing to the SkinController
             skins.Add(defaultSkin);
             #endregion
 
+            //creating a new skindef as we did before
+            SkinDef BZSkin = Modules.Skins.CreateSkinDef(HENRY_PREFIX + "MASTERY_SKIN_NAME",
+                assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
+                defaultRendererinfos,
+                prefabCharacterModel.gameObject);
+
+            //adding the mesh replacements as above. 
+            //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
+            BZSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                null,
+                null,
+                null);
+
+            //masterySkin has a new set of RendererInfos (based on default rendererinfos)
+            //you can simply access the RendererInfos' materials and set them to the new materials for your skin.
+            BZSkin.rendererInfos[0].defaultMaterial = assetBundle.LoadMaterial("matBlackZero");
+            BZSkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matBSaber");
+            BZSkin.rendererInfos[2].defaultMaterial = assetBundle.LoadMaterial("matBlackZeroBuster");
+            //masterySkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matGaea");
+
+            //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
+            //BZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
+            //{
+            //    new SkinDef.GameObjectActivation
+            //    {
+            //        gameObject = childLocator.FindChildGameObject("XBusterMesh"),
+            //        shouldActivate = false,
+            //    }
+            //};
+            //simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
+
+            skins.Add(BZSkin);
+
+            //creating a new skindef as we did before
+            SkinDef NZSkin = Modules.Skins.CreateSkinDef(HENRY_PREFIX + "NMASTERY_SKIN_NAME",
+                assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
+                defaultRendererinfos,
+                prefabCharacterModel.gameObject);
+
+            //adding the mesh replacements as above. 
+            //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
+            NZSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                null,
+                null,
+                null);
+
+            //masterySkin has a new set of RendererInfos (based on default rendererinfos)
+            //you can simply access the RendererInfos' materials and set them to the new materials for your skin.
+            NZSkin.rendererInfos[0].defaultMaterial = assetBundle.LoadMaterial("matNightmareZero");
+            NZSkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matNSaber");
+            NZSkin.rendererInfos[2].defaultMaterial = assetBundle.LoadMaterial("matZeroBusterNightmare");
+            //masterySkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matGaea");
+
+            //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
+            //BZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
+            //{
+            //    new SkinDef.GameObjectActivation
+            //    {
+            //        gameObject = childLocator.FindChildGameObject("XBusterMesh"),
+            //        shouldActivate = false,
+            //    }
+            //};
+            //simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
+
+            skins.Add(NZSkin);
+
             //uncomment this when you have a mastery skin
             #region MasterySkin
-            
+
             ////creating a new skindef as we did before
             //SkinDef masterySkin = Modules.Skins.CreateSkinDef(HENRY_PREFIX + "MASTERY_SKIN_NAME",
             //    assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
@@ -405,7 +493,7 @@ namespace HenryMod.Survivors.Henry
             ////simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
 
             //skins.Add(masterySkin);
-            
+
             #endregion
 
             skinController.skins = skins.ToArray();

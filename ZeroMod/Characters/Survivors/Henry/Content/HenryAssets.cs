@@ -1,10 +1,10 @@
 ﻿using RoR2;
 using UnityEngine;
-using HenryMod.Modules;
+using ZeroMod.Modules;
 using System;
 using RoR2.Projectile;
 
-namespace HenryMod.Survivors.Henry
+namespace ZeroMod.Survivors.Henry
 {
     public static class HenryAssets
     {

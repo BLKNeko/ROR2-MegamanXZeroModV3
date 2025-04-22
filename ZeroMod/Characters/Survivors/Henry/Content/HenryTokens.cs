@@ -1,8 +1,8 @@
 ﻿using System;
-using HenryMod.Modules;
-using HenryMod.Survivors.Henry.Achievements;
+using ZeroMod.Modules;
+using ZeroMod.Survivors.Henry.Achievements;
 
-namespace HenryMod.Survivors.Henry
+namespace ZeroMod.Survivors.Henry
 {
     public static class HenryTokens
     {

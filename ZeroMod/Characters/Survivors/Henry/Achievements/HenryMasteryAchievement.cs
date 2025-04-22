@@ -1,7 +1,7 @@
 ﻿using RoR2;
-using HenryMod.Modules.Achievements;
+using ZeroMod.Modules.Achievements;
 
-namespace HenryMod.Survivors.Henry.Achievements
+namespace ZeroMod.Survivors.Henry.Achievements
 {
     //automatically creates language tokens "ACHIEVMENT_{identifier.ToUpper()}_NAME" and "ACHIEVMENT_{identifier.ToUpper()}_DESCRIPTION" 
     [RegisterAchievement(identifier, unlockableIdentifier, null, 10, null)]

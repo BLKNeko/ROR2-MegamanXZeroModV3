@@ -1,8 +1,8 @@
-﻿using HenryMod.Modules.BaseStates;
+﻿using ZeroMod.Modules.BaseStates;
 using RoR2;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Henry.SkillStates
 {
     public class SlashCombo : BaseMeleeAttack
     {

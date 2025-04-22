@@ -1,8 +1,8 @@
-﻿using HenryMod.Survivors.Henry.Achievements;
+﻿using ZeroMod.Survivors.Henry.Achievements;
 using RoR2;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry
+namespace ZeroMod.Survivors.Henry
 {
     public static class HenryUnlockables
     {
