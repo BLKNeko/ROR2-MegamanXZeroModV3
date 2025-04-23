@@ -1,10 +1,10 @@
 ﻿using EntityStates;
-using ZeroMod.Survivors.Henry;
+using ZeroMod.Survivors.Zero;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 
-namespace ZeroMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Zero.SkillStates
 {
     public class ThrowBomb : GenericProjectileBaseState
     {
@@ -16,7 +16,7 @@ namespace ZeroMod.Survivors.Henry.SkillStates
 
         public override void OnEnter()
         {
-            projectilePrefab = HenryAssets.bombProjectilePrefab;
+            projectilePrefab = ZeroAssets.bombProjectilePrefab;
             //base.effectPrefab = Modules.Assets.SomeMuzzleEffect;
             //targetmuzzle = "muzzleThrow"
 

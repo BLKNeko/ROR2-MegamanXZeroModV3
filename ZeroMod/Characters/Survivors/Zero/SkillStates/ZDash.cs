@@ -5,9 +5,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace ZeroMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Zero.SkillStates
 {
-    public class ZDash : BaseMeleeAttack
+    public class ZDash : BaseSkillState
     {
 
         public static float initialSpeedCoefficient = 5f;
@@ -24,10 +24,10 @@ namespace ZeroMod.Survivors.Henry.SkillStates
         private string LDashPos = "LDashPos";
         private string RDashPos = "RDashPos";
 
+        public static float duration = 0.8f;
+
         public override void OnEnter()
         {
-            hitboxGroupName = "";
-
             //his.childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
 
 
@@ -42,29 +42,6 @@ namespace ZeroMod.Survivors.Henry.SkillStates
 
 
             //}, true);
-
-            damageType = DamageType.Generic;
-            damageCoefficient = 0f;
-            procCoefficient = 1f;
-            pushForce = 300f;
-            bonusForce = Vector3.zero;
-            baseDuration = 0.5f ;            
-
-            //0-1 multiplier of baseduration, used to time when the hitbox is out (usually based on the run time of the animation)
-            //for example, if attackStartPercentTime is 0.5, the attack will start hitting halfway through the ability. if baseduration is 3 seconds, the attack will start happening at 1.5 seconds
-            attackStartPercentTime = 0.1f;
-            attackEndPercentTime = 0.1f;
-
-            //this is the point at which the attack can be interrupted by itself, continuing a combo
-            earlyExitPercentTime = 1f;
-
-            hitStopDuration = 0;
-            attackRecoil = 0f;
-            hitHopVelocity = 5f;
-
-            hitSoundString = "";
-
-            playbackRateParam = "Slash.playbackRate";
 
             //impactSound = XAssets.swordHitSoundEvent.index;
 
@@ -112,28 +89,14 @@ namespace ZeroMod.Survivors.Henry.SkillStates
             //Debug.Log("rollSpeed: " + rollSpeed);
             //Debug.Log("inputBank: " + inputBank);
 
+            base.PlayAnimation("FullBody, Override", "DashStart", "attackSpeed", duration);
+
             base.OnEnter();
-        }
-
-        protected override void PlayAttackAnimation()
-        {
-            //PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), playbackRateParam, duration, 0.1f * duration);
-            base.PlayAnimation("FullBody, Override", "DashLoop", "attackSpeed", this.duration);
-        }
-
-        protected override void PlaySwingEffect()
-        {
-            base.PlaySwingEffect();
-        }
-
-        protected override void OnHitEnemyAuthority()
-        {
-            base.OnHitEnemyAuthority();
         }
 
         private void RecalculateRollSpeed()
         {
-            rollSpeed = (moveSpeedStat * Mathf.Lerp(initialSpeedCoefficient, finalSpeedCoefficient, fixedAge / baseDuration)) + 0.5f;
+            rollSpeed = (moveSpeedStat * Mathf.Lerp(initialSpeedCoefficient, finalSpeedCoefficient, fixedAge / duration)) + 0.5f;
         }
 
         public override void FixedUpdate()
@@ -177,12 +140,18 @@ namespace ZeroMod.Survivors.Henry.SkillStates
             }
             previousPosition = transform.position;
 
+            if (isAuthority && fixedAge >= duration)
+            {
+                outer.SetNextStateToMain();
+                return;
+            }
+
         }
 
         public override void OnExit()
         {
 
-            base.PlayAnimation("FullBody, Override", "DashEnd", "attackSpeed", this.duration);
+            base.PlayAnimation("FullBody, Override", "DashEnd", "attackSpeed", duration);
 
             base.OnExit();
         }

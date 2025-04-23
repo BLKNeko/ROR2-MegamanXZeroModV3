@@ -1,12 +1,12 @@
 ﻿using EntityStates;
-using MegamanXMod.Modules.BaseStates;
+using ZeroMod.Modules.BaseStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace MegamanXMod.Survivors.X.SkillStates
+namespace ZeroMod.Survivors.Zero.SkillStates
 {
-    public class RisingFireCharge : BaseMeleeAttack2
+    public class Ryuuenjin : BaseMeleeAttack2
     {
 
         private float upwardForce = 2000f;
@@ -15,11 +15,11 @@ namespace MegamanXMod.Survivors.X.SkillStates
 
         public override void OnEnter()
         {
-            hitboxGroupName = "ShadowSaberGroup";
+            hitboxGroupName = "ZSaberHitBox";
 
             damageType |= DamageType.IgniteOnHit;
             damageType |= DamageTypeCombo.GenericSpecial;
-            damageCoefficient = (XStaticValues.RisingFireDamageCoefficient * XStaticValues.XFullChargeDamageCoefficient);
+            damageCoefficient = 1f;
             procCoefficient = 1f;
             pushForce = 1000f;
             bonusForce = Vector3.up * upwardForce;
@@ -45,17 +45,17 @@ namespace MegamanXMod.Survivors.X.SkillStates
 
             //impactSound = XAssets.swordHitSoundEvent.index;
 
-            XRathalosSlashCombo2 xRathalosSlashCombo2 = new XRathalosSlashCombo2();
+            //XRathalosSlashCombo2 xRathalosSlashCombo2 = new XRathalosSlashCombo2();
 
-            SetHitReset(true, 8);
+            //SetHitReset(true, 8);
 
-            EffectManager.SimpleMuzzleFlash(XAssets.RisingFireVFX, gameObject, muzzleString, true);
+            //EffectManager.SimpleMuzzleFlash(XAssets.RisingFireVFX, gameObject, muzzleString, true);
 
-            if (XConfig.enableVoiceBool.Value)
-            {
-                AkSoundEngine.PostEvent(XStaticValues.X_Attack_VSFX, this.gameObject);
-            }
-            AkSoundEngine.PostEvent(XStaticValues.X_RisingFireCharged_SFX, this.gameObject);
+            //if (XConfig.enableVoiceBool.Value)
+            //{
+            //    AkSoundEngine.PostEvent(XStaticValues.X_Attack_VSFX, this.gameObject);
+            //}
+            //AkSoundEngine.PostEvent(XStaticValues.X_RisingFireCharged_SFX, this.gameObject);
 
 
 
@@ -71,7 +71,7 @@ namespace MegamanXMod.Survivors.X.SkillStates
         protected override void PlayAttackAnimation()
         {
             //PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), playbackRateParam, duration, 0.1f * duration);
-            base.PlayAnimation("FullBody, Override", "RisingFireStart", "attackSpeed", this.duration);
+            base.PlayAnimation("FullBody, Override", "RyuuenjinStart", "attackSpeed", this.duration);
         }
 
         protected override void PlaySwingEffect()
@@ -118,7 +118,7 @@ namespace MegamanXMod.Survivors.X.SkillStates
         public override void OnExit()
         {
 
-            base.PlayAnimation("FullBody, Override", "RisingFireEnd", "attackSpeed", this.duration);
+            base.PlayAnimation("FullBody, Override", "RyuuenjinEnd", "attackSpeed", this.duration);
             //base.PlayAnimation("FullBody, Override", "BufferEmpty", "attackSpeed", this.duration);
 
             base.OnExit();

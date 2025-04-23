@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace ZeroMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Zero.SkillStates
 {
     public class SlashCombo : BaseMeleeAttack
     {
@@ -33,10 +33,10 @@ namespace ZeroMod.Survivors.Henry.SkillStates
             hitSoundString = "";
             muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             playbackRateParam = "Slash.playbackRate";
-            swingEffectPrefab = HenryAssets.swordSwingEffect;
-            hitEffectPrefab = HenryAssets.swordHitImpactEffect;
+            swingEffectPrefab = ZeroAssets.swordSwingEffect;
+            hitEffectPrefab = ZeroAssets.swordHitImpactEffect;
 
-            impactSound = HenryAssets.swordHitSoundEvent.index;
+            impactSound = ZeroAssets.swordHitSoundEvent.index;
 
             base.OnEnter();
         }

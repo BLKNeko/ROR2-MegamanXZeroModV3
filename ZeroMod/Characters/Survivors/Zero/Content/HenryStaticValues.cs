@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ZeroMod.Survivors.Henry
+namespace ZeroMod.Survivors.Zero
 {
     public static class HenryStaticValues
     {

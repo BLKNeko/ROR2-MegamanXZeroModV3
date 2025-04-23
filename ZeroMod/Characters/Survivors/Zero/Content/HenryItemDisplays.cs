@@ -11,7 +11,7 @@ using UnityEngine;
                     {localScale})
 */
 
-namespace ZeroMod.Survivors.Henry
+namespace ZeroMod.Survivors.Zero
 {
     public class HenryItemDisplays : ItemDisplaysBase
     {

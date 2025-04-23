@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 
 namespace ZeroMod.Modules.BaseStates
 {
-    public abstract class BaseMeleeAttack2 : BaseSkillState, SteppedSkillDef.IStepSetter
+    public abstract class BaseMeleeAttackZP : BaseSkillState, SteppedSkillDef.IStepSetter
     {
         public int swingIndex;
 
@@ -159,6 +159,13 @@ namespace ZeroMod.Modules.BaseStates
             base.FixedUpdate();
 
             hitPauseTimer -= Time.deltaTime;
+
+            if (!characterMotor.isGrounded)
+            {
+                Kuuenzan K = new Kuuenzan();
+                outer.SetNextState(K);
+                return;
+            }
 
             if (shouldResetHit)
             {

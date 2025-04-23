@@ -1,6 +1,6 @@
-﻿using ZeroMod.Survivors.Henry.SkillStates;
+﻿using ZeroMod.Survivors.Zero.SkillStates;
 
-namespace ZeroMod.Survivors.Henry
+namespace ZeroMod.Survivors.Zero
 {
     public static class HenryStates
     {

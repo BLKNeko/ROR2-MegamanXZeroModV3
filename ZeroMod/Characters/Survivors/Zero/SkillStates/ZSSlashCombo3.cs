@@ -2,11 +2,11 @@
 using ZeroMod.Modules.BaseStates;
 using RoR2;
 using UnityEngine;
-using ZeroMod.Survivors.Henry;
+using ZeroMod.Survivors.Zero;
 
-namespace ZeroMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Zero.SkillStates
 {
-    public class ZSSlashCombo4 : BaseMeleeAttack2
+    public class ZSSlashCombo3 : BaseMeleeAttackZP
     {
 
         public override void OnEnter()
@@ -37,18 +37,18 @@ namespace ZeroMod.Survivors.Henry.SkillStates
 
             hitSoundString = "";
             //muzzleString = "SwordMuzzPos";
-            muzzleString = "SwingRight";
+            muzzleString = "SwingLeft";
             playbackRateParam = "attackSpeed";
-            swingEffectPrefab = HenryAssets.swordSwingEffect;
-            hitEffectPrefab = HenryAssets.swordHitImpactEffect;
+            swingEffectPrefab = ZeroAssets.swordSwingEffect;
+            hitEffectPrefab = ZeroAssets.swordHitImpactEffect;
 
-            impactSound = HenryAssets.swordHitSoundEvent.index;
+            impactSound = ZeroAssets.swordHitSoundEvent.index;
 
-            SetHitReset(true, 3);
+            SetHitReset(true, 2);
 
-            ZSSlashCombo5 ZSS5 = new ZSSlashCombo5();
+            ZSSlashCombo4 ZSS4 = new ZSSlashCombo4();
 
-            SetNextEntityState(ZSS5);
+            SetNextEntityState(ZSS4);
 
 
             base.OnEnter();
@@ -57,7 +57,7 @@ namespace ZeroMod.Survivors.Henry.SkillStates
         protected override void PlayAttackAnimation()
         {
             //PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), playbackRateParam, duration, 0.1f * duration);
-            base.PlayAnimation("FullBody, Override", "ZSSlash4", "attackSpeed", this.duration);
+            base.PlayAnimation("Gesture, Override", "ZSSlash3", "attackSpeed", this.duration);
         }
 
         protected virtual void PlaySwingEffect()
@@ -73,7 +73,7 @@ namespace ZeroMod.Survivors.Henry.SkillStates
         public override void OnExit()
         {
 
-            base.PlayAnimation("FullBody, Override", "BufferEmpty", "attackSpeed", this.duration);
+            base.PlayAnimation("Gesture, Override", "BufferEmpty", "attackSpeed", this.duration);
 
             base.OnExit();
         }

@@ -1,10 +1,10 @@
 ﻿using EntityStates;
-using ZeroMod.Survivors.Henry;
+using ZeroMod.Survivors.Zero;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace ZeroMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Zero.SkillStates
 {
     public class Roll : BaseSkillState
     {

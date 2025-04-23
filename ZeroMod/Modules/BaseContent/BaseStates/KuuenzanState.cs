@@ -1,5 +1,5 @@
 ﻿using EntityStates;
-using ZeroMod.Survivors.Henry.SkillStates;
+using ZeroMod.Survivors.Zero.SkillStates;
 using RoR2;
 using RoR2.Audio;
 using RoR2.Skills;

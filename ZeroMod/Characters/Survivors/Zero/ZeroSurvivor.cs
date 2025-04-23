@@ -1,15 +1,16 @@
 ﻿using BepInEx.Configuration;
 using ZeroMod.Modules;
 using ZeroMod.Modules.Characters;
-using ZeroMod.Survivors.Henry.Components;
-using ZeroMod.Survivors.Henry.SkillStates;
+using ZeroMod.Survivors.Zero.Components;
+using ZeroMod.Survivors.Zero.SkillStates;
 using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static RoR2.OutlineHighlight;
 
-namespace ZeroMod.Survivors.Henry
+namespace ZeroMod.Survivors.Zero
 {
     public class ZeroSurvivor : SurvivorBase<ZeroSurvivor>
     {
@@ -26,16 +27,25 @@ namespace ZeroMod.Survivors.Henry
         public override string modelPrefabName => "mdlZero";
         public override string displayPrefabName => "ZeroDisplay";
 
-        public const string HENRY_PREFIX = ZeroPlugin.DEVELOPER_PREFIX + "_ZERO_";
+        public const string ZERO_X_PREFIX = ZeroPlugin.DEVELOPER_PREFIX + "_ZERO_";
 
         //used when registering your survivor's language tokens
-        public override string survivorTokenPrefix => HENRY_PREFIX;
-        
+        public override string survivorTokenPrefix => ZERO_X_PREFIX;
+
+        //SKILL DEFS
+
+        //SECONDARY
+        internal static SkillDef ZBusterSkillDef;
+
+        //SPECIAL
+        internal static SkillDef CFlasherSkillDef;
+        internal static SkillDef RyuuenjinSkillDef;
+
         public override BodyInfo bodyInfo => new BodyInfo
         {
             bodyName = bodyName,
-            bodyNameToken = HENRY_PREFIX + "NAME",
-            subtitleNameToken = HENRY_PREFIX + "SUBTITLE",
+            bodyNameToken = ZERO_X_PREFIX + "NAME",
+            subtitleNameToken = ZERO_X_PREFIX + "SUBTITLE",
 
             characterPortrait = assetBundle.LoadAsset<Texture>("texHenryIcon"),
             bodyColor = new Color(0.55f, 0.15f, 0.15f),
@@ -92,7 +102,7 @@ namespace ZeroMod.Survivors.Henry
         public override void Initialize()
         {
             //uncomment if you have multiple characters
-            //ConfigEntry<bool> characterEnabled = Config.CharacterEnableConfig("Survivors", "Henry");
+            //ConfigEntry<bool> characterEnabled = Config.CharacterEnableConfig("Survivors", "Zero");
 
             //if (!characterEnabled.Value)
             //    return;
@@ -111,7 +121,7 @@ namespace ZeroMod.Survivors.Henry
             HenryStates.Init();
             HenryTokens.Init();
 
-            HenryAssets.Init(assetBundle);
+            ZeroAssets.Init(assetBundle);
             HenryBuffs.Init(assetBundle);
 
             InitializeEntityStateMachines();
@@ -173,11 +183,115 @@ namespace ZeroMod.Survivors.Henry
             //remove the genericskills from the commando body we cloned
             Skills.ClearGenericSkills(bodyPrefab);
             //add our own
+            CreateSkillDefs();
             //AddPassiveSkill();
             AddPrimarySkills();
             AddSecondarySkills();
             AddUtiitySkills();
             AddSpecialSkills();
+        }
+
+        private void CreateSkillDefs()
+        {
+
+
+            ZBusterSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "ZBuster",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = XAssets.IconSqueezeBomb,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ZBuster)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 5,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = true,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            #region Special
+
+            CFlasherSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "CFlasher",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = XAssets.IconSqueezeBomb,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(CFlasher)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 5,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = true,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            RyuuenjinSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "Ryuuenjin",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = XAssets.IconSqueezeBomb,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(Ryuuenjin)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 5,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = true,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+
+
+            #endregion
+
+
         }
 
         //skip if you don't have a passive
@@ -188,8 +302,8 @@ namespace ZeroMod.Survivors.Henry
             bodyPrefab.GetComponent<SkillLocator>().passiveSkill = new SkillLocator.PassiveSkill
             {
                 enabled = true,
-                skillNameToken = HENRY_PREFIX + "PASSIVE_NAME",
-                skillDescriptionToken = HENRY_PREFIX + "PASSIVE_DESCRIPTION",
+                skillNameToken = ZERO_X_PREFIX + "PASSIVE_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "PASSIVE_DESCRIPTION",
                 keywordToken = "KEYWORD_STUNNING",
                 icon = assetBundle.LoadAsset<Sprite>("texPassiveIcon"),
             };
@@ -199,8 +313,8 @@ namespace ZeroMod.Survivors.Henry
             SkillDef passiveSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "HenryPassive",
-                skillNameToken = HENRY_PREFIX + "PASSIVE_NAME",
-                skillDescriptionToken = HENRY_PREFIX + "PASSIVE_DESCRIPTION",
+                skillNameToken = ZERO_X_PREFIX + "PASSIVE_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "PASSIVE_DESCRIPTION",
                 keywordTokens = new string[] { "KEYWORD_AGILE" },
                 skillIcon = assetBundle.LoadAsset<Sprite>("texPassiveIcon"),
 
@@ -243,8 +357,8 @@ namespace ZeroMod.Survivors.Henry
             SteppedSkillDef primarySkillDef1 = Skills.CreateSkillDef<SteppedSkillDef>(new SkillDefInfo
                 (
                     "HenrySlash",
-                    HENRY_PREFIX + "PRIMARY_SLASH_NAME",
-                    HENRY_PREFIX + "PRIMARY_SLASH_DESCRIPTION",
+                    ZERO_X_PREFIX + "PRIMARY_SLASH_NAME",
+                    ZERO_X_PREFIX + "PRIMARY_SLASH_DESCRIPTION",
                     assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
                     new EntityStates.SerializableEntityStateType(typeof(SkillStates.ZSSlashCombo)),
                     "Weapon",
@@ -265,8 +379,8 @@ namespace ZeroMod.Survivors.Henry
             SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "HenryGun",
-                skillNameToken = HENRY_PREFIX + "SECONDARY_GUN_NAME",
-                skillDescriptionToken = HENRY_PREFIX + "SECONDARY_GUN_DESCRIPTION",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_GUN_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_GUN_DESCRIPTION",
                 keywordTokens = new string[] { "KEYWORD_AGILE" },
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
@@ -295,6 +409,7 @@ namespace ZeroMod.Survivors.Henry
             });
 
             Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef1);
+            Skills.AddSecondarySkills(bodyPrefab, ZBusterSkillDef);
         }
 
         private void AddUtiitySkills()
@@ -305,8 +420,8 @@ namespace ZeroMod.Survivors.Henry
             SkillDef utilitySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "HenryRoll",
-                skillNameToken = HENRY_PREFIX + "UTILITY_ROLL_NAME",
-                skillDescriptionToken = HENRY_PREFIX + "UTILITY_ROLL_DESCRIPTION",
+                skillNameToken = ZERO_X_PREFIX + "UTILITY_ROLL_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "UTILITY_ROLL_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ZDash)),
@@ -343,11 +458,11 @@ namespace ZeroMod.Survivors.Henry
             SkillDef specialSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "HenryBomb",
-                skillNameToken = HENRY_PREFIX + "SPECIAL_BOMB_NAME",
-                skillDescriptionToken = HENRY_PREFIX + "SPECIAL_BOMB_DESCRIPTION",
+                skillNameToken = ZERO_X_PREFIX + "SPECIAL_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SPECIAL_BOMB_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSpecialIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ThrowBomb)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CFlasher)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
                 activationStateMachineName = "Weapon2", interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -359,6 +474,8 @@ namespace ZeroMod.Survivors.Henry
             });
 
             Skills.AddSpecialSkills(bodyPrefab, specialSkillDef1);
+            Skills.AddSpecialSkills(bodyPrefab, CFlasherSkillDef);
+            Skills.AddSpecialSkills(bodyPrefab, RyuuenjinSkillDef);
         }
         #endregion skills
         
@@ -393,7 +510,7 @@ namespace ZeroMod.Survivors.Henry
             #endregion
 
             //creating a new skindef as we did before
-            SkinDef BZSkin = Modules.Skins.CreateSkinDef(HENRY_PREFIX + "MASTERY_SKIN_NAME",
+            SkinDef BZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "MASTERY_SKIN_NAME",
                 assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
@@ -426,7 +543,7 @@ namespace ZeroMod.Survivors.Henry
             skins.Add(BZSkin);
 
             //creating a new skindef as we did before
-            SkinDef NZSkin = Modules.Skins.CreateSkinDef(HENRY_PREFIX + "NMASTERY_SKIN_NAME",
+            SkinDef NZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "NMASTERY_SKIN_NAME",
                 assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
@@ -462,7 +579,7 @@ namespace ZeroMod.Survivors.Henry
             #region MasterySkin
 
             ////creating a new skindef as we did before
-            //SkinDef masterySkin = Modules.Skins.CreateSkinDef(HENRY_PREFIX + "MASTERY_SKIN_NAME",
+            //SkinDef masterySkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "MASTERY_SKIN_NAME",
             //    assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
             //    defaultRendererinfos,
             //    prefabCharacterModel.gameObject,

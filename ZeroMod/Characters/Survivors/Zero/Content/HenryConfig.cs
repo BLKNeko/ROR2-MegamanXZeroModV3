@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
 using ZeroMod.Modules;
 
-namespace ZeroMod.Survivors.Henry
+namespace ZeroMod.Survivors.Zero
 {
     public static class HenryConfig
     {
@@ -11,7 +11,7 @@ namespace ZeroMod.Survivors.Henry
 
         public static void Init()
         {
-            string section = "Henry";
+            string section = "Zero";
 
             someConfigBool = Config.BindAndOptions(
                 section,

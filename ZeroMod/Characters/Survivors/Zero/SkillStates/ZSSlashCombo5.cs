@@ -2,11 +2,11 @@
 using ZeroMod.Modules.BaseStates;
 using RoR2;
 using UnityEngine;
-using ZeroMod.Survivors.Henry;
+using ZeroMod.Survivors.Zero;
 
-namespace ZeroMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Zero.SkillStates
 {
-    public class ZSSlashCombo5 : BaseMeleeAttack2
+    public class ZSSlashCombo5 : BaseMeleeAttackZP
     {
 
         public override void OnEnter()
@@ -39,10 +39,10 @@ namespace ZeroMod.Survivors.Henry.SkillStates
             //muzzleString = "SwordMuzzPos";
             muzzleString = "SwingDown";
             playbackRateParam = "attackSpeed";
-            swingEffectPrefab = HenryAssets.swordSwingEffect;
-            hitEffectPrefab = HenryAssets.swordHitImpactEffect;
+            swingEffectPrefab = ZeroAssets.swordSwingEffect;
+            hitEffectPrefab = ZeroAssets.swordHitImpactEffect;
 
-            impactSound = HenryAssets.swordHitSoundEvent.index;
+            impactSound = ZeroAssets.swordHitSoundEvent.index;
 
             SetHitReset(true, 3);
 

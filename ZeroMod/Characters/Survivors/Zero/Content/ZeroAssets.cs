@@ -4,9 +4,9 @@ using ZeroMod.Modules;
 using System;
 using RoR2.Projectile;
 
-namespace ZeroMod.Survivors.Henry
+namespace ZeroMod.Survivors.Zero
 {
-    public static class HenryAssets
+    public static class ZeroAssets
     {
         // particle effects
         public static GameObject swordSwingEffect;
@@ -19,6 +19,8 @@ namespace ZeroMod.Survivors.Henry
 
         //projectiles
         public static GameObject bombProjectilePrefab;
+
+        public static GameObject CFlasherProjectile;
 
         private static AssetBundle _assetBundle;
 
@@ -70,7 +72,11 @@ namespace ZeroMod.Survivors.Henry
         private static void CreateProjectiles()
         {
             CreateBombProjectile();
+            CreateCFlasherProjectile();
+
+
             Content.AddProjectilePrefab(bombProjectilePrefab);
+            Content.AddProjectilePrefab(CFlasherProjectile);
         }
 
         private static void CreateBombProjectile()
@@ -99,6 +105,44 @@ namespace ZeroMod.Survivors.Henry
             
             bombController.startSound = "";
         }
+
+        private static void CreateCFlasherProjectile()
+        {
+            //highly recommend setting up projectiles in editor, but this is a quick and dirty way to prototype if you want
+            CFlasherProjectile = Asset.CloneProjectilePrefab("FMJ", "CFlasherProjectile");
+
+            //remove their ProjectileImpactExplosion component and start from default values
+            UnityEngine.Object.Destroy(CFlasherProjectile.GetComponent<ProjectileImpactExplosion>());
+            ProjectileImpactExplosion CFlasherExplosion = CFlasherProjectile.AddComponent<ProjectileImpactExplosion>();
+
+            CFlasherExplosion.blastRadius = 10f;
+            CFlasherExplosion.blastDamageCoefficient = 1f;
+            CFlasherExplosion.falloffModel = BlastAttack.FalloffModel.None;
+            CFlasherExplosion.destroyOnEnemy = true;
+            CFlasherExplosion.lifetime = 12f;
+            //XShurkenExplosion.impactEffect = bombExplosionEffect;
+            //XShurkenExplosion.lifetimeExpiredSound = Content.CreateAndAddNetworkSoundEventDef("HenryBombExplosion");
+            CFlasherExplosion.timerAfterImpact = true;
+            CFlasherExplosion.lifetimeAfterImpact = 0.1f;
+
+            // just setting the numbers to 1 as the entitystate will take care of those
+            CFlasherProjectile.GetComponent<ProjectileDamage>().damage = 1f;
+            CFlasherProjectile.GetComponent<ProjectileController>().procCoefficient = 1f;
+            CFlasherProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            CFlasherProjectile.GetComponent<ProjectileDamage>().damageColorIndex = DamageColorIndex.Default;
+
+            // register it for networking
+            //if (xBusterChargeProjectile) PrefabAPI.RegisterNetworkPrefab(xBusterChargeProjectile);
+
+
+            ProjectileController CFlasherController = CFlasherProjectile.GetComponent<ProjectileController>();
+
+            //if (_assetBundle.LoadAsset<GameObject>("XBusterChargeProjectille") != null)
+            //    XBusterChargeController.ghostPrefab = _assetBundle.CreateProjectileGhostPrefab("XBusterChargeProjectille");
+
+            CFlasherController.startSound = "";
+        }
+
         #endregion projectiles
     }
 }

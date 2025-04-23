@@ -2,16 +2,16 @@
 using ZeroMod.Modules.BaseStates;
 using RoR2;
 using UnityEngine;
-using ZeroMod.Survivors.Henry;
+using ZeroMod.Survivors.Zero;
 
-namespace ZeroMod.Survivors.Henry.SkillStates
+namespace ZeroMod.Survivors.Zero.SkillStates
 {
-    public class ZSSlashCombo3 : BaseMeleeAttack2
+    public class Kuuenzan : KuuenzanState
     {
 
         public override void OnEnter()
         {
-            hitboxGroupName = "ZSaberHitBox";
+            hitboxGroupName = "KuuenzanHitBox";
 
             damageType = DamageType.Generic;
             damageType = DamageTypeCombo.GenericPrimary;
@@ -19,7 +19,7 @@ namespace ZeroMod.Survivors.Henry.SkillStates
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
-            baseDuration = 0.5f;
+            baseDuration = 1f;
 
             //0-1 multiplier of baseduration, used to time when the hitbox is out (usually based on the run time of the animation)
             //for example, if attackStartPercentTime is 0.5, the attack will start hitting halfway through the ability. if baseduration is 3 seconds, the attack will start happening at 1.5 seconds
@@ -37,18 +37,14 @@ namespace ZeroMod.Survivors.Henry.SkillStates
 
             hitSoundString = "";
             //muzzleString = "SwordMuzzPos";
-            muzzleString = "SwingLeft";
+            //muzzleString = "SwingLeft";
             playbackRateParam = "attackSpeed";
-            swingEffectPrefab = HenryAssets.swordSwingEffect;
-            hitEffectPrefab = HenryAssets.swordHitImpactEffect;
+            //swingEffectPrefab = HenryAssets.swordSwingEffect;
+            hitEffectPrefab = ZeroAssets.swordHitImpactEffect;
 
-            impactSound = HenryAssets.swordHitSoundEvent.index;
+            impactSound = ZeroAssets.swordHitSoundEvent.index;
 
-            SetHitReset(true, 3);
-
-            ZSSlashCombo4 ZSS4 = new ZSSlashCombo4();
-
-            SetNextEntityState(ZSS4);
+            SetHitReset(true, 8);
 
 
             base.OnEnter();
@@ -57,7 +53,7 @@ namespace ZeroMod.Survivors.Henry.SkillStates
         protected override void PlayAttackAnimation()
         {
             //PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), playbackRateParam, duration, 0.1f * duration);
-            base.PlayAnimation("Gesture, Override", "ZSSlash3", "attackSpeed", this.duration);
+            base.PlayAnimation("FullBody, Override", "Kuuenzan", "attackSpeed", this.duration);
         }
 
         protected virtual void PlaySwingEffect()
@@ -73,7 +69,7 @@ namespace ZeroMod.Survivors.Henry.SkillStates
         public override void OnExit()
         {
 
-            base.PlayAnimation("Gesture, Override", "BufferEmpty", "attackSpeed", this.duration);
+            base.PlayAnimation("FullBody, Override", "BufferEmpty", "attackSpeed", this.duration);
 
             base.OnExit();
         }
