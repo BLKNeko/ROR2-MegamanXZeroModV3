@@ -160,7 +160,7 @@ namespace ZeroMod.Modules.BaseStates
 
             hitPauseTimer -= Time.deltaTime;
 
-            if (!characterMotor.isGrounded)
+            if (!characterMotor.isGrounded && characterBody.level >= 5)
             {
                 Kuuenzan K = new Kuuenzan();
                 outer.SetNextState(K);

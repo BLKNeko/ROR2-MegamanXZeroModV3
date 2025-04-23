@@ -46,9 +46,13 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             //SetHitReset(true, 3);
 
+            ZSSlashCombo ZSS = new ZSSlashCombo();
             ZSSlashCombo3 ZSS3 = new ZSSlashCombo3();
 
-            SetNextEntityState(ZSS3);
+            if(base.characterBody.level >= 3)
+                SetNextEntityState(ZSS3);
+            else
+                SetNextEntityState(ZSS);
 
 
             base.OnEnter();
