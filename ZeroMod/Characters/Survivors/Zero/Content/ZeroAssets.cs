@@ -17,6 +17,15 @@ namespace ZeroMod.Survivors.Zero
         // networked hit sounds
         public static NetworkSoundEventDef swordHitSoundEvent;
 
+        public static Sprite ZSaberSkillIcon;
+        public static Sprite ZBusterSkillIcon;
+        public static Sprite GokumonkenSkillIcon;
+
+        public static Sprite ZeroSkinIcon;
+        public static Sprite BZeroSkinIcon;
+        public static Sprite NZeroSkinIcon;
+
+
         //projectiles
         public static GameObject bombProjectilePrefab;
 
@@ -43,6 +52,16 @@ namespace ZeroMod.Survivors.Zero
 
             swordSwingEffect = _assetBundle.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = _assetBundle.LoadEffect("ImpactHenrySlash");
+
+            ZSaberSkillIcon = _assetBundle.LoadAsset<Sprite>("ZSaberSkillIcon");
+            ZBusterSkillIcon = _assetBundle.LoadAsset<Sprite>("ZBusterSkillIcon");
+            GokumonkenSkillIcon = _assetBundle.LoadAsset<Sprite>("GokumonkenSkillIcon");
+
+            ZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroSkinIcon");
+            BZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroBSkinIcon");
+            NZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroNSkinIcon");
+
+
         }
 
         private static void CreateBombExplosionEffect()

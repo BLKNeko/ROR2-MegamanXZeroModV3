@@ -52,7 +52,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             if (NetworkServer.active)
             {
-                characterBody.AddTimedBuff(HenryBuffs.armorBuff, 3f * duration);
+                characterBody.AddTimedBuff(ZeroBuffs.armorBuff, 3f * duration);
                 characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.5f * duration);
             }
         }

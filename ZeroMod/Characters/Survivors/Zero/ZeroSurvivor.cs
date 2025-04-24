@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static RoR2.OutlineHighlight;
+using ZeroMod.Characters.Survivors.Zero.Components;
 
 namespace ZeroMod.Survivors.Zero
 {
@@ -34,12 +35,23 @@ namespace ZeroMod.Survivors.Zero
 
         //SKILL DEFS
 
+        //WEAPONS
+        internal static SkillDef ZSaberSkillDef;
+        internal static SkillDef TBreakerSkillDef;
+        internal static SkillDef BFanSkillDef;
+        internal static SkillDef KKnuckleSkillDef;
+        internal static SkillDef SigmaBladeSkillDef;
+
         //SECONDARY
         internal static SkillDef ZBusterSkillDef;
+
+        //UTILITY
+        internal static SkillDef RaikousenSkillDef;
 
         //SPECIAL
         internal static SkillDef CFlasherSkillDef;
         internal static SkillDef RyuuenjinSkillDef;
+        internal static SkillDef GokumonkenSkillDef;
 
         public override BodyInfo bodyInfo => new BodyInfo
         {
@@ -47,7 +59,7 @@ namespace ZeroMod.Survivors.Zero
             bodyNameToken = ZERO_X_PREFIX + "NAME",
             subtitleNameToken = ZERO_X_PREFIX + "SUBTITLE",
 
-            characterPortrait = assetBundle.LoadAsset<Texture>("texHenryIcon"),
+            characterPortrait = assetBundle.LoadAsset<Texture>("TexZero"),
             bodyColor = new Color(0.55f, 0.15f, 0.15f),
             sortPosition = 100,
 
@@ -83,6 +95,26 @@ namespace ZeroMod.Survivors.Zero
                 {
                     childName = "ZBusterMesh",
                     material = assetBundle.LoadMaterial("matZeroBuster"),
+                },
+                new CustomRendererInfo
+                {
+                    childName = "TBreaker",
+                    //material = assetBundle.LoadMaterial("matZeroBuster"),
+                },
+                new CustomRendererInfo
+                {
+                    childName = "BFan",
+                    //material = assetBundle.LoadMaterial("matZeroBuster"),
+                },
+                new CustomRendererInfo
+                {
+                    childName = "KKnuckle",
+                    //material = assetBundle.LoadMaterial("matZeroBuster"),
+                },
+                new CustomRendererInfo
+                {
+                    childName = "SigmaBlade",
+                    //material = assetBundle.LoadMaterial("matZeroBuster"),
                 }
         };
 
@@ -122,7 +154,7 @@ namespace ZeroMod.Survivors.Zero
             HenryTokens.Init();
 
             ZeroAssets.Init(assetBundle);
-            HenryBuffs.Init(assetBundle);
+            ZeroBuffs.Init(assetBundle);
 
             InitializeEntityStateMachines();
             InitializeSkills();
@@ -138,6 +170,7 @@ namespace ZeroMod.Survivors.Zero
         {
             AddHitboxes();
             bodyPrefab.AddComponent<HenryWeaponComponent>();
+            bodyPrefab.AddComponent<ZeroBaseComponent>();
             //bodyPrefab.AddComponent<HuntressTrackerComopnent>();
             //anything else here
         }
@@ -184,15 +217,175 @@ namespace ZeroMod.Survivors.Zero
             Skills.ClearGenericSkills(bodyPrefab);
             //add our own
             CreateSkillDefs();
+            Skills.CreateFirstExtraSkillFamily(bodyPrefab);
+            Skills.CreateSecondExtraSkillFamily(bodyPrefab);
+            Skills.CreateThirdExtraSkillFamily(bodyPrefab);
+            Skills.CreateFourthExtraSkillFamily(bodyPrefab);
             //AddPassiveSkill();
             AddPrimarySkills();
             AddSecondarySkills();
             AddUtiitySkills();
             AddSpecialSkills();
+
+            AddExtraFirstSkills();
+            AddExtraSecondSkills();
+            AddExtraThirdSkills();
+            AddExtraFourthSkills();
         }
 
         private void CreateSkillDefs()
         {
+
+            ZSaberSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "ZSaber",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ZSaber)),
+                activationStateMachineName = "Body",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 1,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+
+            TBreakerSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "TBreaker",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(TBreaker)),
+                activationStateMachineName = "Body",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 1,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            BFanSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "BFan",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(BFan)),
+                activationStateMachineName = "Body",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 1,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            KKnuckleSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "KKnuckle",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(KKnuckle)),
+                activationStateMachineName = "Body",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 1,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            SigmaBladeSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "SigmaBlade",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SigmaBlade)),
+                activationStateMachineName = "Body",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 1,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
 
 
             ZBusterSkillDef = Skills.CreateSkillDef(new SkillDefInfo
@@ -200,9 +393,39 @@ namespace ZeroMod.Survivors.Zero
                 skillName = "ZBuster",
                 skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
                 skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = XAssets.IconSqueezeBomb,
+                skillIcon = ZeroAssets.ZBusterSkillIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ZBuster)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 5,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = true,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            RaikousenSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "Raikousen",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = XAssets.IconSqueezeBomb,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(Raikousen)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -265,6 +488,36 @@ namespace ZeroMod.Survivors.Zero
                 //skillIcon = XAssets.IconSqueezeBomb,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(Ryuuenjin)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 5,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = true,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            GokumonkenSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "Gokumonken",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = XAssets.IconSqueezeBomb,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(Gokumonken)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -410,6 +663,7 @@ namespace ZeroMod.Survivors.Zero
 
             Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef1);
             Skills.AddSecondarySkills(bodyPrefab, ZBusterSkillDef);
+            Skills.AddSecondarySkills(bodyPrefab, TBreakerSkillDef);
         }
 
         private void AddUtiitySkills()
@@ -448,6 +702,7 @@ namespace ZeroMod.Survivors.Zero
             });
 
             Skills.AddUtilitySkills(bodyPrefab, utilitySkillDef1);
+            Skills.AddUtilitySkills(bodyPrefab, RaikousenSkillDef);
         }
 
         private void AddSpecialSkills()
@@ -476,9 +731,37 @@ namespace ZeroMod.Survivors.Zero
             Skills.AddSpecialSkills(bodyPrefab, specialSkillDef1);
             Skills.AddSpecialSkills(bodyPrefab, CFlasherSkillDef);
             Skills.AddSpecialSkills(bodyPrefab, RyuuenjinSkillDef);
+            Skills.AddSpecialSkills(bodyPrefab, GokumonkenSkillDef);
         }
+
+        private void AddExtraFirstSkills()
+        {
+
+            Skills.AddFirstExtraSkill(bodyPrefab, ZSaberSkillDef);
+            Skills.AddFirstExtraSkill(bodyPrefab, SigmaBladeSkillDef);
+        }
+
+        private void AddExtraSecondSkills()
+        {
+
+            Skills.AddSecondExtraSkill(bodyPrefab, TBreakerSkillDef);
+        }
+
+        private void AddExtraThirdSkills()
+        {
+
+            Skills.AddThirdExtraSkill(bodyPrefab, BFanSkillDef);
+        }
+
+        private void AddExtraFourthSkills()
+        {
+
+            Skills.AddFourthExtraSkill(bodyPrefab, KKnuckleSkillDef);
+        }
+
+
         #endregion skills
-        
+
         #region skins
         public override void InitializeSkins()
         {
@@ -492,7 +775,7 @@ namespace ZeroMod.Survivors.Zero
             #region DefaultSkin
             //this creates a SkinDef with all default fields
             SkinDef defaultSkin = Skins.CreateSkinDef("DEFAULT_SKIN",
-                assetBundle.LoadAsset<Sprite>("texMainSkin"),
+                ZeroAssets.ZeroSkinIcon,
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
 
@@ -503,7 +786,36 @@ namespace ZeroMod.Survivors.Zero
             defaultSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
                 null,
                 null,
+                null,
+                null,
+                null,
+                null,
                 null);
+
+            //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
+            defaultSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
+            {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("TBreaker"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("BFan"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("KKnuckle"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("SigmaBlade"),
+                    shouldActivate = false,
+                }
+            };
 
             //add new skindef to our list of skindefs. this is what we'll be passing to the SkinController
             skins.Add(defaultSkin);
@@ -511,13 +823,17 @@ namespace ZeroMod.Survivors.Zero
 
             //creating a new skindef as we did before
             SkinDef BZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "MASTERY_SKIN_NAME",
-                assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
+                ZeroAssets.BZeroSkinIcon,
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
 
             //adding the mesh replacements as above. 
             //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
             BZSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                null,
+                null,
+                null,
+                null,
                 null,
                 null,
                 null);
@@ -530,27 +846,46 @@ namespace ZeroMod.Survivors.Zero
             //masterySkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matGaea");
 
             //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
-            //BZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
-            //{
-            //    new SkinDef.GameObjectActivation
-            //    {
-            //        gameObject = childLocator.FindChildGameObject("XBusterMesh"),
-            //        shouldActivate = false,
-            //    }
-            //};
+            BZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
+            {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("TBreaker"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("BFan"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("KKnuckle"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("SigmaBlade"),
+                    shouldActivate = false,
+                }
+            };
             //simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
 
             skins.Add(BZSkin);
 
             //creating a new skindef as we did before
             SkinDef NZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "NMASTERY_SKIN_NAME",
-                assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
+                ZeroAssets.NZeroSkinIcon,
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
 
             //adding the mesh replacements as above. 
             //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
             NZSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                null,
+                null,
+                null,
+                null,
                 null,
                 null,
                 null);
@@ -563,14 +898,29 @@ namespace ZeroMod.Survivors.Zero
             //masterySkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matGaea");
 
             //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
-            //BZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
-            //{
-            //    new SkinDef.GameObjectActivation
-            //    {
-            //        gameObject = childLocator.FindChildGameObject("XBusterMesh"),
-            //        shouldActivate = false,
-            //    }
-            //};
+            NZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
+            {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("TBreaker"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("BFan"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("KKnuckle"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("SigmaBlade"),
+                    shouldActivate = false,
+                }
+            };
             //simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
 
             skins.Add(NZSkin);
@@ -640,7 +990,7 @@ namespace ZeroMod.Survivors.Zero
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
 
-            if (sender.HasBuff(HenryBuffs.armorBuff))
+            if (sender.HasBuff(ZeroBuffs.armorBuff))
             {
                 args.armorAdd += 300;
             }

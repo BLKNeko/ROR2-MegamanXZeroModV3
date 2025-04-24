@@ -83,6 +83,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                     ZeroBusterProjectille.force = force;
                     ZeroBusterProjectille.crit = RollCrit();
                     ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
+                    ZeroBusterProjectille.damageTypeOverride = DamageTypeCombo.GenericSecondary;
 
 
 
