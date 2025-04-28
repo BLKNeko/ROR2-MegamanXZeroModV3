@@ -171,6 +171,7 @@ namespace ZeroMod.Survivors.Zero
             AddHitboxes();
             bodyPrefab.AddComponent<HenryWeaponComponent>();
             bodyPrefab.AddComponent<ZeroBaseComponent>();
+            bodyPrefab.AddComponent<RaikousenEffect>();
             //bodyPrefab.AddComponent<HuntressTrackerComopnent>();
             //anything else here
         }
@@ -994,6 +995,45 @@ namespace ZeroMod.Survivors.Zero
             {
                 args.armorAdd += 300;
             }
+
+            if (sender.HasBuff(ZeroBuffs.TBreakerBuff))
+            {
+                args.baseDamageAdd *= 1.5f;
+                args.armorAdd *= 1.1f;
+                args.baseMoveSpeedAdd *= 0.8f;
+                args.baseJumpPowerAdd *= 0.8f;
+            }
+
+            if (sender.HasBuff(ZeroBuffs.BFanBuff))
+            {
+                args.baseDamageAdd *= 0.9f;
+                args.armorAdd *= 1.5f;
+                args.baseMoveSpeedAdd *= 1.2f;
+                args.baseJumpPowerAdd *= 1.2f;
+                args.baseAttackSpeedAdd *= 1.2f;
+                args.baseShieldAdd *= 1.5f;
+            }
+
+            if (sender.HasBuff(ZeroBuffs.KKnuckleBuff))
+            {
+                args.baseDamageAdd *= 0.9f;
+                args.baseMoveSpeedAdd *= 1.4f;
+                args.baseJumpPowerAdd *= 1.4f;
+                args.baseAttackSpeedAdd *= 1.5f;
+            }
+
+            if (sender.HasBuff(ZeroBuffs.SigmaBladeBuff))
+            {
+                args.baseDamageAdd *= 1.5f;
+                args.armorAdd *= 1.5f;
+                args.baseMoveSpeedAdd *= 1.1f;
+                args.baseJumpPowerAdd *= 1.1f;
+                args.baseAttackSpeedAdd *= 1.2f;
+                args.baseShieldAdd *= 1.2f;
+                args.critAdd *= 1.5f;
+                args.critDamageMultAdd *= 1.5f;
+            }
+
         }
     }
 }

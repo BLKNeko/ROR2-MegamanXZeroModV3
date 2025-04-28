@@ -14,6 +14,9 @@ namespace ZeroMod.Survivors.Zero
 
         public static GameObject bombExplosionEffect;
 
+
+        public static GameObject raikousenVFX;
+
         // networked hit sounds
         public static NetworkSoundEventDef swordHitSoundEvent;
 
@@ -52,6 +55,9 @@ namespace ZeroMod.Survivors.Zero
 
             swordSwingEffect = _assetBundle.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = _assetBundle.LoadEffect("ImpactHenrySlash");
+
+
+            raikousenVFX = _assetBundle.LoadEffect("ElectricLine");
 
             ZSaberSkillIcon = _assetBundle.LoadAsset<Sprite>("ZSaberSkillIcon");
             ZBusterSkillIcon = _assetBundle.LoadAsset<Sprite>("ZBusterSkillIcon");

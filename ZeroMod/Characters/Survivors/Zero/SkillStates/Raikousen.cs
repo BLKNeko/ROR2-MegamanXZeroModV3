@@ -4,6 +4,7 @@ using RoR2;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
+using ZeroMod.Characters.Survivors.Zero.Components;
 
 namespace ZeroMod.Survivors.Zero.SkillStates
 {
@@ -23,6 +24,10 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
         private string LDashPos = "LDashPos";
         private string RDashPos = "RDashPos";
+
+        RaikousenEffect RE;
+
+        Vector3 startpos;
 
         public override void OnEnter()
         {
@@ -93,12 +98,17 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             base.PlayAnimation("FullBody, Override", "RaikousenStart", "attackSpeed", baseDuration);
 
+            RE = GetComponent<RaikousenEffect>();
+            startpos = characterBody.transform.position;
+
             base.OnEnter();
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            RE.FireLightningEffect(startpos, characterBody.transform);
 
             base.characterMotor.Motor.ForceUnground(0.1f);
 
