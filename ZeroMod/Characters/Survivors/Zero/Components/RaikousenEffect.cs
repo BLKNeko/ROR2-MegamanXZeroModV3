@@ -56,12 +56,12 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
 
             ElectricTrailFollow follow = lightningEffectPrefab.GetComponent<ElectricTrailFollow>();
 
-            if (follow)
-            {
-                follow.startTransform = startPos;
-                follow.target = playerTransform;
-                follow.effectFollowDuration = dur * 0.8f;
-            }
+            //if (follow)
+            //{
+            //    follow.startTransform = startPos;
+            //    follow.target = playerTransform;
+            //    follow.effectFollowDuration = dur * 0.8f;
+            //}
 
             
 

@@ -26,10 +26,14 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         private string RDashPos = "RDashPos";
 
         RaikousenEffect RE;
+        ElectricTrailFollow EF;
+        ZeroBaseComponent ZBC;
 
         Vector3 startpos;
 
         public GameObject lightningEffectPrefab;
+        public GameObject lightningEffectPrefab2;
+        public GameObject lightningEffectPrefab3;
 
         public override void OnEnter()
         {
@@ -100,30 +104,30 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             base.PlayAnimation("FullBody, Override", "RaikousenStart", "attackSpeed", baseDuration);
 
-            RE = GetComponent<RaikousenEffect>();
+
             startpos = characterBody.transform.position;
 
             lightningEffectPrefab = ZeroAssets.raikousenVFX;
+            lightningEffectPrefab2 = ZeroAssets.raikousen2VFX;
+            lightningEffectPrefab3 = ZeroAssets.raikousen3VFX;
+
+
+            //lightningEffectPrefab.GetComponent<DestroyOnTimer>().duration = baseDuration * 1.1f;
+            lightningEffectPrefab.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.3f, 4);
+            lightningEffectPrefab2.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.5f, 5);
+            lightningEffectPrefab3.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.6f, 6);
 
             EffectData effectData = new EffectData
             {
                 origin = startpos,
-                scale = 1f
-
+                scale = 1f,
+                forceUnpooled = true
 
             };
-            EffectManager.SpawnEffect(lightningEffectPrefab, effectData, true);
+            EffectManager.SpawnEffect(lightningEffectPrefab, effectData, false);
+            EffectManager.SpawnEffect(lightningEffectPrefab2, effectData, false);
+            EffectManager.SpawnEffect(lightningEffectPrefab3, effectData, false);
 
-            lightningEffectPrefab.AddComponent<ElectricTrailFollow>();
-
-            // Passar o Transform do jogador para o efeito seguir
-            var trailFollow = lightningEffectPrefab.GetComponent<ElectricTrailFollow>();
-            if (trailFollow)
-            {
-                trailFollow.target = base.characterBody.coreTransform; // ou transform
-                trailFollow.effectFollowDuration = baseDuration;
-                trailFollow.timer = 0f;
-            }
 
             base.OnEnter();
         }
@@ -153,6 +157,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         {
 
             base.PlayAnimation("FullBody, Override", "RaikousenEnd", "attackSpeed", baseDuration);
+
 
             base.OnExit();
         }

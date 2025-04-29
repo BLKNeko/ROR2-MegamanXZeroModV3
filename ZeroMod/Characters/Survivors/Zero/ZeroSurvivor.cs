@@ -171,7 +171,7 @@ namespace ZeroMod.Survivors.Zero
             AddHitboxes();
             bodyPrefab.AddComponent<HenryWeaponComponent>();
             bodyPrefab.AddComponent<ZeroBaseComponent>();
-            bodyPrefab.AddComponent<RaikousenEffect>();
+            bodyPrefab.AddComponent<ElectricTrailFollow>();
             //bodyPrefab.AddComponent<HuntressTrackerComopnent>();
             //anything else here
         }

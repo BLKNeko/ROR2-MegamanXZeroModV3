@@ -3,6 +3,7 @@ using UnityEngine;
 using ZeroMod.Modules;
 using System;
 using RoR2.Projectile;
+using ZeroMod.Characters.Survivors.Zero.Components;
 
 namespace ZeroMod.Survivors.Zero
 {
@@ -16,6 +17,8 @@ namespace ZeroMod.Survivors.Zero
 
 
         public static GameObject raikousenVFX;
+        public static GameObject raikousen2VFX;
+        public static GameObject raikousen3VFX;
 
         // networked hit sounds
         public static NetworkSoundEventDef swordHitSoundEvent;
@@ -52,12 +55,13 @@ namespace ZeroMod.Survivors.Zero
         private static void CreateEffects()
         {
             CreateBombExplosionEffect();
+            ConfigureZeroRaikousen();
 
             swordSwingEffect = _assetBundle.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = _assetBundle.LoadEffect("ImpactHenrySlash");
 
 
-            raikousenVFX = _assetBundle.LoadEffect("ElectricLine");
+            //raikousenVFX = _assetBundle.LoadEffect("ElectricLine");
 
             ZSaberSkillIcon = _assetBundle.LoadAsset<Sprite>("ZSaberSkillIcon");
             ZBusterSkillIcon = _assetBundle.LoadAsset<Sprite>("ZBusterSkillIcon");
@@ -66,6 +70,51 @@ namespace ZeroMod.Survivors.Zero
             ZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroSkinIcon");
             BZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroBSkinIcon");
             NZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroNSkinIcon");
+
+
+        }
+
+        private static void ConfigureZeroRaikousen()
+        {
+            raikousenVFX = _assetBundle.LoadEffect("ElectricLine");
+
+            if (!raikousenVFX)
+                return;
+
+            raikousenVFX.GetComponent<DestroyOnTimer>().duration = 1.25f;
+            raikousenVFX.AddComponent<ElectricTrailFollow>();
+            raikousenVFX.GetComponent<EffectComponent>().parentToReferencedTransform = false;
+            raikousenVFX.GetComponent<EffectComponent>().positionAtReferencedTransform = false;
+            raikousenVFX.GetComponent<EffectComponent>().didResolveReferencedChildTransform = false;
+            raikousenVFX.GetComponent<VFXAttributes>().DoNotPool = true;
+
+            // ---------------
+
+            raikousen2VFX = _assetBundle.LoadEffect("ElectricLine2");
+
+            if (!raikousen2VFX)
+                return;
+
+            raikousen2VFX.GetComponent<DestroyOnTimer>().duration = 1.25f;
+            raikousen2VFX.AddComponent<ElectricTrailFollow>();
+            raikousen2VFX.GetComponent<EffectComponent>().parentToReferencedTransform = false;
+            raikousen2VFX.GetComponent<EffectComponent>().positionAtReferencedTransform = false;
+            raikousen2VFX.GetComponent<EffectComponent>().didResolveReferencedChildTransform = false;
+            raikousen2VFX.GetComponent<VFXAttributes>().DoNotPool = true;
+
+            // ---------------
+
+            raikousen3VFX = _assetBundle.LoadEffect("ElectricLine3");
+
+            if (!raikousen3VFX)
+                return;
+
+            raikousen3VFX.GetComponent<DestroyOnTimer>().duration = 1.25f;
+            raikousen3VFX.AddComponent<ElectricTrailFollow>();
+            raikousen3VFX.GetComponent<EffectComponent>().parentToReferencedTransform = false;
+            raikousen3VFX.GetComponent<EffectComponent>().positionAtReferencedTransform = false;
+            raikousen3VFX.GetComponent<EffectComponent>().didResolveReferencedChildTransform = false;
+            raikousen3VFX.GetComponent<VFXAttributes>().DoNotPool = true;
 
 
         }

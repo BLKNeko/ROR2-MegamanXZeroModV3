@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 using System.Xml.Linq;
 using static RoR2.OutlineHighlight;
 using ZeroMod.Survivors.Zero;
+using EntityStates.GameOver;
 
 namespace ZeroMod.Characters.Survivors.Zero.Components
 {
@@ -32,6 +33,10 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
         private ChildLocator childLocator;
 
         private FootstepHandler footstepHandler;
+
+        private Vector3 RaikousenStartPos {  get; set; }
+
+        
 
         private void Start()
         {
@@ -194,6 +199,21 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
                 }
             }
 
+        }
+
+        public Transform GetZTransform()
+        {
+            return ZmodelTransform;
+        }
+
+        public void SetRaikousenPos(Vector3 pos)
+        {
+            RaikousenStartPos = pos;
+        }
+
+        public Vector3 GetRaikousenPos()
+        {
+            return RaikousenStartPos;
         }
 
     }
