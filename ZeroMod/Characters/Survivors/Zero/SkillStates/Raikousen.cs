@@ -113,9 +113,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
 
             //lightningEffectPrefab.GetComponent<DestroyOnTimer>().duration = baseDuration * 1.1f;
-            lightningEffectPrefab.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.3f, 4);
-            lightningEffectPrefab2.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.5f, 5);
-            lightningEffectPrefab3.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.6f, 6);
+            lightningEffectPrefab.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.3f, 5);
+            lightningEffectPrefab2.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.8f, 6);
+            lightningEffectPrefab3.GetComponent<ElectricTrailFollow>().Initilize(startpos, characterBody.transform, baseDuration, 0.6f, 8);
 
             EffectData effectData = new EffectData
             {

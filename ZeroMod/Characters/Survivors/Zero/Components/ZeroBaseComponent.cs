@@ -107,7 +107,7 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
             //Debug.Log("Xhurtbox: " + XBody.mainHurtBox.transform.localPosition);
             //Debug.Log("Xmodel: " + XBody.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<CharacterModel>().transform.localPosition);
 
-            IsZeroWeak();
+            ZeroAnimBool();
         }
 
         public CharacterBody GetXBody()
@@ -115,11 +115,14 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
             return ZBody;
         }
 
-        private void IsZeroWeak()
+        private void ZeroAnimBool()
         {
             isWeak = ZHealth.health < minHpWeak;
 
             ZAnim.SetBool("isWeak", isWeak);
+
+            ZAnim.SetBool("isBFan", ZBody.HasBuff(ZeroBuffs.BFanBuff));
+
         }
 
         public void ChangeZeroWeapon(Transform modelTransform, CharacterModel characterModel, ChildLocator childLocator, int id)

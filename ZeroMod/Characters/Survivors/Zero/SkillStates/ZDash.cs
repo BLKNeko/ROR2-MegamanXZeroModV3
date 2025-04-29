@@ -59,6 +59,13 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         {
             base.FixedUpdate();
 
+            if(base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= 1)
+            {
+                Raikousen R = new Raikousen();
+                outer.SetNextState(R);
+                return;
+            }
+
             base.characterMotor.Motor.ForceUnground(0.1f);
 
             if (characterDirection) characterDirection.forward = forwardDirection;
