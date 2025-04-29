@@ -29,6 +29,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
         Vector3 startpos;
 
+        public GameObject lightningEffectPrefab;
+
         public override void OnEnter()
         {
 
@@ -101,6 +103,28 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             RE = GetComponent<RaikousenEffect>();
             startpos = characterBody.transform.position;
 
+            lightningEffectPrefab = ZeroAssets.raikousenVFX;
+
+            EffectData effectData = new EffectData
+            {
+                origin = startpos,
+                scale = 1f
+
+
+            };
+            EffectManager.SpawnEffect(lightningEffectPrefab, effectData, true);
+
+            lightningEffectPrefab.AddComponent<ElectricTrailFollow>();
+
+            // Passar o Transform do jogador para o efeito seguir
+            var trailFollow = lightningEffectPrefab.GetComponent<ElectricTrailFollow>();
+            if (trailFollow)
+            {
+                trailFollow.target = base.characterBody.coreTransform; // ou transform
+                trailFollow.effectFollowDuration = baseDuration;
+                trailFollow.timer = 0f;
+            }
+
             base.OnEnter();
         }
 
@@ -108,7 +132,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         {
             base.FixedUpdate();
 
-            RE.FireLightningEffect(startpos, characterBody.transform);
+            
 
             base.characterMotor.Motor.ForceUnground(0.1f);
 
