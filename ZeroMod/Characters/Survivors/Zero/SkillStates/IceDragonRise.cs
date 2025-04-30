@@ -38,9 +38,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             hitHopVelocity = 5f;
 
             hitSoundString = "";
-            muzzleString = "RisingFirePos";
+            muzzleString = "IceDMuzz";
             playbackRateParam = "Slash.playbackRate";
-            //swingEffectPrefab = XAssets.RisingFireVFX;
+            swingEffectPrefab = ZeroAssets.IceDragonRiseVFX;
             //hitEffectPrefab = XAssets.swordHitImpactEffect;
 
             //impactSound = XAssets.swordHitSoundEvent.index;
@@ -49,7 +49,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             //SetHitReset(true, 8);
 
-            //EffectManager.SimpleMuzzleFlash(XAssets.RisingFireVFX, gameObject, muzzleString, true);
+            EffectManager.SimpleMuzzleFlash(ZeroAssets.IceDragonRiseVFX, gameObject, muzzleString, true);
 
             //if (XConfig.enableVoiceBool.Value)
             //{

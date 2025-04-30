@@ -14,6 +14,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             hitboxGroupName = "KuuenzanHitBox";
 
             damageType = DamageType.IgniteOnHit;
+            damageType = DamageType.SlowOnHit;
             damageType = DamageTypeCombo.GenericPrimary;
             damageCoefficient = HenryStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
@@ -39,13 +40,14 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             muzzleString = "KickMuzz";
             //muzzleString = "SwingLeft";
             playbackRateParam = "attackSpeed";
-            swingEffectPrefab = ZeroAssets.swordSwingEffect;
+            swingEffectPrefab = ZeroAssets.SpinKickVFX;
             hitEffectPrefab = ZeroAssets.swordHitImpactEffect;
 
             impactSound = ZeroAssets.swordHitSoundEvent.index;
 
             SetHitReset(true, 8);
 
+            EffectManager.SimpleMuzzleFlash(ZeroAssets.SpinKickVFX, base.gameObject, muzzleString, true);
 
             base.OnEnter();
         }

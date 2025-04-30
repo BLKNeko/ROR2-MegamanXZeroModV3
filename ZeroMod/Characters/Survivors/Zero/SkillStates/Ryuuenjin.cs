@@ -38,9 +38,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             hitHopVelocity = 5f;
 
             hitSoundString = "";
-            muzzleString = "RisingFirePos";
+            muzzleString = "RyuMuzz";
             playbackRateParam = "Slash.playbackRate";
-            //swingEffectPrefab = XAssets.RisingFireVFX;
+            swingEffectPrefab = ZeroAssets.RyuenjinVFX;
             //hitEffectPrefab = XAssets.swordHitImpactEffect;
 
             //impactSound = XAssets.swordHitSoundEvent.index;
@@ -49,7 +49,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             //SetHitReset(true, 8);
 
-            //EffectManager.SimpleMuzzleFlash(XAssets.RisingFireVFX, gameObject, muzzleString, true);
+            EffectManager.SimpleMuzzleFlash(ZeroAssets.RyuenjinVFX, gameObject, muzzleString, true);
 
             //if (XConfig.enableVoiceBool.Value)
             //{

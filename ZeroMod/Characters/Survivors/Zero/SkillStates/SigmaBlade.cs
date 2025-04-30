@@ -31,7 +31,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
-            muzzleString = "Muzzle";
+            muzzleString = "CWMuzz";
 
             ZBC = GetComponent<ZeroBaseComponent>();
 
@@ -49,7 +49,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             }
 
-            //EffectManager.SimpleMuzzleFlash(XAssets.HyperModeEffect, base.gameObject, muzzleString, true);
+            EffectManager.SimpleMuzzleFlash(ZeroAssets.ChangeWeaponVFX, base.gameObject, muzzleString, true);
 
             PlayAnimation("FullBody, Override", "ChangeWeapon", "attackSpeed", duration);
         }

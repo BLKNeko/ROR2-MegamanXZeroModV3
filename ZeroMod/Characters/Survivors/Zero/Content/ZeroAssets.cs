@@ -75,7 +75,7 @@ namespace ZeroMod.Survivors.Zero
             CFlasherVFX = _assetBundle.LoadEffect("CFlasherVFX", true);
             ChangeWeaponVFX = _assetBundle.LoadEffect("ChangeWeaponVFX", true);
             SpinKickVFX = _assetBundle.LoadEffect("SpinKickVFX", true);
-            IceDragonRiseVFX = _assetBundle.LoadEffect("IceDragonRiseVFX", true);
+            IceDragonRiseVFX = _assetBundle.LoadEffect("IceDragonRise2VFX", true);
             RyuenjinVFX = _assetBundle.LoadEffect("RyuenjinVFX", true);
 
 

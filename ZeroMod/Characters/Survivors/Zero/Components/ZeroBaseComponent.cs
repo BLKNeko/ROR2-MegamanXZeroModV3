@@ -117,7 +117,7 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
 
         private void ZeroAnimBool()
         {
-            isWeak = ZHealth.health < minHpWeak;
+            isWeak = ZHealth.combinedHealthFraction < minHpWeak;
 
             ZAnim.SetBool("isWeak", isWeak);
 

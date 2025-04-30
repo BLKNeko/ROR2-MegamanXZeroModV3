@@ -52,6 +52,7 @@ namespace ZeroMod.Survivors.Zero
         internal static SkillDef CFlasherSkillDef;
         internal static SkillDef RyuuenjinSkillDef;
         internal static SkillDef GokumonkenSkillDef;
+        internal static SkillDef IceDragonRiseSkillDef;
 
         public override BodyInfo bodyInfo => new BodyInfo
         {
@@ -519,6 +520,36 @@ namespace ZeroMod.Survivors.Zero
                 //skillIcon = XAssets.IconSqueezeBomb,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(Gokumonken)),
+                activationStateMachineName = "Body",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 1f,
+                baseMaxStock = 5,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = true,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            IceDragonRiseSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "Iced",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                //skillIcon = XAssets.IconSqueezeBomb,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(IceDragonRise)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -733,6 +764,7 @@ namespace ZeroMod.Survivors.Zero
             Skills.AddSpecialSkills(bodyPrefab, CFlasherSkillDef);
             Skills.AddSpecialSkills(bodyPrefab, RyuuenjinSkillDef);
             Skills.AddSpecialSkills(bodyPrefab, GokumonkenSkillDef);
+            Skills.AddSpecialSkills(bodyPrefab, IceDragonRiseSkillDef);
         }
 
         private void AddExtraFirstSkills()

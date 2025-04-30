@@ -23,6 +23,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         private float fireTime;
         private bool hasFired;
         private string muzzleString;
+        private GameObject muzzleEffectPrefab;
 
         int numberOfProjectiles = 12;
         float angleStep, angle;
@@ -36,6 +37,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             angleStep = 360f / numberOfProjectiles;
             angle = 0f;
+
+            muzzleString = "CFMuzz";
+            muzzleEffectPrefab = ZeroAssets.CFlasherVFX;
 
             PlayAnimation("FullBody, Override", "CFlasher", "attackSpeed", (this.duration / 4));
         }
@@ -73,7 +77,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                 if (isAuthority)
                 {
                     characterBody.AddSpreadBloom(0.8f);
-                    //EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, gameObject, muzzleString, true);
+                    EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, gameObject, muzzleString, true);
 
                     //if (XConfig.enableVoiceBool.Value)
                     //{
