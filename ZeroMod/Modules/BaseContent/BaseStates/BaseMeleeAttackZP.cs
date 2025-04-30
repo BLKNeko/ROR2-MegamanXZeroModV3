@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using ZeroMod.Survivors.Zero;
 
 namespace ZeroMod.Modules.BaseStates
 {
@@ -160,7 +161,14 @@ namespace ZeroMod.Modules.BaseStates
 
             hitPauseTimer -= Time.deltaTime;
 
-            if (!characterMotor.isGrounded && characterBody.level >= 5)
+            if (!characterMotor.isGrounded && characterBody.level >= 5 && characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+            {
+                SpinKick S = new SpinKick();
+                outer.SetNextState(S);
+                return;
+            }
+
+            if (!characterMotor.isGrounded && characterBody.level >= 5 && !characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
             {
                 Kuuenzan K = new Kuuenzan();
                 outer.SetNextState(K);

@@ -29,6 +29,12 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         public override void OnEnter()
         {
 
+            if (characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+            {
+                DashPunch D = new DashPunch();
+                outer.SetNextState(D);
+                return;
+            }
 
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, LDashPos, true);
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, RDashPos, true);
@@ -59,7 +65,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         {
             base.FixedUpdate();
 
-            if(base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= 1)
+            
+
+            if (base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= 1 && !characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
             {
                 Raikousen R = new Raikousen();
                 outer.SetNextState(R);

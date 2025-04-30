@@ -21,6 +21,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         private float fireTime;
         private bool hasFired;
         private string muzzleString;
+        private GameObject muzzleEffectPrefab;
 
         public override void OnEnter()
         {
@@ -28,9 +29,19 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
             characterBody.SetAimTimer(2f);
-            muzzleString = "Muzzle";
+            muzzleString = "BusterMuzz";
+            muzzleEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashFMJ");
 
-            PlayAnimation("Gesture, Override", "ZeroBuster", "attackSpeed", this.duration);
+            if (characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+            {
+                PlayAnimation("FullBody, Override", "Hadouken", "attackSpeed", this.duration);
+            }
+            else
+            {
+                PlayAnimation("Gesture, Override", "ZeroBuster", "attackSpeed", this.duration);
+            }
+
+            
         }
 
         public override void OnExit()
@@ -64,7 +75,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                 {
                     Ray aimRay = GetAimRay();
                     characterBody.AddSpreadBloom(0.8f);
-                    //EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, gameObject, muzzleString, true);
+                    EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, gameObject, muzzleString, true);
 
                     //if (XConfig.enableVoiceBool.Value)
                     //{
