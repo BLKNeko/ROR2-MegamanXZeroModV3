@@ -241,15 +241,15 @@ namespace ZeroMod.Survivors.Zero
             ZSaberSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "ZSaber",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+                skillNameToken = ZERO_X_PREFIX + "WEAPON_ZSABER_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "WEAPON_ZSABER_DESCRIPTION",
+                skillIcon = ZeroAssets.ZSaberIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ZSaber)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
+                baseRechargeInterval = 5f,
                 baseMaxStock = 1,
 
                 rechargeStock = 1,
@@ -272,15 +272,15 @@ namespace ZeroMod.Survivors.Zero
             TBreakerSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "TBreaker",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+                skillNameToken = ZERO_X_PREFIX + "WEAPON_TBREAKER_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "WEAPON_TBREAKER_DESCRIPTION",
+                skillIcon = ZeroAssets.TBreakerIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(TBreaker)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
+                baseRechargeInterval = 5f,
                 baseMaxStock = 1,
 
                 rechargeStock = 1,
@@ -302,15 +302,15 @@ namespace ZeroMod.Survivors.Zero
             BFanSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "BFan",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+                skillNameToken = ZERO_X_PREFIX + "WEAPON_BFAN_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "WEAPON_BFAN_DESCRIPTION",
+                skillIcon = ZeroAssets.BFanIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(BFan)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
+                baseRechargeInterval = 5f,
                 baseMaxStock = 1,
 
                 rechargeStock = 1,
@@ -332,15 +332,15 @@ namespace ZeroMod.Survivors.Zero
             KKnuckleSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "KKnuckle",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+                skillNameToken = ZERO_X_PREFIX + "WEAPON_KKNUCKLE_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "WEAPON_KKNUCKLE_DESCRIPTION",
+                skillIcon = ZeroAssets.KKnuckleIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(KKnuckle)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
+                baseRechargeInterval = 5f,
                 baseMaxStock = 1,
 
                 rechargeStock = 1,
@@ -362,15 +362,15 @@ namespace ZeroMod.Survivors.Zero
             SigmaBladeSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "SigmaBlade",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = ZeroAssets.ZBusterSkillIcon,
+                skillNameToken = ZERO_X_PREFIX + "WEAPON_SIGMABLADE_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "WEAPON_SIGMABLADE_DESCRIPTION",
+                skillIcon = ZeroAssets.SigmaBladeIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SigmaBlade)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
+                baseRechargeInterval = 5f,
                 baseMaxStock = 1,
 
                 rechargeStock = 1,
@@ -393,16 +393,16 @@ namespace ZeroMod.Survivors.Zero
             ZBusterSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "ZBuster",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+                skillNameToken = ZERO_X_PREFIX + "SECONDARY_ZBUSTER_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_ZBUSTER_DESCRIPTION",
                 skillIcon = ZeroAssets.ZBusterSkillIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ZBuster)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
-                baseMaxStock = 5,
+                baseRechargeInterval = 5f,
+                baseMaxStock = 3,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -455,16 +455,16 @@ namespace ZeroMod.Survivors.Zero
             CFlasherSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "CFlasher",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = XAssets.IconSqueezeBomb,
+                skillNameToken = ZERO_X_PREFIX + "SPECIAL_SFLASHER_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SPECIAL_SFLASHER_DESCRIPTION",
+                skillIcon = ZeroAssets.CFlasherSkillIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(CFlasher)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
-                baseMaxStock = 5,
+                baseRechargeInterval = 8f,
+                baseMaxStock = 2,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -485,16 +485,16 @@ namespace ZeroMod.Survivors.Zero
             RyuuenjinSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "Ryuuenjin",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = XAssets.IconSqueezeBomb,
+                skillNameToken = ZERO_X_PREFIX + "SPECIAL_RYUUENJIN_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SPECIAL_RYUUENJIN_DESCRIPTION",
+                skillIcon = ZeroAssets.RyuenjinSkillIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(Ryuuenjin)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
-                baseMaxStock = 5,
+                baseRechargeInterval = 8f,
+                baseMaxStock = 2,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -515,16 +515,16 @@ namespace ZeroMod.Survivors.Zero
             GokumonkenSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "Gokumonken",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = XAssets.IconSqueezeBomb,
+                skillNameToken = ZERO_X_PREFIX + "SPECIAL_GOKUMONKEN_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SPECIAL_GOKUMONKEN_DESCRIPTION",
+                skillIcon = ZeroAssets.GokumonkenSkillIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(Gokumonken)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
-                baseMaxStock = 5,
+                baseRechargeInterval = 10f,
+                baseMaxStock = 2,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -536,7 +536,7 @@ namespace ZeroMod.Survivors.Zero
                 mustKeyPress = false,
                 beginSkillCooldownOnSkillEnd = false,
 
-                isCombatSkill = true,
+                isCombatSkill = false,
                 canceledFromSprinting = false,
                 cancelSprintingOnActivation = false,
                 forceSprintDuringState = false,
@@ -544,17 +544,17 @@ namespace ZeroMod.Survivors.Zero
 
             IceDragonRiseSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "Iced",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = XAssets.IconSqueezeBomb,
+                skillName = "IceDragonRise",
+                skillNameToken = ZERO_X_PREFIX + "SPECIAL_ICEDRAGONRISE_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "SPECIAL_ICEDRAGONRISE_DESCRIPTION",
+                skillIcon = ZeroAssets.IceDragonRiseSkillIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(IceDragonRise)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
-                baseMaxStock = 5,
+                baseRechargeInterval = 8f,
+                baseMaxStock = 2,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -693,9 +693,7 @@ namespace ZeroMod.Survivors.Zero
 
             });
 
-            Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef1);
             Skills.AddSecondarySkills(bodyPrefab, ZBusterSkillDef);
-            Skills.AddSecondarySkills(bodyPrefab, TBreakerSkillDef);
         }
 
         private void AddUtiitySkills()
@@ -760,11 +758,10 @@ namespace ZeroMod.Survivors.Zero
                 mustKeyPress = false,
             });
 
-            Skills.AddSpecialSkills(bodyPrefab, specialSkillDef1);
             Skills.AddSpecialSkills(bodyPrefab, CFlasherSkillDef);
             Skills.AddSpecialSkills(bodyPrefab, RyuuenjinSkillDef);
-            Skills.AddSpecialSkills(bodyPrefab, GokumonkenSkillDef);
             Skills.AddSpecialSkills(bodyPrefab, IceDragonRiseSkillDef);
+            Skills.AddSpecialSkills(bodyPrefab, GokumonkenSkillDef);
         }
 
         private void AddExtraFirstSkills()

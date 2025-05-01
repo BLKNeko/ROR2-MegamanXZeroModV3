@@ -31,9 +31,19 @@ namespace ZeroMod.Survivors.Zero
         // networked hit sounds
         public static NetworkSoundEventDef swordHitSoundEvent;
 
+        public static Sprite ZSaberIcon;
+        public static Sprite TBreakerIcon;
+        public static Sprite BFanIcon;
+        public static Sprite KKnuckleIcon;
+        public static Sprite SigmaBladeIcon;
+
+
         public static Sprite ZSaberSkillIcon;
         public static Sprite ZBusterSkillIcon;
         public static Sprite GokumonkenSkillIcon;
+        public static Sprite CFlasherSkillIcon;
+        public static Sprite RyuenjinSkillIcon;
+        public static Sprite IceDragonRiseSkillIcon;
 
         public static Sprite ZeroSkinIcon;
         public static Sprite BZeroSkinIcon;
@@ -79,9 +89,19 @@ namespace ZeroMod.Survivors.Zero
             RyuenjinVFX = _assetBundle.LoadEffect("RyuenjinVFX", true);
 
 
+            ZSaberIcon = _assetBundle.LoadAsset<Sprite>("ZSaberIcon");
+            TBreakerIcon = _assetBundle.LoadAsset<Sprite>("TBreakerIcon");
+            BFanIcon = _assetBundle.LoadAsset<Sprite>("BFanIcon");
+            KKnuckleIcon = _assetBundle.LoadAsset<Sprite>("KKnuckleIcon");
+            SigmaBladeIcon = _assetBundle.LoadAsset<Sprite>("SigmaBladeIcon");
+
+
             ZSaberSkillIcon = _assetBundle.LoadAsset<Sprite>("ZSaberSkillIcon");
             ZBusterSkillIcon = _assetBundle.LoadAsset<Sprite>("ZBusterSkillIcon");
             GokumonkenSkillIcon = _assetBundle.LoadAsset<Sprite>("GokumonkenSkillIcon");
+            CFlasherSkillIcon = _assetBundle.LoadAsset<Sprite>("CFlasherSkillIcon");
+            RyuenjinSkillIcon = _assetBundle.LoadAsset<Sprite>("RyuuenjinSkillIcon");
+            IceDragonRiseSkillIcon = _assetBundle.LoadAsset<Sprite>("IceDragonRiseSkillIcon");
 
             ZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroSkinIcon");
             BZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroBSkinIcon");

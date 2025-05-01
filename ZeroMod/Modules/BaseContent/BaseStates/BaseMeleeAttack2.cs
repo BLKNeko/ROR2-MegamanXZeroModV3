@@ -269,6 +269,11 @@ namespace ZeroMod.Modules.BaseStates
             NextState = state;
         }
 
+        public EntityState GetNextEntityState()
+        {
+            return NextState;
+        }
+
         public void SetHitReset(bool reset, int amount)
         {
             shouldResetHit = reset;
