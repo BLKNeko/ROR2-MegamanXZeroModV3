@@ -36,6 +36,8 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
 
         private Vector3 RaikousenStartPos {  get; set; }
 
+        private float BarrierCooldown = 0f;
+
         
 
         private void Start()
@@ -108,6 +110,7 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
             //Debug.Log("Xmodel: " + XBody.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<CharacterModel>().transform.localPosition);
 
             ZeroAnimBool();
+            BFanBarrier();
         }
 
         public CharacterBody GetXBody()
@@ -121,8 +124,34 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
 
             ZAnim.SetBool("isWeak", isWeak);
 
-            ZAnim.SetBool("isBFan", ZBody.HasBuff(ZeroBuffs.BFanBuff));
+            if(ZeroConfig.ChungLeePoseBool.Value)
+            {
+                ZAnim.SetBool("isBFan", ZBody.HasBuff(ZeroBuffs.BFanBuff));
+            }
 
+            
+
+        }
+
+        private void BFanBarrier()
+        {
+            if (ZBody.HasBuff(ZeroBuffs.BFanBuff))
+            {
+
+                Debug.Log("Health 0.3 " + ZHealth.health * 0.3f);
+                Debug.Log("ZHealth.barrier " + ZHealth.barrier);
+                Debug.Log("BarrierCooldown " + BarrierCooldown);
+
+                if(ZHealth.barrier <= ZHealth.health * 0.3f && BarrierCooldown >= 2f)
+                {
+                    ZHealth.AddBarrier(ZHealth.health * 0.1f);
+                    BarrierCooldown = 0f;
+                }
+                BarrierCooldown += Time.fixedDeltaTime;
+                
+                
+
+            }
         }
 
         public void ChangeZeroWeapon(Transform modelTransform, CharacterModel characterModel, ChildLocator childLocator, int id)

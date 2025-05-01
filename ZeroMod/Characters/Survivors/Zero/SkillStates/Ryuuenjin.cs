@@ -88,18 +88,30 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         {
             base.FixedUpdate();
 
-            if (base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= 1 && GetNextEntityState() == null)
-            {
-                IceFurySlash I = new IceFurySlash();
-                SetNextEntityState(I);
-                return;
-            }
-
             //characterMotor.velocity *= 1.5f;
             if (base.isAuthority)
             {
 
                 base.characterMotor.Motor.ForceUnground(0.1f);
+
+                if (base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= 1 && GetNextEntityState() == null)
+                {
+
+                    if (characterBody.HasBuff(ZeroBuffs.TBreakerBuff))
+                    {
+                        HammerFall HF = new HammerFall();
+                        SetNextEntityState(HF);
+                        return;
+                    }
+                    else
+                    {
+                        IceFurySlash I = new IceFurySlash();
+                        SetNextEntityState(I);
+                        return;
+                    }
+
+                    
+                }
 
                 if (!inHitPause)
                 {

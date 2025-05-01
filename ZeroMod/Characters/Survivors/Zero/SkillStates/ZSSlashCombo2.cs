@@ -48,8 +48,11 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             ZSSlashCombo ZSS = new ZSSlashCombo();
             ZSSlashCombo3 ZSS3 = new ZSSlashCombo3();
+            ZHammer3 ZH3 = new ZHammer3();
 
-            if(base.characterBody.level >= 3)
+            if (base.characterBody.HasBuff(ZeroBuffs.TBreakerBuff))
+                SetNextEntityState(ZH3);
+            else if (base.characterBody.level >= 3)
                 SetNextEntityState(ZSS3);
             else
                 SetNextEntityState(ZSS);

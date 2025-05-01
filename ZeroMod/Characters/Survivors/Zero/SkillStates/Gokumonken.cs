@@ -26,6 +26,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         private bool hasFired;
         private string muzzleString;
         private bool canAttack = false;
+        private float damagebonus = 1f;
 
         private ZeroRetaliate ZR;
 
@@ -45,6 +46,15 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             }
 
             //ZR = GetComponent<ZeroRetaliate>();
+
+            if (characterBody.HasBuff(ZeroBuffs.BFanBuff))
+            {
+                damagebonus = 2f;
+            }
+            else
+            {
+                damagebonus = 1f;
+            }
 
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
 
@@ -103,7 +113,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                     ZeroBusterProjectille.position = victim.transform.position;
                     ZeroBusterProjectille.rotation = Util.QuaternionSafeLookRotation(direction);
                     ZeroBusterProjectille.owner = gameObject;
-                    ZeroBusterProjectille.damage = damageInfo.damage * (damageStat * 0.1f);
+                    ZeroBusterProjectille.damage = (damageInfo.damage * (damageStat * 0.1f)) * damagebonus;
                     ZeroBusterProjectille.force = force;
                     ZeroBusterProjectille.crit = RollCrit();
                     ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
@@ -112,6 +122,16 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                     canAttack = true;
 
                     ProjectileManager.instance.FireProjectile(ZeroBusterProjectille);
+
+                    if (characterBody.HasBuff(ZeroBuffs.BFanBuff))
+                    {
+                        characterBody.healthComponent.AddBarrier(((damageInfo.damage * (damageStat * 0.1f)) * damagebonus) / 5);
+                    }
+                    else
+                    {
+                        characterBody.healthComponent.AddBarrier(((damageInfo.damage * (damageStat * 0.1f)) * damagebonus) / 10);
+                    }
+
                 }
             }
 

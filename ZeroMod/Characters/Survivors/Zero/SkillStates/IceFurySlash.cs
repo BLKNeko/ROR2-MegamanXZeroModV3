@@ -60,9 +60,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             hitSoundString = "";
             //muzzleString = "SwordMuzzPos";
-            muzzleString = "SwingLeft";
+            muzzleString = "IFMuzz";
             playbackRateParam = "attackSpeed";
-            swingEffectPrefab = ZeroAssets.swordSwingEffect;
+            //swingEffectPrefab = ZeroAssets.swordSwingEffect;
             hitEffectPrefab = ZeroAssets.swordHitImpactEffect;
 
             impactSound = ZeroAssets.swordHitSoundEvent.index;
@@ -76,8 +76,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             }
 
 
-            EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, LDashPos, true);
-            EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, RDashPos, true);
+            EffectManager.SimpleMuzzleFlash(ZeroAssets.IceFurySlashVFX, gameObject, muzzleString, true);
             //AkSoundEngine.PostEvent(XStaticValues.X_Dash_SFX, this.gameObject);
 
             animator = GetModelAnimator();

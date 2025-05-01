@@ -3,21 +3,23 @@ using ZeroMod.Modules;
 
 namespace ZeroMod.Survivors.Zero
 {
-    public static class HenryConfig
+    public static class ZeroConfig
     {
         public static ConfigEntry<bool> someConfigBool;
         public static ConfigEntry<float> someConfigFloat;
         public static ConfigEntry<float> someConfigFloatWithCustomRange;
 
+        public static ConfigEntry<bool> ChungLeePoseBool;
+
         public static void Init()
         {
             string section = "Zero";
 
-            someConfigBool = Config.BindAndOptions(
+            ChungLeePoseBool = Config.BindAndOptions(
                 section,
-                "someConfigBool",
+                "ChungLeePoseBool",
                 true,
-                "this creates a bool config, and a checkbox option in risk of options");
+                "Enable ChungLee Idle pose with BFan");
 
             someConfigFloat = Config.BindAndOptions(
                 section,

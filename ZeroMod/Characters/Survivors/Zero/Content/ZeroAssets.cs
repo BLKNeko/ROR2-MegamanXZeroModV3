@@ -27,6 +27,11 @@ namespace ZeroMod.Survivors.Zero
         public static GameObject SpinKickVFX;
         public static GameObject IceDragonRiseVFX;
         public static GameObject RyuenjinVFX;
+        public static GameObject EnkoujinVFX;
+        public static GameObject IceFurySlashVFX;
+        public static GameObject HammerAtkVFX;
+
+        public static GameObject ZDeathVFX;
 
         // networked hit sounds
         public static NetworkSoundEventDef swordHitSoundEvent;
@@ -86,7 +91,12 @@ namespace ZeroMod.Survivors.Zero
             ChangeWeaponVFX = _assetBundle.LoadEffect("ChangeWeaponVFX", true);
             SpinKickVFX = _assetBundle.LoadEffect("SpinKickVFX", true);
             IceDragonRiseVFX = _assetBundle.LoadEffect("IceDragonRise2VFX", true);
+            IceFurySlashVFX = _assetBundle.LoadEffect("IceFurySlashVFX", true);
             RyuenjinVFX = _assetBundle.LoadEffect("RyuenjinVFX", true);
+            EnkoujinVFX = _assetBundle.LoadEffect("EnkoujinVFX", true);
+            HammerAtkVFX = _assetBundle.LoadEffect("HammerAtkVFX", false);
+
+            ZDeathVFX = _assetBundle.LoadEffect("ZDeathEffect", false);
 
 
             ZSaberIcon = _assetBundle.LoadAsset<Sprite>("ZSaberIcon");

@@ -42,10 +42,14 @@ namespace ZeroMod.Survivors.Zero
         internal static SkillDef KKnuckleSkillDef;
         internal static SkillDef SigmaBladeSkillDef;
 
+        //PRIMARY
+        internal static SkillDef ZSaberComboSkillDef;
+
         //SECONDARY
         internal static SkillDef ZBusterSkillDef;
 
         //UTILITY
+        internal static SkillDef ZDashSkillDef;
         internal static SkillDef RaikousenSkillDef;
 
         //SPECIAL
@@ -150,7 +154,7 @@ namespace ZeroMod.Survivors.Zero
 
             base.InitializeCharacter();
 
-            HenryConfig.Init();
+            ZeroConfig.Init();
             HenryStates.Init();
             HenryTokens.Init();
 
@@ -389,6 +393,36 @@ namespace ZeroMod.Survivors.Zero
                 forceSprintDuringState = false,
             });
 
+            ZSaberComboSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "ZSaberCombo",
+                skillNameToken = ZERO_X_PREFIX + "PRIMARY_ZSABER_COMBO_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "PRIMARY_ZSABER_COMBO_DESCRIPTION",
+                skillIcon = ZeroAssets.ZSaberSkillIcon,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ZSSlashCombo)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 0f,
+                baseMaxStock = 1,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = true,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
 
             ZBusterSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -415,6 +449,36 @@ namespace ZeroMod.Survivors.Zero
                 beginSkillCooldownOnSkillEnd = false,
 
                 isCombatSkill = true,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+            });
+
+            ZDashSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "Dash",
+                skillNameToken = ZERO_X_PREFIX + "UTILITY_ZDASH_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "UTILITY_ZDASH_DESCRIPTION",
+                //skillIcon = XAssets.IconSqueezeBomb,
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ZDash)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = 8f,
+                baseMaxStock = 3,
+
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
                 canceledFromSprinting = false,
                 cancelSprintingOnActivation = false,
                 forceSprintDuringState = false,
@@ -460,7 +524,7 @@ namespace ZeroMod.Survivors.Zero
                 skillIcon = ZeroAssets.CFlasherSkillIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(CFlasher)),
-                activationStateMachineName = "Weapon",
+                activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 8f,
@@ -653,7 +717,8 @@ namespace ZeroMod.Survivors.Zero
             primarySkillDef1.stepCount = 5;
             primarySkillDef1.stepGraceDuration = 0.5f;
 
-            Skills.AddPrimarySkills(bodyPrefab, primarySkillDef1);
+            //Skills.AddPrimarySkills(bodyPrefab, primarySkillDef1);
+            Skills.AddPrimarySkills(bodyPrefab, ZSaberComboSkillDef);
         }
 
         private void AddSecondarySkills()
@@ -731,8 +796,9 @@ namespace ZeroMod.Survivors.Zero
                 forceSprintDuringState = true,
             });
 
-            Skills.AddUtilitySkills(bodyPrefab, utilitySkillDef1);
-            Skills.AddUtilitySkills(bodyPrefab, RaikousenSkillDef);
+            //Skills.AddUtilitySkills(bodyPrefab, utilitySkillDef1);
+            Skills.AddUtilitySkills(bodyPrefab, ZDashSkillDef);
+            //Skills.AddUtilitySkills(bodyPrefab, RaikousenSkillDef);
         }
 
         private void AddSpecialSkills()
@@ -1015,6 +1081,23 @@ namespace ZeroMod.Survivors.Zero
         private void AddHooks()
         {
             R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            On.RoR2.CharacterBody.OnLevelUp += CharacterBody_OnLevelUp;
+        }
+
+        private void CharacterBody_OnLevelUp(On.RoR2.CharacterBody.orig_OnLevelUp orig, CharacterBody self)
+        {
+            orig(self);
+
+            Chat.AddMessage($"<color=#00FF00>{self.GetUserName()} subiu para o nível {self.level}!</color>");
+
+            if (self.isPlayerControlled && self.master && self.master.playerCharacterMasterController && self.GetUserName().Contains("Zero")) // exemplo de filtro
+            {
+                //Log.Debug($"Personagem {self.GetUserName()} subiu para o nível {self.level}.");
+
+                Chat.AddMessage($"<color=#00FF00>{self.GetUserName()} subiu para o nível {self.level}!</color>");
+
+            }
+
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
@@ -1027,37 +1110,40 @@ namespace ZeroMod.Survivors.Zero
 
             if (sender.HasBuff(ZeroBuffs.TBreakerBuff))
             {
-                args.baseDamageAdd *= 1.5f;
-                args.armorAdd *= 1.1f;
-                args.baseMoveSpeedAdd *= 0.8f;
-                args.baseJumpPowerAdd *= 0.8f;
+                args.baseDamageAdd *= 3f;
+                args.armorAdd *= 1.5f;
+                args.baseMoveSpeedAdd *= 0.7f;
+                args.baseJumpPowerAdd *= 0.7f;
             }
 
             if (sender.HasBuff(ZeroBuffs.BFanBuff))
             {
-                args.baseDamageAdd *= 0.9f;
-                args.armorAdd *= 1.5f;
-                args.baseMoveSpeedAdd *= 1.2f;
-                args.baseJumpPowerAdd *= 1.2f;
-                args.baseAttackSpeedAdd *= 1.2f;
-                args.baseShieldAdd *= 1.5f;
+                args.baseDamageAdd *= 0.8f;
+                args.armorAdd += 100;
+                args.armorAdd *= 2f;
+                args.baseMoveSpeedAdd *= 1.5f;
+                args.baseJumpPowerAdd *= 2f;
+                args.baseAttackSpeedAdd *= 1.5f;
+                args.baseShieldAdd *= 2f;
+                args.regenMultAdd *= 1.5f;
+
             }
 
             if (sender.HasBuff(ZeroBuffs.KKnuckleBuff))
             {
-                args.baseDamageAdd *= 0.9f;
-                args.baseMoveSpeedAdd *= 1.4f;
-                args.baseJumpPowerAdd *= 1.4f;
-                args.baseAttackSpeedAdd *= 1.5f;
+                args.baseDamageAdd *= 0.7f;
+                args.baseMoveSpeedAdd *= 2f;
+                args.baseJumpPowerAdd *= 1.5f;
+                args.baseAttackSpeedAdd *= 2f;
             }
 
             if (sender.HasBuff(ZeroBuffs.SigmaBladeBuff))
             {
-                args.baseDamageAdd *= 1.5f;
+                args.baseDamageAdd *= 2f;
                 args.armorAdd *= 1.5f;
-                args.baseMoveSpeedAdd *= 1.1f;
-                args.baseJumpPowerAdd *= 1.1f;
-                args.baseAttackSpeedAdd *= 1.2f;
+                args.baseMoveSpeedAdd *= 1.5f;
+                args.baseJumpPowerAdd *= 1.5f;
+                args.baseAttackSpeedAdd *= 1.5f;
                 args.baseShieldAdd *= 1.2f;
                 args.critAdd *= 1.5f;
                 args.critDamageMultAdd *= 1.5f;
