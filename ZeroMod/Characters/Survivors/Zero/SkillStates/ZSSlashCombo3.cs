@@ -15,7 +15,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType = DamageType.Generic;
             damageType = DamageTypeCombo.GenericPrimary;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -49,11 +49,28 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             ZSSlashCombo ZSS = new ZSSlashCombo();
             ZSSlashCombo4 ZSS4 = new ZSSlashCombo4();
 
-            if (base.characterBody.level >= 5)
+            if (base.characterBody.level >= ZeroConfig.ZeroSecondUpgradeInt.Value)
                 SetNextEntityState(ZSS4);
             else
                 SetNextEntityState(ZSS);
 
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zSlash3Voice, this.gameObject);
+            }
+
+            if (characterBody.HasBuff(ZeroBuffs.TBreakerBuff))
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroHunmmerSFX, this.gameObject);
+            }
+            else if (characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroKnuckeSFX, this.gameObject);
+            }
+            else
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zSlash3SFX, this.gameObject);
+            }
 
             base.OnEnter();
         }

@@ -8,7 +8,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 {
     public class ZBuster : BaseSkillState
     {
-        public static float damageCoefficient = HenryStaticValues.gunDamageCoefficient;
+        public static float damageCoefficient = ZeroStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1f;
         public static float baseDuration = 0.9f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
@@ -77,11 +77,11 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                     characterBody.AddSpreadBloom(0.8f);
                     EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, gameObject, muzzleString, true);
 
-                    //if (XConfig.enableVoiceBool.Value)
-                    //{
-                    //    AkSoundEngine.PostEvent(XStaticValues.X_ChameleonSting_VSFX, this.gameObject);
-                    //}
-                    //AkSoundEngine.PostEvent(XStaticValues.X_ChameleonSting_SFX, this.gameObject);
+                    if (ZeroConfig.enableVoiceBool.Value)
+                    {
+                        AkSoundEngine.PostEvent(ZeroStaticValues.zeroAttackVFX, this.gameObject);
+                    }
+                    AkSoundEngine.PostEvent(ZeroStaticValues.zBuster, this.gameObject);
 
                     AddRecoil(-1f * recoil, -2f * recoil, -0.5f * recoil, 0.5f * recoil);
 

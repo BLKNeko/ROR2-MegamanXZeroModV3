@@ -5,15 +5,33 @@ namespace ZeroMod.Survivors.Zero
 {
     public static class ZeroConfig
     {
-        public static ConfigEntry<bool> someConfigBool;
-        public static ConfigEntry<float> someConfigFloat;
-        public static ConfigEntry<float> someConfigFloatWithCustomRange;
 
         public static ConfigEntry<bool> ChungLeePoseBool;
+        public static ConfigEntry<bool> enableVoiceBool;
+
+        public static ConfigEntry<int> enableZFootstep;
+        public static ConfigEntry<int> ZeroFirstUpgradeInt;
+        public static ConfigEntry<int> ZeroSecondUpgradeInt;
+        public static ConfigEntry<int> ZeroThirdUpgradeInt;
+        public static ConfigEntry<int> ZeroFourthUpgradeInt;
 
         public static void Init()
         {
             string section = "Zero";
+
+            enableVoiceBool = Config.BindAndOptions(
+                section,
+                "EnableVoice",
+                true,
+                "At certain moments or when using a skill, Zero may talk or scream. If you prefer to disable this feature, you can turn it off here.");
+
+            enableZFootstep = Config.BindAndOptions(
+                section,
+                "Enable Zero Footstep",
+                1,
+                0,
+                2,
+                "Megaman X footstep SFX. \n\n 0 = OFF \n\n 1 = Comand Mission SFX \n\n 2 = MegamanX8 SFX");
 
             ChungLeePoseBool = Config.BindAndOptions(
                 section,
@@ -21,18 +39,37 @@ namespace ZeroMod.Survivors.Zero
                 true,
                 "Enable ChungLee Idle pose with BFan");
 
-            someConfigFloat = Config.BindAndOptions(
+            ZeroFirstUpgradeInt = Config.BindAndOptions(
                 section,
-                "someConfigfloat",
-                5f);//blank description will default to just the name
+                "FistUpgrade",
+                3,
+                2,
+                5,
+                "Lvl required to unlock the first upgrades");
 
-            someConfigFloatWithCustomRange = Config.BindAndOptions(
+            ZeroSecondUpgradeInt = Config.BindAndOptions(
                 section,
-                "someConfigfloat2",
-                5f,
-                0,
-                50,
-                "if a custom range is not passed in, a float will default to a slider with range 0-20. risk of options only has sliders");
+                "SecondUpgrade",
+                5,
+                3,
+                7,
+                "Lvl required to unlock the second upgrades");
+
+            ZeroThirdUpgradeInt = Config.BindAndOptions(
+                section,
+                "ThirdUpgrade",
+                7,
+                4,
+                9,
+                "Lvl required to unlock the third upgrades");
+
+            ZeroFourthUpgradeInt = Config.BindAndOptions(
+                section,
+                "FourthUpgrade",
+                10,
+                5,
+                12,
+                "Lvl required to unlock the fourth upgrades");
         }
     }
 }

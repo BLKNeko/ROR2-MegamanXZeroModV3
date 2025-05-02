@@ -51,11 +51,15 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             EffectManager.SimpleMuzzleFlash(ZeroAssets.RyuenjinVFX, gameObject, muzzleString, true);
 
-            //if (XConfig.enableVoiceBool.Value)
-            //{
-            //    AkSoundEngine.PostEvent(XStaticValues.X_Attack_VSFX, this.gameObject);
-            //}
-            //AkSoundEngine.PostEvent(XStaticValues.X_RisingFireCharged_SFX, this.gameObject);
+            if (ZeroConfig.enableVoiceBool.Value && characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroShoryukenVFX, this.gameObject);
+            }
+            else if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroAttackVFX, this.gameObject);
+            }
+            AkSoundEngine.PostEvent(ZeroStaticValues.zEnkoujinSFX, this.gameObject);
 
 
 
@@ -94,7 +98,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
                 base.characterMotor.Motor.ForceUnground(0.1f);
 
-                if (base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= 1 && GetNextEntityState() == null)
+                if (base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value && GetNextEntityState() == null)
                 {
 
                     if (characterBody.HasBuff(ZeroBuffs.TBreakerBuff))

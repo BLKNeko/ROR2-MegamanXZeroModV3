@@ -49,7 +49,7 @@ namespace ZeroMod.Modules
 
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
             {
-                //TryRegisterOption(configEntry, min, max, restartRequired);
+                TryRegisterOption(configEntry, min, max, restartRequired);
             }
 
             return configEntry;

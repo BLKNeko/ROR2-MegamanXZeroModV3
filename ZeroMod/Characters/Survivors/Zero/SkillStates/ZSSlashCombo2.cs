@@ -15,7 +15,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType = DamageType.Generic;
             damageType = DamageTypeCombo.GenericPrimary;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -52,11 +52,28 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             if (base.characterBody.HasBuff(ZeroBuffs.TBreakerBuff))
                 SetNextEntityState(ZH3);
-            else if (base.characterBody.level >= 3)
+            else if (base.characterBody.level >= ZeroConfig.ZeroFirstUpgradeInt.Value)
                 SetNextEntityState(ZSS3);
             else
                 SetNextEntityState(ZSS);
 
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zSlash2Voice, this.gameObject);
+            }
+
+            if (characterBody.HasBuff(ZeroBuffs.TBreakerBuff))
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroHunmmerSFX, this.gameObject);
+            }
+            else if (characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroKnuckeSFX, this.gameObject);
+            }
+            else
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zSlash2SFX, this.gameObject);
+            }
 
             base.OnEnter();
         }

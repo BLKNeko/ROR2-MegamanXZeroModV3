@@ -42,7 +42,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType |= DamageType.Shock5s;
             damageType |= DamageTypeCombo.GenericUtility;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -84,7 +84,6 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, LDashPos, true);
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, RDashPos, true);
-            //AkSoundEngine.PostEvent(XStaticValues.X_Dash_SFX, this.gameObject);
 
             animator = GetModelAnimator();
             characterBody.SetAimTimer(0.8f);
@@ -128,6 +127,12 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             EffectManager.SpawnEffect(lightningEffectPrefab2, effectData, false);
             EffectManager.SpawnEffect(lightningEffectPrefab3, effectData, false);
 
+
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroRaikousenVFX, this.gameObject);
+            }
+            AkSoundEngine.PostEvent(ZeroStaticValues.zeroRaikousenSFX, this.gameObject);
 
             base.OnEnter();
         }

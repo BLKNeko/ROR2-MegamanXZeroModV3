@@ -38,6 +38,8 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
 
         private float BarrierCooldown = 0f;
 
+        private float bFanMaxBarrier, bFanBarrierMult;
+
         
 
         private void Start()
@@ -64,25 +66,25 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
 
             //Debug.Log("footstepHandler: " + footstepHandler);
 
-            //switch (XConfig.enableXFootstep.Value)
-            //{
-            //    case 0:
-            //        footstepHandler.baseFootstepString = "";
-            //        footstepHandler.sprintFootstepOverrideString = "";
-            //        break;
-            //    case 1:
-            //        footstepHandler.baseFootstepString = "Play_X_Footstep_SFX";
-            //        footstepHandler.sprintFootstepOverrideString = "Play_X_Footstep_SFX";
-            //        break;
-            //    case 2:
-            //        footstepHandler.baseFootstepString = "Play_X_Footstep_X8_SFX";
-            //        footstepHandler.sprintFootstepOverrideString = "Play_X_Footstep_X8_SFX";
-            //        break;
-            //    default:
-            //        footstepHandler.baseFootstepString = "";
-            //        footstepHandler.sprintFootstepOverrideString = "";
-            //        break;
-            //}
+            switch (ZeroConfig.enableZFootstep.Value)
+            {
+                case 0:
+                    footstepHandler.baseFootstepString = "";
+                    footstepHandler.sprintFootstepOverrideString = "";
+                    break;
+                case 1:
+                    footstepHandler.baseFootstepString = "Play_Z_Footstep_SFX";
+                    footstepHandler.sprintFootstepOverrideString = "Play_Z_Footstep_SFX";
+                    break;
+                case 2:
+                    footstepHandler.baseFootstepString = "Play_Z_Footstep_X8_SFX";
+                    footstepHandler.sprintFootstepOverrideString = "Play_Z_Footstep_X8_SFX";
+                    break;
+                default:
+                    footstepHandler.baseFootstepString = "";
+                    footstepHandler.sprintFootstepOverrideString = "";
+                    break;
+            }
 
 
         }
@@ -138,13 +140,24 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
             if (ZBody.HasBuff(ZeroBuffs.BFanBuff))
             {
 
-                Debug.Log("Health 0.3 " + ZHealth.health * 0.3f);
-                Debug.Log("ZHealth.barrier " + ZHealth.barrier);
-                Debug.Log("BarrierCooldown " + BarrierCooldown);
+                //Debug.Log("Health 0.3 " + ZHealth.health * 0.3f);
+                //Debug.Log("ZHealth.barrier " + ZHealth.barrier);
+                //Debug.Log("BarrierCooldown " + BarrierCooldown);
 
-                if(ZHealth.barrier <= ZHealth.health * 0.3f && BarrierCooldown >= 2f)
+                if(ZBody.level >= ZeroConfig.ZeroFourthUpgradeInt.Value)
                 {
-                    ZHealth.AddBarrier(ZHealth.health * 0.1f);
+                    bFanMaxBarrier = 0.5f;
+                    bFanBarrierMult = 0.2f;
+                }
+                else
+                {
+                    bFanMaxBarrier = 0.3f;
+                    bFanBarrierMult = 0.1f;
+                }
+
+                if(ZHealth.barrier <= ZHealth.fullCombinedHealth * bFanMaxBarrier && BarrierCooldown >= 2f)
+                {
+                    ZHealth.AddBarrier(ZHealth.fullCombinedHealth * bFanBarrierMult);
                     BarrierCooldown = 0f;
                 }
                 BarrierCooldown += Time.fixedDeltaTime;

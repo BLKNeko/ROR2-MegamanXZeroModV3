@@ -36,6 +36,8 @@ namespace ZeroMod.Survivors.Zero
         // networked hit sounds
         public static NetworkSoundEventDef swordHitSoundEvent;
 
+        public static Sprite ZPassiveIcon;
+
         public static Sprite ZSaberIcon;
         public static Sprite TBreakerIcon;
         public static Sprite BFanIcon;
@@ -49,6 +51,7 @@ namespace ZeroMod.Survivors.Zero
         public static Sprite CFlasherSkillIcon;
         public static Sprite RyuenjinSkillIcon;
         public static Sprite IceDragonRiseSkillIcon;
+        public static Sprite ZDashSkillIcon;
 
         public static Sprite ZeroSkinIcon;
         public static Sprite BZeroSkinIcon;
@@ -99,6 +102,9 @@ namespace ZeroMod.Survivors.Zero
             ZDeathVFX = _assetBundle.LoadEffect("ZDeathEffect", false);
 
 
+            ZPassiveIcon = _assetBundle.LoadAsset<Sprite>("ZPassiveSkillIcon");
+
+
             ZSaberIcon = _assetBundle.LoadAsset<Sprite>("ZSaberIcon");
             TBreakerIcon = _assetBundle.LoadAsset<Sprite>("TBreakerIcon");
             BFanIcon = _assetBundle.LoadAsset<Sprite>("BFanIcon");
@@ -112,6 +118,7 @@ namespace ZeroMod.Survivors.Zero
             CFlasherSkillIcon = _assetBundle.LoadAsset<Sprite>("CFlasherSkillIcon");
             RyuenjinSkillIcon = _assetBundle.LoadAsset<Sprite>("RyuuenjinSkillIcon");
             IceDragonRiseSkillIcon = _assetBundle.LoadAsset<Sprite>("IceDragonRiseSkillIcon");
+            ZDashSkillIcon = _assetBundle.LoadAsset<Sprite>("ZDashSkillIcon");
 
             ZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroSkinIcon");
             BZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroBSkinIcon");

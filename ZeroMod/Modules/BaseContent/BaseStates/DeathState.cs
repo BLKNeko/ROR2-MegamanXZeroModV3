@@ -28,10 +28,10 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
 
             //base.PlayAnimation("FullBody, Override", "Deleted", "attackSpeed", this.duration);
 
-            //if (ZeroConfig.enableVoiceBool.Value)
-            //{
-            //    AkSoundEngine.PostEvent(XStaticValues.X_die_VSFX, this.gameObject);
-            //}
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zDeath, this.gameObject);
+            }
 
 
             EffectManager.SimpleMuzzleFlash(ZeroAssets.ZDeathVFX, base.gameObject, "CorePosition", true);

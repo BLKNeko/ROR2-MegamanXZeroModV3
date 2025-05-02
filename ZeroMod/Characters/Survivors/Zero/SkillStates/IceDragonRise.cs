@@ -51,11 +51,11 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             EffectManager.SimpleMuzzleFlash(ZeroAssets.IceDragonRiseVFX, gameObject, muzzleString, true);
 
-            //if (XConfig.enableVoiceBool.Value)
-            //{
-            //    AkSoundEngine.PostEvent(XStaticValues.X_Attack_VSFX, this.gameObject);
-            //}
-            //AkSoundEngine.PostEvent(XStaticValues.X_RisingFireCharged_SFX, this.gameObject);
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroHyouryuushouVFX, this.gameObject);
+            }
+            AkSoundEngine.PostEvent(ZeroStaticValues.zeroSennpuukyakuSFX, this.gameObject);
 
 
 
@@ -93,6 +93,25 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             {
 
                 base.characterMotor.Motor.ForceUnground(0.1f);
+
+                if (base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value && GetNextEntityState() == null)
+                {
+
+                    if (characterBody.HasBuff(ZeroBuffs.TBreakerBuff))
+                    {
+                        HammerFall HF = new HammerFall();
+                        SetNextEntityState(HF);
+                        return;
+                    }
+                    else
+                    {
+                        Enkoujin E = new Enkoujin();
+                        SetNextEntityState(E);
+                        return;
+                    }
+
+
+                }
 
 
                 if (!inHitPause)

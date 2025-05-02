@@ -11,7 +11,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 {
     public class Gokumonken : BaseSkillState
     {
-        public static float damageCoefficient = HenryStaticValues.gunDamageCoefficient;
+        public static float damageCoefficient = ZeroStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1f;
         public static float baseDuration = 5f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
@@ -57,6 +57,11 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             }
 
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zGuard, this.gameObject);
+            }
 
         }
 

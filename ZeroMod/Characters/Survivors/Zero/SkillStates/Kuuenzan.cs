@@ -15,7 +15,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType = DamageType.Generic;
             damageType = DamageTypeCombo.GenericPrimary;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -45,6 +45,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             impactSound = ZeroAssets.swordHitSoundEvent.index;
 
             SetHitReset(true, 8);
+
+
+            AkSoundEngine.PostEvent(ZeroStaticValues.zeroJumpAtkLoopSFX, this.gameObject);
 
 
             base.OnEnter();

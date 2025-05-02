@@ -28,7 +28,7 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
         public override void OnExit()
         {
 
-            //AkSoundEngine.PostEvent(XStaticValues.X_Ready, this.gameObject);
+            AkSoundEngine.PostEvent(ZeroStaticValues.zReady, this.gameObject);
 
             base.OnExit();
         }

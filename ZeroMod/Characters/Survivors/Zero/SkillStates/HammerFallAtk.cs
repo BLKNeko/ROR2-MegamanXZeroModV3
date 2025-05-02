@@ -8,7 +8,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 {
     public class HammerFallAtk : BaseSkillState
     {
-        public static float damageCoefficient = HenryStaticValues.gunDamageCoefficient;
+        public static float damageCoefficient = ZeroStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1f;
         public static float baseDuration = 1f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
@@ -68,7 +68,13 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                 hasFired = true;
 
                 EffectManager.SimpleMuzzleFlash(ZeroAssets.HammerAtkVFX, gameObject, muzzleString2, false);
-                Util.PlaySound("HenryShootPistol", gameObject);
+
+
+                if (ZeroConfig.enableVoiceBool.Value)
+                {
+                    AkSoundEngine.PostEvent(ZeroStaticValues.zeroAttackVFX, this.gameObject);
+                }
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroHammerSFX, this.gameObject);
 
                 if (isAuthority)
                 {

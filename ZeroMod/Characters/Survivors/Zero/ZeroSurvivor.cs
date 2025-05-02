@@ -123,9 +123,9 @@ namespace ZeroMod.Survivors.Zero
                 }
         };
 
-        public override UnlockableDef characterUnlockableDef => HenryUnlockables.characterUnlockableDef;
+        public override UnlockableDef characterUnlockableDef => ZeroUnlockables.characterUnlockableDef;
         
-        public override ItemDisplaysBase itemDisplays => new HenryItemDisplays();
+        public override ItemDisplaysBase itemDisplays => new ZeroItemDisplays();
 
         //set in base classes
         public override AssetBundle assetBundle { get; protected set; }
@@ -150,13 +150,13 @@ namespace ZeroMod.Survivors.Zero
         public override void InitializeCharacter()
         {
             //need the character unlockable before you initialize the survivordef
-            HenryUnlockables.Init();
+            ZeroUnlockables.Init();
 
             base.InitializeCharacter();
 
             ZeroConfig.Init();
-            HenryStates.Init();
-            HenryTokens.Init();
+            ZeroStates.Init();
+            ZeroTokens.Init();
 
             ZeroAssets.Init(assetBundle);
             ZeroBuffs.Init(assetBundle);
@@ -227,7 +227,7 @@ namespace ZeroMod.Survivors.Zero
             Skills.CreateSecondExtraSkillFamily(bodyPrefab);
             Skills.CreateThirdExtraSkillFamily(bodyPrefab);
             Skills.CreateFourthExtraSkillFamily(bodyPrefab);
-            //AddPassiveSkill();
+            AddPassiveSkill();
             AddPrimarySkills();
             AddSecondarySkills();
             AddUtiitySkills();
@@ -459,7 +459,7 @@ namespace ZeroMod.Survivors.Zero
                 skillName = "Dash",
                 skillNameToken = ZERO_X_PREFIX + "UTILITY_ZDASH_NAME",
                 skillDescriptionToken = ZERO_X_PREFIX + "UTILITY_ZDASH_DESCRIPTION",
-                //skillIcon = XAssets.IconSqueezeBomb,
+                skillIcon = ZeroAssets.ZDashSkillIcon,
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ZDash)),
                 activationStateMachineName = "Weapon",
@@ -651,10 +651,10 @@ namespace ZeroMod.Survivors.Zero
             bodyPrefab.GetComponent<SkillLocator>().passiveSkill = new SkillLocator.PassiveSkill
             {
                 enabled = true,
-                skillNameToken = ZERO_X_PREFIX + "PASSIVE_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "PASSIVE_DESCRIPTION",
+                skillNameToken = ZERO_X_PREFIX + "PASSIVE_LEARNINGSYSTEM_NAME",
+                skillDescriptionToken = ZERO_X_PREFIX + "PASSIVE_LEARNINGSYSTEM_DESCRIPTION",
                 keywordToken = "KEYWORD_STUNNING",
-                icon = assetBundle.LoadAsset<Sprite>("texPassiveIcon"),
+                icon = ZeroAssets.ZPassiveIcon,
             };
 
             //option 2. a new SkillFamily for a passive, used if you want multiple selectable passives
@@ -693,7 +693,7 @@ namespace ZeroMod.Survivors.Zero
                 //forceSprintDuringState = false,
 
             });
-            Skills.AddSkillsToFamily(passiveGenericSkill.skillFamily, passiveSkillDef1);
+            //Skills.AddSkillsToFamily(passiveGenericSkill.skillFamily, passiveSkillDef1);
         }
 
         //if this is your first look at skilldef creation, take a look at Secondary first
@@ -1072,7 +1072,7 @@ namespace ZeroMod.Survivors.Zero
             //Modules.Prefabs.CloneDopplegangerMaster(bodyPrefab, masterName, "Merc");
 
             //how to set up AI in code
-            HenryAI.Init(bodyPrefab, masterName);
+            ZeroAI.Init(bodyPrefab, masterName);
 
             //how to load a master set up in unity, can be an empty gameobject with just AISkillDriver components
             //assetBundle.LoadMaster(bodyPrefab, masterName);
@@ -1082,21 +1082,84 @@ namespace ZeroMod.Survivors.Zero
         {
             R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             On.RoR2.CharacterBody.OnLevelUp += CharacterBody_OnLevelUp;
+            On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
         }
 
         private void CharacterBody_OnLevelUp(On.RoR2.CharacterBody.orig_OnLevelUp orig, CharacterBody self)
         {
             orig(self);
 
-            Chat.AddMessage($"<color=#00FF00>{self.GetUserName()} subiu para o nível {self.level}!</color>");
+            //Chat.AddMessage($"<color=#00FF00>{self.GetUserName()} subiu para o nível {self.level}!</color>");
+            //Chat.AddMessage($"<color=#00FF00>{self.name} subiu para o nível {self.level}!</color>");
 
-            if (self.isPlayerControlled && self.master && self.master.playerCharacterMasterController && self.GetUserName().Contains("Zero")) // exemplo de filtro
+            if (self.isPlayerControlled && self.master && self.master.playerCharacterMasterController && self.name.Contains("Zero")) // exemplo de filtro
             {
                 //Log.Debug($"Personagem {self.GetUserName()} subiu para o nível {self.level}.");
 
-                Chat.AddMessage($"<color=#00FF00>{self.GetUserName()} subiu para o nível {self.level}!</color>");
+                if (self.level == ZeroConfig.ZeroFirstUpgradeInt.Value)
+                {
+                    Chat.AddMessage($"<color=#00FF00>Zero reached level {self.level}!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked a new SaberCombo!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra jump!</color>");
+                    self.baseJumpCount += 1;
+                }
+
+                if (self.level == ZeroConfig.ZeroSecondUpgradeInt.Value)
+                {
+                    Chat.AddMessage($"<color=#00FF00>Zero reached level {self.level}!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked a new SaberCombo!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra charge for DASH!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Rasetsusen!</color> <color=#00FF00>Press Primary skill button in mid air</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Senpuukyaku!</color> <color=#00FF00>Press Primary skill button in mid air while using K-Knuckle</color>");
+
+                    self.skillLocator.utility.maxStock += 1;
+                }
+
+                if (self.level == ZeroConfig.ZeroThirdUpgradeInt.Value)
+                {
+                    Chat.AddMessage($"<color=#00FF00>Zero reached level {self.level}!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked a new SaberCombo!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra charge for the special skill!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Hyouretsuzan!</color> <color=#00FF00>Hold Primary skill button + Secondary skill button during Ryuenjin</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Enkoujin!</color> <color=#00FF00>Hold Primary skill button + Secondary skill button during Hyouryuushou</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Dairettsui!</color> <color=#00FF00>Hold Primary skill button + Secondary skill button during Ryuenjin or Hyouryuushou while using T-Breaker</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Raikousen!</color> <color=#00FF00>Press Primary skill button + Secondary skill button during DASH</color>");
+
+                    self.skillLocator.special.maxStock += 1;
+                }
+
+                if (self.level == ZeroConfig.ZeroFourthUpgradeInt.Value)
+                {
+                    Chat.AddMessage($"<color=#00FF00>Zero reached level {self.level}!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra jump!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra charge for Z-Buster!</color>");
+                    Chat.AddMessage($"<color=#00FF00>Zero BFan barrier become stronger!</color>");
+
+                    self.skillLocator.secondary.maxStock += 1;
+                    self.baseJumpCount += 1;
+                }
+
+                //Chat.AddMessage($"<color=#00FF00>{self.name} subiu para o nível {self.level}!</color>");
 
             }
+
+        }
+
+        private void CharacterModel_Awake(On.RoR2.CharacterModel.orig_Awake orig, CharacterModel self)
+        {
+            orig(self);
+            if (self)
+            {
+
+                if (self.gameObject.name.Contains("Zero"))
+                {
+                    AkSoundEngine.PostEvent(ZeroStaticValues.zeroAwake, self.gameObject);
+
+                    //I think TeaL used this on DekuMod to make the character select menu audio
+                }
+
+            }
+
 
         }
 

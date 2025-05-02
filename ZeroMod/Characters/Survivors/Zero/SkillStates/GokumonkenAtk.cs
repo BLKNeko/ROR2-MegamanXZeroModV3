@@ -19,7 +19,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType = DamageType.Generic;
             damageType = DamageTypeCombo.GenericSpecial;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -56,6 +56,13 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             {
                 characterBody.RemoveOldestTimedBuff(ZeroBuffs.GokumonkenBuff);
             }
+
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zTakeThis, this.gameObject);
+            }
+            AkSoundEngine.PostEvent(ZeroStaticValues.zSlash3SFX, this.gameObject);
+            AkSoundEngine.PostEvent(ZeroStaticValues.zSlash4SFX, this.gameObject);
 
             base.OnEnter();
         }

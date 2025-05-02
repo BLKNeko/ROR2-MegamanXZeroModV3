@@ -3,6 +3,7 @@ using ZeroMod.Modules.BaseStates;
 using RoR2;
 using UnityEngine;
 using ZeroMod.Survivors.Zero;
+using EntityStates.BrotherMonster;
 
 namespace ZeroMod.Survivors.Zero.SkillStates
 {
@@ -15,7 +16,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType = DamageType.Generic;
             damageType = DamageTypeCombo.GenericPrimary;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -49,6 +50,25 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             ZSSlashCombo2 ZSS2 = new ZSSlashCombo2();
 
             SetNextEntityState(ZSS2);
+
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zSlash1Voice, this.gameObject);
+            }
+
+            if (characterBody.HasBuff(ZeroBuffs.TBreakerBuff))
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroHunmmerSFX, this.gameObject);
+            }
+            else if (characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroKnuckeSFX, this.gameObject);
+            }
+            else
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zSlash1SFX, this.gameObject);
+            }
+
 
 
             base.OnEnter();

@@ -38,7 +38,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, LDashPos, true);
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, RDashPos, true);
-            //AkSoundEngine.PostEvent(XStaticValues.X_Dash_SFX, this.gameObject);
+            AkSoundEngine.PostEvent(ZeroStaticValues.zDash, this.gameObject);
 
             animator = GetModelAnimator();
             characterBody.SetAimTimer(0.8f);
@@ -67,7 +67,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             
 
-            if (base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= 1 && !characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+            if (base.inputBank.skill1.down && base.inputBank.skill2.down && characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value && !characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
             {
                 Raikousen R = new Raikousen();
                 outer.SetNextState(R);

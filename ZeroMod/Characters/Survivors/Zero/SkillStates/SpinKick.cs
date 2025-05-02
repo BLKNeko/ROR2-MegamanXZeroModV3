@@ -16,7 +16,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             damageType = DamageType.IgniteOnHit;
             damageType = DamageType.SlowOnHit;
             damageType = DamageTypeCombo.GenericPrimary;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -48,6 +48,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             SetHitReset(true, 8);
 
             EffectManager.SimpleMuzzleFlash(ZeroAssets.SpinKickVFX, base.gameObject, muzzleString, true);
+
+
+            AkSoundEngine.PostEvent(ZeroStaticValues.zeroSennpuukyakuSFX, this.gameObject);
 
             base.OnEnter();
         }

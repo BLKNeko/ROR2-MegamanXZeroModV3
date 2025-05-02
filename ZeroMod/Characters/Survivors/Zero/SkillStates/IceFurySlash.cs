@@ -38,7 +38,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType |= DamageType.Freeze2s;
             damageType |= DamageTypeCombo.GenericSpecial;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -77,7 +77,11 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
 
             EffectManager.SimpleMuzzleFlash(ZeroAssets.IceFurySlashVFX, gameObject, muzzleString, true);
-            //AkSoundEngine.PostEvent(XStaticValues.X_Dash_SFX, this.gameObject);
+
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroAttackVFX, this.gameObject);
+            }
 
             animator = GetModelAnimator();
             characterBody.SetAimTimer(0.8f);

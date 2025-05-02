@@ -11,7 +11,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             hitboxGroupName = "SwordGroup";
 
             damageType = DamageType.Generic;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;

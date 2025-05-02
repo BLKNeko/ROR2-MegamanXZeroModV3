@@ -35,7 +35,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType |= DamageType.Stun1s;
             damageType |= DamageTypeCombo.GenericSpecial;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;

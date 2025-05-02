@@ -5,6 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using ZeroMod.Characters.Survivors.Zero.Components;
+using ZeroMod.Modules;
 
 namespace ZeroMod.Survivors.Zero.SkillStates
 {
@@ -35,7 +36,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType |= DamageType.IgniteOnHit;
             damageType |= DamageTypeCombo.GenericSpecial;
-            damageCoefficient = HenryStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;
@@ -87,6 +88,11 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             base.PlayAnimation("FullBody, Override", "ZDownAtk", "attackSpeed", baseDuration);
 
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zEnkoujinVoice, this.gameObject);
+            }
+            AkSoundEngine.PostEvent(ZeroStaticValues.zEnkoujinSFX, this.gameObject);
 
 
             base.OnEnter();

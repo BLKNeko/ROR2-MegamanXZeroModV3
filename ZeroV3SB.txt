@@ -1,0 +1,70 @@
+Event	ID	Name			Wwise Object Path	Notes
+	197848133	Play_ZeroAwake			\Default Work Unit\Play_ZeroAwake	
+	217483070	Play_ZeroSennpuukyakuSFXloop			\Default Work Unit\Play_ZeroSennpuukyakuSFXloop	
+	303108242	Play_ZSlash4SFX			\Default Work Unit\Play_ZSlash4SFX	
+	427438954	Play_ZeroShoryukenVFX			\Default Work Unit\Play_ZeroShoryukenVFX	
+	438232380	Play_Z_Footstep_X8_SFX			\Default Work Unit\Play_Z_Footstep_X8_SFX	
+	780085211	Play_ZSlash2Voice			\Default Work Unit\Play_ZSlash2Voice	
+	803383629	Play_ZeroFireSFX			\Default Work Unit\Play_ZeroFireSFX	
+	848150440	Play_ZDash			\Default Work Unit\Play_ZDash	
+	1165812904	Play_ZeroDefense			\Default Work Unit\Play_ZeroDefense	
+	1429634719	Play_ZSlash3SFX			\Default Work Unit\Play_ZSlash3SFX	
+	1454489225	Play_ZeroNuckleSFX			\Default Work Unit\Play_ZeroNuckleSFX	
+	1498296868	Play_ZSlash3Voice			\Default Work Unit\Play_ZSlash3Voice	
+	1555263107	Play_ZeroHyouryuushouVFX			\Default Work Unit\Play_ZeroHyouryuushouVFX	
+	1813040145	Play_ZSlash1SFX			\Default Work Unit\Play_ZSlash1SFX	
+	1994724455	Play_ZeroHunmmerSFX			\Default Work Unit\Play_ZeroHunmmerSFX	
+	2146593010	Play_ZeroDeath			\Default Work Unit\Play_ZeroDeath	
+	2562947717	Play_Z_Footstep_SFX			\Default Work Unit\Play_Z_Footstep_SFX	
+	2681344028	Play_ZSlash2SFX			\Default Work Unit\Play_ZSlash2SFX	
+	2714121482	Play_ZSlash1Voice			\Default Work Unit\Play_ZSlash1Voice	
+	2839147404	Play_ZeroFireSFXEND			\Default Work Unit\Play_ZeroFireSFXEND	
+	2890438303	Play_ZeroHammerSFX			\Default Work Unit\Play_ZeroHammerSFX	
+	3106937622	Play_ZeroRailousenVFX			\Default Work Unit\Play_ZeroRailousenVFX	
+	3218031777	Play_ZeroRasetsusen			\Default Work Unit\Play_ZeroRasetsusen	
+	3262017057	Play_ZReady			\Default Work Unit\Play_ZReady	
+	3414919461	Play_ZSlash4Voice			\Default Work Unit\Play_ZSlash4Voice	
+	3576016813	Play_ZeroTakeThis			\Default Work Unit\Play_ZeroTakeThis	
+	3818896224	Play_ZeroRaikousenSFX			\Default Work Unit\Play_ZeroRaikousenSFX	
+	4031629169	Play_ZeroShoot2			\Default Work Unit\Play_ZeroShoot2	
+	4144710763	Play_Zerojump_kaiten_loopSFX			\Default Work Unit\Play_Zerojump_kaiten_loopSFX	
+	4233466367	Play_ZeroEnkoujin			\Default Work Unit\Play_ZeroEnkoujin	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	9915182	ZeroFireSFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroFireSFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroFireSFX		13111
+	62129163	ZeroHammerSFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroHammerSFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroHammerSFX		9357
+	81559464	ZeroSennpuukyakuSFXloop	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroSennpuukyakuSFXloop_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroSennpuukyakuSFXloop		7137
+	105004996	ZeroHyouryuushouVFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroHyouryuushouVFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroHyouryuushouVFX		10638
+	124532304	Z_Footstep_SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\Z_Footstep_SFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\Z_Footstep_SFX		2921
+	172879631	ZSlash4SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash4SFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZSlash4SFX		4947
+	228001974	ZeroShoot2	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroShoot2_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroShoot2		8814
+	251335627	Z_Footstep_X8_SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\Z_Footstep_X8_SFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\Z_Footstep_X8_SFX		2870
+	290973369	ZeroFireSFXEND	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroFireSFXEND_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroFireSFXEND		5076
+	356958557	ZSlash2Voice	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash2Voice_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZSlash2Voice		3409
+	404963693	ZSlash2SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash2SFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZSlash2SFX		4978
+	421130572	ZSlash4Voice	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash4Voice_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZSlash4Voice		8428
+	424779122	ZSlash3SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash3SFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZSlash3SFX		5580
+	445646316	ZSlash1SFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash1SFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZSlash1SFX		5612
+	585633468	ZSlash1Voice	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash1Voice_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZSlash1Voice		3323
+	589687171	ZeroShoryukenVFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroShoryukenVFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroShoryukenVFX		11725
+	618068901	ZeroTogh	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroTogh_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroDefense\ZeroTogh		14879
+	625781341	ZDash	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZDash_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZDash		5247
+	664845022	ZeroIWontLose	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroIWontLose_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroDefense\ZeroIWontLose		14460
+	676678298	ZeroRaikousenSFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroRaikousenSFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroRaikousenSFX		6864
+	738803030	ZeroRailousenVFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroRailousenVFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroRailousenVFX		9574
+	754515036	ZeroHunmmerSFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroHunmmerSFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroHunmmerSFX		2081
+	768603177	ZeroRasetsusen	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroRasetsusen_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroRasetsusen		11601
+	802159788	ZeroNowTheRealFunStarts	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroNowTheRealFunStarts_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroAwake\ZeroNowTheRealFunStarts		29929
+	821678620	ZeroTakeThis	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroTakeThis_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroTakeThis		16413
+	837163583	ZSlash3Voice	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZSlash3Voice_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZSlash3Voice		5103
+	855874235	ZeroILost	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroILost_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroDeath\ZeroILost		11403
+	897774189	ZeroLetsDoIt	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroLetsDoIt_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroAwake\ZeroLetsDoIt		11127
+	903523147	ZeroEnkoujin	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroEnkoujin_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroEnkoujin		10604
+	908614133	ZeroDie	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroDie_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroDeath\ZeroDie		21963
+	970460224	ZReady	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\Ready_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZReady		8739
+	972658971	Zerojump_kaiten_loopSFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\Zerojump_kaiten_loopSFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\Zerojump_kaiten_loopSFX		4605
+	972862393	ZeroNuckleSFX	A:\Users\augus\Documents\WwiseProjects\ZeroModV3SB\.cache\Windows\SFX\ZeroNuckleSFX_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\ZeroNuckleSFX		1735
+
