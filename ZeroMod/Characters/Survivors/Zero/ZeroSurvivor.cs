@@ -78,13 +78,14 @@ namespace ZeroMod.Survivors.Zero
             crosshair = Asset.LoadCrosshair("Standard"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
-            maxHealth = 140f,
-            healthGrowth = 28f,
-            healthRegen = 1.5f,
-            armor = 20f,
-            armorGrowth = 1.5f,
-            damage = 22f,
-            shieldGrowth = 0.3f,
+            maxHealth = 150f,
+            healthGrowth = 30f,
+            healthRegen = 2f,
+            regenGrowth = 0.5f,
+            armor = 50f,
+            armorGrowth = 4f,
+            damage = 20f,
+            shieldGrowth = 0.5f,
             jumpPowerGrowth = 0.3f,
             jumpCount = 2,
             attackSpeed = 1.15f,
@@ -181,7 +182,6 @@ namespace ZeroMod.Survivors.Zero
         private void AdditionalBodySetup()
         {
             AddHitboxes();
-            bodyPrefab.AddComponent<HenryWeaponComponent>();
             bodyPrefab.AddComponent<ZeroBaseComponent>();
             bodyPrefab.AddComponent<ElectricTrailFollow>();
             //bodyPrefab.AddComponent<HuntressTrackerComopnent>();
@@ -446,7 +446,7 @@ namespace ZeroMod.Survivors.Zero
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 5f,
-                baseMaxStock = 3,
+                baseMaxStock = 2,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -476,7 +476,7 @@ namespace ZeroMod.Survivors.Zero
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 8f,
-                baseMaxStock = 3,
+                baseMaxStock = 2,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -494,35 +494,35 @@ namespace ZeroMod.Survivors.Zero
                 forceSprintDuringState = false,
             });
 
-            RaikousenSkillDef = Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = "Raikousen",
-                skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
-                //skillIcon = XAssets.IconSqueezeBomb,
+            //RaikousenSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            //{
+            //    skillName = "Raikousen",
+            //    skillNameToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_NAME",
+            //    skillDescriptionToken = ZERO_X_PREFIX + "SECONDARY_SQUEEZE_BOMB_DESCRIPTION",
+            //    //skillIcon = XAssets.IconSqueezeBomb,
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(Raikousen)),
-                activationStateMachineName = "Weapon",
-                interruptPriority = EntityStates.InterruptPriority.Skill,
+            //    activationState = new EntityStates.SerializableEntityStateType(typeof(Raikousen)),
+            //    activationStateMachineName = "Weapon",
+            //    interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 1f,
-                baseMaxStock = 5,
+            //    baseRechargeInterval = 1f,
+            //    baseMaxStock = 5,
 
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1,
+            //    rechargeStock = 1,
+            //    requiredStock = 1,
+            //    stockToConsume = 1,
 
-                resetCooldownTimerOnUse = false,
-                fullRestockOnAssign = true,
-                dontAllowPastMaxStocks = false,
-                mustKeyPress = false,
-                beginSkillCooldownOnSkillEnd = false,
+            //    resetCooldownTimerOnUse = false,
+            //    fullRestockOnAssign = true,
+            //    dontAllowPastMaxStocks = false,
+            //    mustKeyPress = false,
+            //    beginSkillCooldownOnSkillEnd = false,
 
-                isCombatSkill = true,
-                canceledFromSprinting = false,
-                cancelSprintingOnActivation = false,
-                forceSprintDuringState = false,
-            });
+            //    isCombatSkill = true,
+            //    canceledFromSprinting = false,
+            //    cancelSprintingOnActivation = false,
+            //    forceSprintDuringState = false,
+            //});
 
             #region Special
 
@@ -663,7 +663,6 @@ namespace ZeroMod.Survivors.Zero
                 enabled = true,
                 skillNameToken = ZERO_X_PREFIX + "PASSIVE_LEARNINGSYSTEM_NAME",
                 skillDescriptionToken = ZERO_X_PREFIX + "PASSIVE_LEARNINGSYSTEM_DESCRIPTION",
-                keywordToken = "KEYWORD_STUNNING",
                 icon = ZeroAssets.ZPassiveIcon,
             };
 
@@ -880,7 +879,7 @@ namespace ZeroMod.Survivors.Zero
 
             #region DefaultSkin
             //this creates a SkinDef with all default fields
-            SkinDef defaultSkin = Skins.CreateSkinDef("DEFAULT_SKIN",
+            SkinDef defaultSkin = Skins.CreateSkinDef(ZERO_X_PREFIX + "DEFAULT_SKIN_NAME",
                 ZeroAssets.ZeroSkinIcon,
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
@@ -928,7 +927,7 @@ namespace ZeroMod.Survivors.Zero
             #endregion
 
             //creating a new skindef as we did before
-            SkinDef BZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "MASTERY_SKIN_NAME",
+            SkinDef BZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "BZ_SKIN_NAME",
                 ZeroAssets.BZeroSkinIcon,
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
@@ -980,7 +979,7 @@ namespace ZeroMod.Survivors.Zero
             skins.Add(BZSkin);
 
             //creating a new skindef as we did before
-            SkinDef NZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "NMASTERY_SKIN_NAME",
+            SkinDef NZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "NZ_SKIN_NAME",
                 ZeroAssets.NZeroSkinIcon,
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
@@ -1111,42 +1110,47 @@ namespace ZeroMod.Survivors.Zero
 
                 if (self.level == ZeroConfig.ZeroFirstUpgradeInt.Value)
                 {
-                    Chat.AddMessage($"<color=#00FF00>Zero reached level {self.level}!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked a new SaberCombo!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra jump!</color>");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has adapted — Level {self.level} reached.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has mastered a new <color=#00FF00>Saber Combo+</color>.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has enhanced mobility: Extra jump acquired.");
+
                     self.baseJumpCount += 1;
                 }
 
                 if (self.level == ZeroConfig.ZeroSecondUpgradeInt.Value)
                 {
-                    Chat.AddMessage($"<color=#00FF00>Zero reached level {self.level}!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked a new SaberCombo!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra charge for DASH!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Rasetsusen!</color> <color=#00FF00>Press Primary skill button in mid air</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Senpuukyaku!</color> <color=#00FF00>Press Primary skill button in mid air while using K-Knuckle</color>");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has adapted — Level {self.level} reached.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has mastered a new <color=#00FF00>Saber Combo++</color>.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has upgraded mobility: <color=#00FF00>+1 Dash Charge</color> acquired.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Rasetsusen</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary Skill</style> while airborne</color>.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Senpuukyaku</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary Skill</style> mid-air while using <style=cIsUtility>K-Knuckle</style></color>.");
+
 
                     self.skillLocator.utility.maxStock += 1;
                 }
 
                 if (self.level == ZeroConfig.ZeroThirdUpgradeInt.Value)
                 {
-                    Chat.AddMessage($"<color=#00FF00>Zero reached level {self.level}!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked a new SaberCombo!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra charge for the special skill!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Hyouretsuzan!</color> <color=#00FF00>Hold Primary skill button + Secondary skill button during Ryuenjin</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Enkoujin!</color> <color=#00FF00>Hold Primary skill button + Secondary skill button during Hyouryuushou</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Dairettsui!</color> <color=#00FF00>Hold Primary skill button + Secondary skill button during Ryuenjin or Hyouryuushou while using T-Breaker</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked Raikousen!</color> <color=#00FF00>Press Primary skill button + Secondary skill button during DASH</color>");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has adapted — Level {self.level} reached.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has mastered a new <color=#00FF00>Saber Combo+++</color>.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has upgraded his arsenal: <color=#00FF00>+1 Special Skill Charge</color> acquired.");
+
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Hyouretsuzan</color> — <color=#FFFFFF>Hold <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsDamage>Ryuenjin</style></color>.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Enkoujin</color> — <color=#FFFFFF>Hold <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsDamage>Hyouryuushou</style></color>.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Dairettsui</color> — <color=#FFFFFF>Hold <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsDamage>Ryuenjin</style> or <style=cIsDamage>Hyouryuushou</style> while using <style=cIsUtility>T-Breaker</style></color>.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Raikousen</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsUtility>DASH</style></color> and NOT using K-Knuckles.");
+
 
                     self.skillLocator.special.maxStock += 1;
                 }
 
                 if (self.level == ZeroConfig.ZeroFourthUpgradeInt.Value)
                 {
-                    Chat.AddMessage($"<color=#00FF00>Zero reached level {self.level}!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra jump!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero unlocked one extra charge for Z-Buster!</color>");
-                    Chat.AddMessage($"<color=#00FF00>Zero BFan barrier become stronger!</color>");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has adapted — Level {self.level} reached.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has enhanced mobility: <color=#00FF00>+1 Extra Jump</color> acquired.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has increased firepower: <color=#00FF00>+1 Z-Buster Charge</color> acquired.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color>'s <color=#00FF00>BFan Barrier</color> has become stronger.");
+
 
                     self.skillLocator.secondary.maxStock += 1;
                     self.baseJumpCount += 1;

@@ -38,7 +38,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType |= DamageType.Freeze2s;
             damageType |= DamageTypeCombo.GenericSpecial;
-            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.IceFurySlashDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;

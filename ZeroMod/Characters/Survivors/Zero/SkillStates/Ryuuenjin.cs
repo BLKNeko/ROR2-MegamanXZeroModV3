@@ -19,7 +19,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType |= DamageType.IgniteOnHit;
             damageType |= DamageTypeCombo.GenericSpecial;
-            damageCoefficient = 1f;
+            damageCoefficient = ZeroStaticValues.RyuuenjinDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 1000f;
             bonusForce = Vector3.up * upwardForce;

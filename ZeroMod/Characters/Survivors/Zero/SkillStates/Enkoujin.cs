@@ -36,7 +36,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType |= DamageType.IgniteOnHit;
             damageType |= DamageTypeCombo.GenericSpecial;
-            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.EnkoujinDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;

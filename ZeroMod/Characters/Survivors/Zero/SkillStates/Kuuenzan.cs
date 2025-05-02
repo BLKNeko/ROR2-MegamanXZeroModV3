@@ -15,7 +15,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType = DamageType.Generic;
             damageType = DamageTypeCombo.GenericPrimary;
-            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.KuuenzanDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;

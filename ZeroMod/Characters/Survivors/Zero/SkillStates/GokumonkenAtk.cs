@@ -19,7 +19,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType = DamageType.Generic;
             damageType = DamageTypeCombo.GenericSpecial;
-            damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
+            damageCoefficient = ZeroStaticValues.GokumonkenAtkDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 300f;
             bonusForce = Vector3.zero;

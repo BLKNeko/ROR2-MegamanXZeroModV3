@@ -10,6 +10,43 @@ namespace ZeroMod.Survivors.Zero
 
         public const float bombDamageCoefficient = 16f;
 
+        public const float ZSaber1DamageCoefficient = 2f;
+
+        public const float ZSaber2DamageCoefficient = 2.5f;
+
+        public const float ZSaber3DamageCoefficient = 3f;
+
+        public const float ZSaber4DamageCoefficient = 3.5f;
+
+        public const float ZSaber5DamageCoefficient = 4f;
+
+        public const float ZBusterDamageCoefficient = 4f;
+
+        public const float CFlasherDamageCoefficient = 5f;
+
+        public const float DashPunchDamageCoefficient = 3f;
+
+        public const float EnkoujinDamageCoefficient = 9f;
+
+        public const float GokumonkenAtkDamageCoefficient = 10f;
+
+        public const float HammerFallAtkDamageCoefficient = 10f;
+
+        public const float IceDragonRiseDamageCoefficient = 8f;
+
+        public const float IceFurySlashDamageCoefficient = 8f;
+
+        public const float KuuenzanDamageCoefficient = 3f;
+
+        public const float RaikousenDamageCoefficient = 8f;
+
+        public const float RyuuenjinDamageCoefficient = 9f;
+
+        public const float SpinKickDamageCoefficient = 3f;
+
+        public const float TbreakerCombo3DamageCoefficient = 5f;
+
+
 
 
         //SOUND STRINGS

@@ -17,7 +17,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             damageType = DamageType.SlowOnHit;
             damageType = DamageTypeCombo.GenericPrimary;
             damageCoefficient = ZeroStaticValues.swordDamageCoefficient;
-            procCoefficient = 1f;
+            procCoefficient = ZeroStaticValues.SpinKickDamageCoefficient;
             pushForce = 300f;
             bonusForce = Vector3.zero;
             baseDuration = 1f;

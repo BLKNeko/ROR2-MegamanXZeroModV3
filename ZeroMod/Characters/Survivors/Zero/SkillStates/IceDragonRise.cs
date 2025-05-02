@@ -19,7 +19,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             damageType |= DamageType.Freeze2s;
             damageType |= DamageTypeCombo.GenericSpecial;
-            damageCoefficient = 1f;
+            damageCoefficient = ZeroStaticValues.IceDragonRiseDamageCoefficient;
             procCoefficient = 1f;
             pushForce = 500f;
             bonusForce = Vector3.up * upwardForce;
