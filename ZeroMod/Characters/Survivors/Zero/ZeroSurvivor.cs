@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static RoR2.OutlineHighlight;
 using ZeroMod.Characters.Survivors.Zero.Components;
+using ZeroMod.Modules.BaseContent.BaseStates;
+using EmotesAPI;
 
 namespace ZeroMod.Survivors.Zero
 {
@@ -32,6 +34,11 @@ namespace ZeroMod.Survivors.Zero
 
         //used when registering your survivor's language tokens
         public override string survivorTokenPrefix => ZERO_X_PREFIX;
+
+        internal bool setupEmoteSkeleton = false;
+
+        private float zTakeDamageValue = 0f;
+        private CharacterMaster zMaster;
 
         //SKILL DEFS
 
@@ -210,7 +217,10 @@ namespace ZeroMod.Survivors.Zero
             //the main "Body" state machine has some special properties
             Prefabs.AddMainEntityStateMachine(bodyPrefab, "Body", typeof(EntityStates.GenericCharacterMain), typeof(EntityStates.SpawnTeleporterState));
             //if you set up a custom main characterstate, set it up here
-                //don't forget to register custom entitystates in your HenryStates.cs
+            //don't forget to register custom entitystates in your HenryStates.cs
+
+            bodyPrefab.GetComponent<CharacterDeathBehavior>().deathState = new EntityStates.SerializableEntityStateType(typeof(ZeroDeathState));
+            bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new EntityStates.SerializableEntityStateType(typeof(ZeroSpawnState));
 
             Prefabs.AddEntityStateMachine(bodyPrefab, "Weapon");
             Prefabs.AddEntityStateMachine(bodyPrefab, "Weapon2");
@@ -658,41 +668,41 @@ namespace ZeroMod.Survivors.Zero
             };
 
             //option 2. a new SkillFamily for a passive, used if you want multiple selectable passives
-            GenericSkill passiveGenericSkill = Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, "PassiveSkill");
-            SkillDef passiveSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = "HenryPassive",
-                skillNameToken = ZERO_X_PREFIX + "PASSIVE_NAME",
-                skillDescriptionToken = ZERO_X_PREFIX + "PASSIVE_DESCRIPTION",
-                keywordTokens = new string[] { "KEYWORD_AGILE" },
-                skillIcon = assetBundle.LoadAsset<Sprite>("texPassiveIcon"),
+            //GenericSkill passiveGenericSkill = Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, "PassiveSkill");
+            //SkillDef passiveSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
+            //{
+            //    skillName = "HenryPassive",
+            //    skillNameToken = ZERO_X_PREFIX + "PASSIVE_NAME",
+            //    skillDescriptionToken = ZERO_X_PREFIX + "PASSIVE_DESCRIPTION",
+            //    keywordTokens = new string[] { "KEYWORD_AGILE" },
+            //    skillIcon = assetBundle.LoadAsset<Sprite>("texPassiveIcon"),
 
-                //unless you're somehow activating your passive like a skill, none of the following is needed.
-                //but that's just me saying things. the tools are here at your disposal to do whatever you like with
+            //    //unless you're somehow activating your passive like a skill, none of the following is needed.
+            //    //but that's just me saying things. the tools are here at your disposal to do whatever you like with
 
-                //activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shoot)),
-                //activationStateMachineName = "Weapon1",
-                //interruptPriority = EntityStates.InterruptPriority.Skill,
+            //    //activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shoot)),
+            //    //activationStateMachineName = "Weapon1",
+            //    //interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                //baseRechargeInterval = 1f,
-                //baseMaxStock = 1,
+            //    //baseRechargeInterval = 1f,
+            //    //baseMaxStock = 1,
 
-                //rechargeStock = 1,
-                //requiredStock = 1,
-                //stockToConsume = 1,
+            //    //rechargeStock = 1,
+            //    //requiredStock = 1,
+            //    //stockToConsume = 1,
 
-                //resetCooldownTimerOnUse = false,
-                //fullRestockOnAssign = true,
-                //dontAllowPastMaxStocks = false,
-                //mustKeyPress = false,
-                //beginSkillCooldownOnSkillEnd = false,
+            //    //resetCooldownTimerOnUse = false,
+            //    //fullRestockOnAssign = true,
+            //    //dontAllowPastMaxStocks = false,
+            //    //mustKeyPress = false,
+            //    //beginSkillCooldownOnSkillEnd = false,
 
-                //isCombatSkill = true,
-                //canceledFromSprinting = false,
-                //cancelSprintingOnActivation = false,
-                //forceSprintDuringState = false,
+            //    //isCombatSkill = true,
+            //    //canceledFromSprinting = false,
+            //    //cancelSprintingOnActivation = false,
+            //    //forceSprintDuringState = false,
 
-            });
+            //});
             //Skills.AddSkillsToFamily(passiveGenericSkill.skillFamily, passiveSkillDef1);
         }
 
@@ -1083,6 +1093,9 @@ namespace ZeroMod.Survivors.Zero
             R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             On.RoR2.CharacterBody.OnLevelUp += CharacterBody_OnLevelUp;
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
+            On.RoR2.SurvivorCatalog.Init += SurvivorCatalog_Init;
+            CustomEmotesAPI.animChanged += CustomEmotesAPI_animChanged;
+            On.RoR2.CharacterMaster.OnBodyStart += RestoreHPAfterRespawn;
         }
 
         private void CharacterBody_OnLevelUp(On.RoR2.CharacterBody.orig_OnLevelUp orig, CharacterBody self)
@@ -1213,5 +1226,90 @@ namespace ZeroMod.Survivors.Zero
             }
 
         }
+
+
+        //EMOTE API
+
+        private void RestoreHPAfterRespawn(On.RoR2.CharacterMaster.orig_OnBodyStart orig, CharacterMaster self, CharacterBody newBody)
+        {
+            orig(self, newBody);
+
+            //Debug.Log("xTakeDamageValue: " + xTakeDamageValue);
+            //Debug.Log("xMaster: " + xMaster);
+            //Debug.Log("self: " + self);
+
+            if (self == zMaster) // Certifica-se de que estamos restaurando o HP do personagem correto
+            {
+                float restoredHP = zTakeDamageValue;
+
+                if (newBody && newBody.healthComponent)
+                {
+                    newBody.healthComponent.health = Mathf.Clamp(restoredHP, 1f, newBody.healthComponent.fullHealth);
+                    //Debug.Log($"HP restaurado para {newBody.healthComponent.health}");
+                }
+            }
+        }
+
+        private void CustomEmotesAPI_animChanged(string newAnimation, BoneMapper mapper)
+        {
+            //Debug.Log("newAnimation: " + newAnimation);
+            //Debug.Log("mapper: " + mapper);
+            //Debug.Log("mapper.bodyPrefab.name: " + mapper.bodyPrefab.name);
+
+            if (mapper.bodyPrefab.name.Contains("ZeroBody"))
+            {
+                if (newAnimation == "none")
+                {
+                    if (mapper.bodyPrefab.GetComponent<CharacterBody>())
+                    {
+
+                        //NA MORAL VOU DEIXAR ISSO TUDO COMENTADO PELO ÓDIO QUE EU SENTI!
+                        //Acho que eu tava bem irritado enquanto eu fazia isso no X
+
+                        float savedHP = mapper.bodyPrefab.GetComponent<CharacterBody>().healthComponent.health;
+
+                        zTakeDamageValue = savedHP;
+                        zMaster = mapper.bodyPrefab.GetComponent<CharacterBody>().master;
+
+
+
+                        // Mata o personagem atual (sem contar como "morte real")
+                        GameObject.Destroy(mapper.bodyPrefab.GetComponent<CharacterBody>().gameObject);
+
+                        // Força o CharacterMaster a reaparecer o personagem
+                        mapper.bodyPrefab.GetComponent<CharacterBody>().master.Respawn(mapper.bodyPrefab.GetComponent<CharacterBody>().footPosition, Quaternion.identity);
+
+                    }
+                }
+            }
+        }
+
+
+
+        private void SurvivorCatalog_Init(On.RoR2.SurvivorCatalog.orig_Init orig)
+        {
+            orig();
+            if (!setupEmoteSkeleton)
+            {
+                setupEmoteSkeleton = true;
+                foreach (var item in SurvivorCatalog.allSurvivorDefs)
+                {
+                    if (item.bodyPrefab.name == "ZeroBody")
+                    {
+                        var skele = ZeroAssets.ZeroEmotePrefab;
+                        //Debug.Log("Before Emote: " + item.bodyPrefab.transform.position);
+                        CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
+                        CustomEmotesAPI.CreateNameTokenSpritePair(ZERO_X_PREFIX + "NAME", ZeroAssets.ZeroEmoteIcon);
+                        //skele.GetComponentInChildren<BoneMapper>().scale = 1.05f;
+                        //item.bodyPrefab.GetComponentInChildren<BoneMapper>().scale = 0.5f;
+                        //skele.GetComponentInChildren<BoneMapper>().scale = 0.5f;
+                        //Debug.Log("after Emote: " + item.bodyPrefab.transform.position);
+                        //Debug.Log("skele pos: " + skele.transform.position);
+                    }
+                }
+            }
+        }
+
+
     }
 }

@@ -51,6 +51,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             EffectManager.SimpleMuzzleFlash(ZeroAssets.ChangeWeaponVFX, base.gameObject, muzzleString, true);
 
+            AkSoundEngine.PostEvent(ZeroStaticValues.zeroWeaponChange, this.gameObject);
+
             PlayAnimation("FullBody, Override", "ChangeWeapon", "attackSpeed", duration);
         }
 

@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 
 namespace ZeroMod.Modules.BaseContent.BaseStates
 {
-    public class SpawnState : GenericCharacterSpawnState
+    public class ZeroSpawnState : GenericCharacterSpawnState
     {
         private float duration;
         public float baseDuration = 1f;

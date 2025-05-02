@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 
 namespace ZeroMod.Modules.BaseContent.BaseStates
 {
-    public class DeathState : GenericCharacterDeath
+    public class ZeroDeathState : GenericCharacterDeath
     {
         private float duration;
         public float baseDuration = 0.5f;

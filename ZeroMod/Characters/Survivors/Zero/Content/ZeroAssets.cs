@@ -33,10 +33,14 @@ namespace ZeroMod.Survivors.Zero
 
         public static GameObject ZDeathVFX;
 
+        public static GameObject ZeroEmotePrefab;
+
         // networked hit sounds
         public static NetworkSoundEventDef swordHitSoundEvent;
 
         public static Sprite ZPassiveIcon;
+
+        public static Sprite ZeroEmoteIcon;
 
         public static Sprite ZSaberIcon;
         public static Sprite TBreakerIcon;
@@ -83,6 +87,10 @@ namespace ZeroMod.Survivors.Zero
             CreateBombExplosionEffect();
             ConfigureZeroRaikousen();
 
+
+            ZeroEmotePrefab = _assetBundle.LoadAsset<GameObject>("ZeroEmoteSkeleton");
+
+
             swordSwingEffect = _assetBundle.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = _assetBundle.LoadEffect("ImpactHenrySlash");
 
@@ -103,6 +111,8 @@ namespace ZeroMod.Survivors.Zero
 
 
             ZPassiveIcon = _assetBundle.LoadAsset<Sprite>("ZPassiveSkillIcon");
+
+            ZeroEmoteIcon = _assetBundle.LoadAsset<Sprite>("ZeroEmoteIcon");
 
 
             ZSaberIcon = _assetBundle.LoadAsset<Sprite>("ZSaberIcon");

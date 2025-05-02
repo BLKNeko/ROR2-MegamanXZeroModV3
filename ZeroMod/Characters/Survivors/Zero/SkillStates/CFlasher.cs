@@ -79,11 +79,11 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                     characterBody.AddSpreadBloom(0.8f);
                     EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, gameObject, muzzleString, true);
 
-                    //if (XConfig.enableVoiceBool.Value)
-                    //{
-                    //    AkSoundEngine.PostEvent(XStaticValues.X_ChameleonSting_VSFX, this.gameObject);
-                    //}
-                    //AkSoundEngine.PostEvent(XStaticValues.X_ChameleonSting_SFX, this.gameObject);
+                    if (ZeroConfig.enableVoiceBool.Value)
+                    {
+                        AkSoundEngine.PostEvent(ZeroStaticValues.zeroAttackVFX, this.gameObject);
+                    }
+                    AkSoundEngine.PostEvent(ZeroStaticValues.zeroCFlasher, this.gameObject);
 
                     AddRecoil(-1f * recoil, -2f * recoil, -0.5f * recoil, 0.5f * recoil);
 

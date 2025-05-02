@@ -78,7 +78,6 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, LDashPos, true);
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireRocket.effectPrefab, gameObject, RDashPos, true);
-            //AkSoundEngine.PostEvent(XStaticValues.X_Dash_SFX, this.gameObject);
 
             animator = GetModelAnimator();
             characterBody.SetAimTimer(0.8f);
@@ -98,7 +97,11 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             base.PlayAnimation("FullBody, Override", "DashPunchStart", "attackSpeed", baseDuration);
 
-
+            if (ZeroConfig.enableVoiceBool.Value)
+            {
+                AkSoundEngine.PostEvent(ZeroStaticValues.zeroAttackVFX, this.gameObject);
+            }
+            AkSoundEngine.PostEvent(ZeroStaticValues.zDash, this.gameObject);
 
             base.OnEnter();
         }

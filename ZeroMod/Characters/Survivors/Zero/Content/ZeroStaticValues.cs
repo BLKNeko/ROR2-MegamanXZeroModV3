@@ -44,7 +44,9 @@ namespace ZeroMod.Survivors.Zero
         public static readonly string zeroRaikousenVFX = "Play_ZeroRailousenVFX";
         public static readonly string zeroFireSFXEnd = "Play_ZeroFireSFXEND";
         public static readonly string zeroJumpAtkLoopSFX = "Play_Zerojump_kaiten_loopSFX";
-        public static readonly string zeroAttackVFX = "Play_";
+        public static readonly string zeroAttackVFX = "Play_ZeroAttack";
+        public static readonly string zeroCFlasher = "Play_ZeroCFlasherSFX";
+        public static readonly string zeroWeaponChange = "Play_ZeroWeaponChange";
    
 
     
