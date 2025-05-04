@@ -22,7 +22,8 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
 
-            
+            if(ZeroSurvivor.instance.GetApplyUpgrades())
+                ReapplyUpgrades();
 
         }
         public override void OnExit()
@@ -40,7 +41,36 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
 
         }
 
-        
+        private void ReapplyUpgrades()
+        {
+            if (characterBody.level >= ZeroConfig.ZeroFirstUpgradeInt.Value)
+            {
+                characterBody.baseJumpCount += 1;
+            }
+
+            if (characterBody.level >= ZeroConfig.ZeroSecondUpgradeInt.Value)
+            {
+
+                characterBody.skillLocator.utility.maxStock += 1;
+            }
+
+            if (characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value)
+            {
+
+                characterBody.skillLocator.special.maxStock += 1;
+            }
+
+            if (characterBody.level >= ZeroConfig.ZeroFourthUpgradeInt.Value)
+            {
+
+                characterBody.skillLocator.secondary.maxStock += 1;
+                characterBody.baseJumpCount += 1;
+            }
+
+            ZeroSurvivor.instance.SetApplyUpgrades(false);
+        }
+
+
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {

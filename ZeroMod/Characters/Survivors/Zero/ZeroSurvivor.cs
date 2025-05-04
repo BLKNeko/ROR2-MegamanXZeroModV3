@@ -12,6 +12,8 @@ using static RoR2.OutlineHighlight;
 using ZeroMod.Characters.Survivors.Zero.Components;
 using ZeroMod.Modules.BaseContent.BaseStates;
 using EmotesAPI;
+using RoR2.UI;
+using UnityEngine.UI;
 
 namespace ZeroMod.Survivors.Zero
 {
@@ -39,6 +41,11 @@ namespace ZeroMod.Survivors.Zero
 
         private float zTakeDamageValue = 0f;
         private CharacterMaster zMaster;
+
+        private GameObject ZMouseIconGO;
+        private HUD hud = null;
+
+        private bool needToReApplyUpgrades = false;
 
         //SKILL DEFS
 
@@ -84,7 +91,8 @@ namespace ZeroMod.Survivors.Zero
             regenGrowth = 0.5f,
             armor = 50f,
             armorGrowth = 4f,
-            damage = 20f,
+            damage = 15f,
+            damageGrowth = 1f,
             shieldGrowth = 0.5f,
             jumpPowerGrowth = 0.3f,
             jumpCount = 2,
@@ -446,7 +454,7 @@ namespace ZeroMod.Survivors.Zero
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 5f,
-                baseMaxStock = 2,
+                baseMaxStock = 4,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -537,7 +545,7 @@ namespace ZeroMod.Survivors.Zero
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 8f,
+                baseRechargeInterval = 10f,
                 baseMaxStock = 2,
 
                 rechargeStock = 1,
@@ -768,6 +776,7 @@ namespace ZeroMod.Survivors.Zero
             });
 
             Skills.AddSecondarySkills(bodyPrefab, ZBusterSkillDef);
+            Skills.AddSecondarySkills(bodyPrefab, CFlasherSkillDef);
         }
 
         private void AddUtiitySkills()
@@ -833,7 +842,7 @@ namespace ZeroMod.Survivors.Zero
                 mustKeyPress = false,
             });
 
-            Skills.AddSpecialSkills(bodyPrefab, CFlasherSkillDef);
+            //Skills.AddSpecialSkills(bodyPrefab, CFlasherSkillDef);
             Skills.AddSpecialSkills(bodyPrefab, RyuuenjinSkillDef);
             Skills.AddSpecialSkills(bodyPrefab, IceDragonRiseSkillDef);
             Skills.AddSpecialSkills(bodyPrefab, GokumonkenSkillDef);
@@ -1095,6 +1104,49 @@ namespace ZeroMod.Survivors.Zero
             On.RoR2.SurvivorCatalog.Init += SurvivorCatalog_Init;
             CustomEmotesAPI.animChanged += CustomEmotesAPI_animChanged;
             On.RoR2.CharacterMaster.OnBodyStart += RestoreHPAfterRespawn;
+            On.RoR2.UI.HUD.Awake += HUD_Awake;
+        }
+
+        private void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        {
+            orig(self); // Don't forget to call this, or the vanilla / other mods' codes will not execute!
+            hud = self;
+            // hud.mainContainer.transform // This will return the main container. You should put your UI elements under it or its children!
+            // Rest of the code is to go here
+
+            //ANCHOR MAX = rectTransform.anchorMax = new Vector2(0.782f, 0.72f);
+
+
+
+            //---------------BG--------------
+
+            ZMouseIconGO = new GameObject("ZeroMouseIcon");
+            //GameObject myObject = Modules.Assets.MoraleBar;
+            ZMouseIconGO.transform.SetParent(hud.mainContainer.transform);
+
+            RectTransform ZMrectTransform = ZMouseIconGO.AddComponent<RectTransform>();
+
+            // Faz com que o pivot fique no centro e as âncoras também
+            ZMrectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            ZMrectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            ZMrectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+            // Define o tamanho fixo da imagem
+            ZMrectTransform.sizeDelta = new Vector2(128f, 128f);
+
+            // Define a posição relativa ao centro da tela (0,0 é bem no meio)
+            ZMrectTransform.anchoredPosition = new Vector2(0f, 80f); // por exemplo, 100px acima da mira
+
+            ZMouseIconGO.AddComponent<Image>();
+            ZMouseIconGO.GetComponent<Image>().sprite = ZeroAssets.ZMouseIcon;
+
+            ZMouseIconGO.SetActive(false);
+
+        }
+
+        public void SetMouseIconActive(bool b)
+        {
+            ZMouseIconGO.SetActive(b);
         }
 
         private void CharacterBody_OnLevelUp(On.RoR2.CharacterBody.orig_OnLevelUp orig, CharacterBody self)
@@ -1138,7 +1190,7 @@ namespace ZeroMod.Survivors.Zero
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Hyouretsuzan</color> — <color=#FFFFFF>Hold <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsDamage>Ryuenjin</style></color>.");
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Enkoujin</color> — <color=#FFFFFF>Hold <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsDamage>Hyouryuushou</style></color>.");
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Dairettsui</color> — <color=#FFFFFF>Hold <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsDamage>Ryuenjin</style> or <style=cIsDamage>Hyouryuushou</style> while using <style=cIsUtility>T-Breaker</style></color>.");
-                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Raikousen</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsUtility>DASH</style></color> and NOT using K-Knuckles.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Raikousen</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsUtility>DASH</style></color> while <color=#FF0000>NOT</color> using <color=#00FF00>K-Knuckles</color>.");
 
 
                     self.skillLocator.special.maxStock += 1;
@@ -1251,7 +1303,47 @@ namespace ZeroMod.Survivors.Zero
                     newBody.healthComponent.health = Mathf.Clamp(restoredHP, 1f, newBody.healthComponent.fullHealth);
                     //Debug.Log($"HP restaurado para {newBody.healthComponent.health}");
                 }
+
+                needToReApplyUpgrades = true;
+
+                //RE-APPLY THE UPGRADES GRANTED BY LEVEL UP
+
+                //if (newBody.level >= ZeroConfig.ZeroFirstUpgradeInt.Value)
+                //{
+                //    newBody.baseJumpCount += 1;
+                //}
+
+                //if (newBody.level >= ZeroConfig.ZeroSecondUpgradeInt.Value)
+                //{
+
+                //    newBody.skillLocator.utility.maxStock += 1;
+                //}
+
+                //if (newBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value)
+                //{
+
+                //    newBody.skillLocator.special.maxStock += 1;
+                //}
+
+                //if (newBody.level >= ZeroConfig.ZeroFourthUpgradeInt.Value)
+                //{
+
+                //    newBody.skillLocator.secondary.maxStock += 1;
+                //    newBody.baseJumpCount += 1;
+                //}
+
+
             }
+        }
+
+        public bool GetApplyUpgrades()
+        {
+            return needToReApplyUpgrades;
+        }
+
+        public void SetApplyUpgrades(bool b)
+        {
+            needToReApplyUpgrades = b;
         }
 
         private void CustomEmotesAPI_animChanged(string newAnimation, BoneMapper mapper)

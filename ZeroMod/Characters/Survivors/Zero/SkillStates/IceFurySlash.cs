@@ -34,7 +34,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         public override void OnEnter()
         {
 
-            hitboxGroupName = "ZSaberHitBox";
+            hitboxGroupName = "KuuenzanHitBox";
 
             damageType |= DamageType.Freeze2s;
             damageType |= DamageTypeCombo.GenericSpecial;

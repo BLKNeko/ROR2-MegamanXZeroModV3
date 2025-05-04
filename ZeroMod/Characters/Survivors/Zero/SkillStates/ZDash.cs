@@ -4,6 +4,8 @@ using RoR2;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
+using On.RoR2.UI;
+using UnityEngine.UI;
 
 namespace ZeroMod.Survivors.Zero.SkillStates
 {
@@ -58,8 +60,12 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             base.PlayAnimation("FullBody, Override", "DashStart", "attackSpeed", duration);
 
+            if(characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value && !characterBody.HasBuff(ZeroBuffs.KKnuckleBuff) && ZeroConfig.enableToolTipBool.Value)
+                ZeroSurvivor.instance.SetMouseIconActive(true);
+
             base.OnEnter();
         }
+
 
         public override void FixedUpdate()
         {
@@ -99,6 +105,10 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         {
 
             base.PlayAnimation("FullBody, Override", "DashEnd", "attackSpeed", duration);
+
+            //On.RoR2.UI.HUD.Awake -= HUD_Awake;
+
+            ZeroSurvivor.instance.SetMouseIconActive(false);
 
             base.OnExit();
         }

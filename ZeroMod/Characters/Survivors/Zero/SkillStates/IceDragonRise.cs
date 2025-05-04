@@ -57,14 +57,18 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             }
             AkSoundEngine.PostEvent(ZeroStaticValues.zeroSennpuukyakuSFX, this.gameObject);
 
-
-
-            base.OnEnter();
-
             if (NetworkServer.active)
             {
                 characterBody.AddTimedBuff(RoR2Content.Buffs.Immune, duration * 3);
             }
+
+
+            if (characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value && ZeroConfig.enableToolTipBool.Value)
+                ZeroSurvivor.instance.SetMouseIconActive(true);
+
+            base.OnEnter();
+
+            
 
         }
 
@@ -139,6 +143,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             base.PlayAnimation("FullBody, Override", "RyuuenjinEnd", "attackSpeed", this.duration);
             //base.PlayAnimation("FullBody, Override", "BufferEmpty", "attackSpeed", this.duration);
+
+            ZeroSurvivor.instance.SetMouseIconActive(false);
 
             base.OnExit();
         }

@@ -10,15 +10,15 @@ namespace ZeroMod.Survivors.Zero
 
         public const float bombDamageCoefficient = 16f;
 
-        public const float ZSaber1DamageCoefficient = 2f;
+        public const float ZSaber1DamageCoefficient = 1.5f;
 
-        public const float ZSaber2DamageCoefficient = 2.5f;
+        public const float ZSaber2DamageCoefficient = 2f;
 
-        public const float ZSaber3DamageCoefficient = 3f;
+        public const float ZSaber3DamageCoefficient = 2.5f;
 
-        public const float ZSaber4DamageCoefficient = 3.5f;
+        public const float ZSaber4DamageCoefficient = 3f;
 
-        public const float ZSaber5DamageCoefficient = 4f;
+        public const float ZSaber5DamageCoefficient = 3.5f;
 
         public const float ZBusterDamageCoefficient = 4f;
 

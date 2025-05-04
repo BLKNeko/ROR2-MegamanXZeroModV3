@@ -8,6 +8,7 @@ namespace ZeroMod.Survivors.Zero
 
         public static ConfigEntry<bool> ChungLeePoseBool;
         public static ConfigEntry<bool> enableVoiceBool;
+        public static ConfigEntry<bool> enableToolTipBool;
 
         public static ConfigEntry<int> enableZFootstep;
         public static ConfigEntry<int> ZeroFirstUpgradeInt;
@@ -18,6 +19,12 @@ namespace ZeroMod.Survivors.Zero
         public static void Init()
         {
             string section = "Zero";
+
+            enableToolTipBool = Config.BindAndOptions(
+                section,
+                "EnableToolTipBool",
+                true,
+                "Show a visual tooltip for certain skills that require holding mouse buttons. Disable to hide this indicator.");
 
             enableVoiceBool = Config.BindAndOptions(
                 section,

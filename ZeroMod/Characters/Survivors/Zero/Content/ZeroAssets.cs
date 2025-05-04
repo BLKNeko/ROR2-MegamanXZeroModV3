@@ -38,6 +38,8 @@ namespace ZeroMod.Survivors.Zero
         // networked hit sounds
         public static NetworkSoundEventDef swordHitSoundEvent;
 
+        public static Sprite ZMouseIcon;
+
         public static Sprite ZPassiveIcon;
 
         public static Sprite ZeroEmoteIcon;
@@ -109,6 +111,8 @@ namespace ZeroMod.Survivors.Zero
 
             ZDeathVFX = _assetBundle.LoadEffect("ZDeathEffect", false);
 
+
+            ZMouseIcon = _assetBundle.LoadAsset<Sprite>("MouseIcon");
 
             ZPassiveIcon = _assetBundle.LoadAsset<Sprite>("ZPassiveSkillIcon");
 
