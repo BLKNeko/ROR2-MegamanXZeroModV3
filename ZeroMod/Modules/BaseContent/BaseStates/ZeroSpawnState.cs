@@ -22,6 +22,8 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
 
+            Debug.Log("Reapply: " + ZeroSurvivor.instance.GetApplyUpgrades());
+
             if(ZeroSurvivor.instance.GetApplyUpgrades())
                 ReapplyUpgrades();
 
@@ -43,6 +45,10 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
 
         private void ReapplyUpgrades()
         {
+
+            Debug.Log("Reaplying: ");
+            Debug.Log("lvl: " + characterBody.level);
+
             if (characterBody.level >= ZeroConfig.ZeroFirstUpgradeInt.Value)
             {
                 characterBody.baseJumpCount += 1;

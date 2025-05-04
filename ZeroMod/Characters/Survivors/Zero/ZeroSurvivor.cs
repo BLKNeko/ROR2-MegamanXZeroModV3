@@ -1178,7 +1178,12 @@ namespace ZeroMod.Survivors.Zero
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Senpuukyaku</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary Skill</style> mid-air while using <style=cIsUtility>K-Knuckle</style></color>.");
 
 
-                    self.skillLocator.utility.maxStock += 1;
+                    self.skillLocator.utility.skillDef.baseMaxStock += 1;
+
+                    self.skillLocator.utility.rechargeStopwatch = 0f; // Reinicia o tempo de recarga se necessário
+
+                    self.skillLocator.utility.RecalculateMaxStock();
+
                 }
 
                 if (self.level == ZeroConfig.ZeroThirdUpgradeInt.Value)
@@ -1193,7 +1198,11 @@ namespace ZeroMod.Survivors.Zero
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Raikousen</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsUtility>DASH</style></color> while <color=#FF0000>NOT</color> using <color=#00FF00>K-Knuckles</color>.");
 
 
-                    self.skillLocator.special.maxStock += 1;
+                    self.skillLocator.special.skillDef.baseMaxStock += 1;
+
+                    self.skillLocator.special.rechargeStopwatch = 0f; // Reinicia o tempo de recarga se necessário
+
+                    self.skillLocator.special.RecalculateMaxStock();
                 }
 
                 if (self.level == ZeroConfig.ZeroFourthUpgradeInt.Value)
@@ -1204,7 +1213,11 @@ namespace ZeroMod.Survivors.Zero
                     Chat.AddMessage($"<color=#FF0000>ZERO</color>'s <color=#00FF00>BFan Barrier</color> has become stronger.");
 
 
-                    self.skillLocator.secondary.maxStock += 1;
+                    self.skillLocator.secondary.skillDef.baseMaxStock += 1;
+
+                    self.skillLocator.secondary.rechargeStopwatch = 0f; // Reinicia o tempo de recarga se necessário
+
+                    self.skillLocator.secondary.RecalculateMaxStock();
                     self.baseJumpCount += 1;
                 }
 
@@ -1304,14 +1317,15 @@ namespace ZeroMod.Survivors.Zero
                     //Debug.Log($"HP restaurado para {newBody.healthComponent.health}");
                 }
 
-                needToReApplyUpgrades = true;
+                //needToReApplyUpgrades = true;
 
-                //RE-APPLY THE UPGRADES GRANTED BY LEVEL UP
 
-                //if (newBody.level >= ZeroConfig.ZeroFirstUpgradeInt.Value)
-                //{
-                //    newBody.baseJumpCount += 1;
-                //}
+                //RE-APPLY THE JUMP UPGRADES GRANTED BY LEVEL UP
+
+                if (newBody.level >= ZeroConfig.ZeroFirstUpgradeInt.Value)
+                {
+                    newBody.baseJumpCount += 1;
+                }
 
                 //if (newBody.level >= ZeroConfig.ZeroSecondUpgradeInt.Value)
                 //{
@@ -1325,12 +1339,11 @@ namespace ZeroMod.Survivors.Zero
                 //    newBody.skillLocator.special.maxStock += 1;
                 //}
 
-                //if (newBody.level >= ZeroConfig.ZeroFourthUpgradeInt.Value)
-                //{
+                if (newBody.level >= ZeroConfig.ZeroFourthUpgradeInt.Value)
+                {
 
-                //    newBody.skillLocator.secondary.maxStock += 1;
-                //    newBody.baseJumpCount += 1;
-                //}
+                    newBody.baseJumpCount += 1;
+                }
 
 
             }
