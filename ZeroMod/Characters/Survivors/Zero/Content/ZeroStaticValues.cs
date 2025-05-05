@@ -84,6 +84,11 @@ namespace ZeroMod.Survivors.Zero
         public static readonly string zeroAttackVFX = "Play_ZeroAttack";
         public static readonly string zeroCFlasher = "Play_ZeroCFlasherSFX";
         public static readonly string zeroWeaponChange = "Play_ZeroWeaponChange";
+        public static readonly string zeroX4Hu = "Play_ZX4_Hu";
+        public static readonly string zeroX4Ha = "Play_ZX4_Ha";
+        public static readonly string zeroX4Hou = "Play_ZX4_Hou";
+        public static readonly string zeroX4Death = "Play_ZX4_Death";
+
    
 
     

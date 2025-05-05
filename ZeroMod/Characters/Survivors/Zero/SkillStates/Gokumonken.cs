@@ -105,40 +105,47 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             Debug.Log(damageInfo.damage);
             Debug.Log(damageInfo.inflictor);
 
-            if(victim != null && damageInfo != null && damageInfo.attacker != null)
+            if (NetworkServer.active)
             {
-                if (victim.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenBuff))
+
+                if (victim != null && damageInfo != null && damageInfo.attacker != null)
                 {
-
-                    Vector3 direction = (damageInfo.attacker.transform.position - victim.transform.position).normalized;
-
-
-                    FireProjectileInfo ZeroBusterProjectille = new FireProjectileInfo();
-                    ZeroBusterProjectille.projectilePrefab = ZeroAssets.CFlasherProjectile;
-                    ZeroBusterProjectille.position = victim.transform.position;
-                    ZeroBusterProjectille.rotation = Util.QuaternionSafeLookRotation(direction);
-                    ZeroBusterProjectille.owner = gameObject;
-                    ZeroBusterProjectille.damage = (damageInfo.damage * (damageStat * 0.1f)) * damagebonus;
-                    ZeroBusterProjectille.force = force;
-                    ZeroBusterProjectille.crit = RollCrit();
-                    ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
-                    ZeroBusterProjectille.damageTypeOverride = DamageTypeCombo.GenericSpecial;
-
-                    canAttack = true;
-
-                    ProjectileManager.instance.FireProjectile(ZeroBusterProjectille);
-
-                    if (characterBody.HasBuff(ZeroBuffs.BFanBuff))
+                    if (victim.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenBuff))
                     {
-                        characterBody.healthComponent.AddBarrier(((damageInfo.damage * (damageStat * 0.1f)) * damagebonus) / 5);
-                    }
-                    else
-                    {
-                        characterBody.healthComponent.AddBarrier(((damageInfo.damage * (damageStat * 0.1f)) * damagebonus) / 10);
-                    }
 
+                        Vector3 direction = (damageInfo.attacker.transform.position - victim.transform.position).normalized;
+
+
+                        FireProjectileInfo ZeroBusterProjectille = new FireProjectileInfo();
+                        ZeroBusterProjectille.projectilePrefab = ZeroAssets.CFlasherProjectile;
+                        ZeroBusterProjectille.position = victim.transform.position;
+                        ZeroBusterProjectille.rotation = Util.QuaternionSafeLookRotation(direction);
+                        ZeroBusterProjectille.owner = gameObject;
+                        ZeroBusterProjectille.damage = (damageInfo.damage * (damageStat * 0.1f)) * damagebonus;
+                        ZeroBusterProjectille.force = force;
+                        ZeroBusterProjectille.crit = RollCrit();
+                        ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
+                        ZeroBusterProjectille.damageTypeOverride = DamageTypeCombo.GenericSpecial;
+
+                        canAttack = true;
+
+                        ProjectileManager.instance.FireProjectile(ZeroBusterProjectille);
+
+                        if (characterBody.HasBuff(ZeroBuffs.BFanBuff))
+                        {
+                            characterBody.healthComponent.AddBarrier(((damageInfo.damage * (damageStat * 0.1f)) * damagebonus) / 5);
+                        }
+                        else
+                        {
+                            characterBody.healthComponent.AddBarrier(((damageInfo.damage * (damageStat * 0.1f)) * damagebonus) / 10);
+                        }
+
+                    }
                 }
+
             }
+
+            
 
         }
 

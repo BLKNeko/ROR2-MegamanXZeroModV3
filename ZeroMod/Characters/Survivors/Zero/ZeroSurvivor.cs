@@ -61,13 +61,14 @@ namespace ZeroMod.Survivors.Zero
 
         //SECONDARY
         internal static SkillDef ZBusterSkillDef;
+        internal static SkillDef CFlasherSkillDef;
 
         //UTILITY
         internal static SkillDef ZDashSkillDef;
         internal static SkillDef RaikousenSkillDef;
 
         //SPECIAL
-        internal static SkillDef CFlasherSkillDef;
+        
         internal static SkillDef RyuuenjinSkillDef;
         internal static SkillDef GokumonkenSkillDef;
         internal static SkillDef IceDragonRiseSkillDef;
@@ -92,7 +93,7 @@ namespace ZeroMod.Survivors.Zero
             armor = 50f,
             armorGrowth = 4f,
             damage = 15f,
-            damageGrowth = 1f,
+            damageGrowth = 0.25f,
             shieldGrowth = 0.5f,
             jumpPowerGrowth = 0.3f,
             jumpCount = 2,
@@ -454,7 +455,7 @@ namespace ZeroMod.Survivors.Zero
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 5f,
-                baseMaxStock = 4,
+                baseMaxStock = 3,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -484,7 +485,7 @@ namespace ZeroMod.Survivors.Zero
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 8f,
-                baseMaxStock = 2,
+                baseMaxStock = 1,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -546,7 +547,7 @@ namespace ZeroMod.Survivors.Zero
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 10f,
-                baseMaxStock = 2,
+                baseMaxStock = 1,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -606,7 +607,7 @@ namespace ZeroMod.Survivors.Zero
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 10f,
-                baseMaxStock = 2,
+                baseMaxStock = 1,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -1156,7 +1157,7 @@ namespace ZeroMod.Survivors.Zero
             //Chat.AddMessage($"<color=#00FF00>{self.GetUserName()} subiu para o nível {self.level}!</color>");
             //Chat.AddMessage($"<color=#00FF00>{self.name} subiu para o nível {self.level}!</color>");
 
-            if (self.isPlayerControlled && self.master && self.master.playerCharacterMasterController && self.name.Contains("Zero")) // exemplo de filtro
+            if (self.isPlayerControlled && self.master && self.master.playerCharacterMasterController && self.name.Contains("Zero") && self.hasAuthority) // exemplo de filtro
             {
                 //Log.Debug($"Personagem {self.GetUserName()} subiu para o nível {self.level}.");
 
@@ -1173,16 +1174,11 @@ namespace ZeroMod.Survivors.Zero
                 {
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has adapted — Level {self.level} reached.");
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has mastered a new <color=#00FF00>Saber Combo++</color>.");
-                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has upgraded mobility: <color=#00FF00>+1 Dash Charge</color> acquired.");
+                    Chat.AddMessage($"<color=#FF0000>ZERO</color> has upgraded mobility: <color=#00FF00>+2 Dash Charge</color> acquired.");
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Rasetsusen</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary Skill</style> while airborne</color>.");
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Senpuukyaku</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary Skill</style> mid-air while using <style=cIsUtility>K-Knuckle</style></color>.");
 
-
-                    self.skillLocator.utility.skillDef.baseMaxStock += 1;
-
-                    self.skillLocator.utility.rechargeStopwatch = 0f; // Reinicia o tempo de recarga se necessário
-
-                    self.skillLocator.utility.RecalculateMaxStock();
+                    self.inventory.GiveItem(RoR2Content.Items.UtilitySkillMagazine, 1);
 
                 }
 
@@ -1198,11 +1194,7 @@ namespace ZeroMod.Survivors.Zero
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has unlocked <color=#00FF00>Raikousen</color> — <color=#FFFFFF>Press <style=cIsUtility>Primary</style> + <style=cIsUtility>Secondary</style> during <style=cIsUtility>DASH</style></color> while <color=#FF0000>NOT</color> using <color=#00FF00>K-Knuckles</color>.");
 
 
-                    self.skillLocator.special.skillDef.baseMaxStock += 1;
-
-                    self.skillLocator.special.rechargeStopwatch = 0f; // Reinicia o tempo de recarga se necessário
-
-                    self.skillLocator.special.RecalculateMaxStock();
+                    self.inventory.GiveItem(RoR2Content.Items.SecondarySkillMagazine, 1);
                 }
 
                 if (self.level == ZeroConfig.ZeroFourthUpgradeInt.Value)
@@ -1212,12 +1204,8 @@ namespace ZeroMod.Survivors.Zero
                     Chat.AddMessage($"<color=#FF0000>ZERO</color> has increased firepower: <color=#00FF00>+1 Z-Buster Charge</color> acquired.");
                     Chat.AddMessage($"<color=#FF0000>ZERO</color>'s <color=#00FF00>BFan Barrier</color> has become stronger.");
 
+                    self.inventory.GiveItem(RoR2Content.Items.SecondarySkillMagazine, 1);
 
-                    self.skillLocator.secondary.skillDef.baseMaxStock += 1;
-
-                    self.skillLocator.secondary.rechargeStopwatch = 0f; // Reinicia o tempo de recarga se necessário
-
-                    self.skillLocator.secondary.RecalculateMaxStock();
                     self.baseJumpCount += 1;
                 }
 
@@ -1251,6 +1239,7 @@ namespace ZeroMod.Survivors.Zero
             if (sender.HasBuff(ZeroBuffs.armorBuff))
             {
                 args.armorAdd += 300;
+                
             }
 
             if (sender.HasBuff(ZeroBuffs.TBreakerBuff))

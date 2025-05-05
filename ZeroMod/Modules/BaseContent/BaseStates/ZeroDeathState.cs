@@ -30,7 +30,10 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
 
             if (ZeroConfig.enableVoiceBool.Value)
             {
-                AkSoundEngine.PostEvent(ZeroStaticValues.zDeath, this.gameObject);
+                if (ZeroConfig.x4VoicesBool.Value)
+                    AkSoundEngine.PostEvent(ZeroStaticValues.zeroX4Death, this.gameObject);
+                else
+                    AkSoundEngine.PostEvent(ZeroStaticValues.zDeath, this.gameObject);
             }
 
 

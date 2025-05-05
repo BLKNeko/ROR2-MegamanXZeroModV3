@@ -60,7 +60,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             base.PlayAnimation("FullBody, Override", "DashStart", "attackSpeed", duration);
 
-            if(characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value && !characterBody.HasBuff(ZeroBuffs.KKnuckleBuff) && ZeroConfig.enableToolTipBool.Value)
+            if(characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value && !characterBody.HasBuff(ZeroBuffs.KKnuckleBuff) && ZeroConfig.enableToolTipBool.Value && base.isAuthority)
                 ZeroSurvivor.instance.SetMouseIconActive(true);
 
             base.OnEnter();
@@ -108,7 +108,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             //On.RoR2.UI.HUD.Awake -= HUD_Awake;
 
-            ZeroSurvivor.instance.SetMouseIconActive(false);
+            if(base.isAuthority)
+                ZeroSurvivor.instance.SetMouseIconActive(false);
 
             base.OnExit();
         }

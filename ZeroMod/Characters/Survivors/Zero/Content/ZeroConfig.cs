@@ -9,6 +9,7 @@ namespace ZeroMod.Survivors.Zero
         public static ConfigEntry<bool> ChungLeePoseBool;
         public static ConfigEntry<bool> enableVoiceBool;
         public static ConfigEntry<bool> enableToolTipBool;
+        public static ConfigEntry<bool> x4VoicesBool;
 
         public static ConfigEntry<int> enableZFootstep;
         public static ConfigEntry<int> ZeroFirstUpgradeInt;
@@ -20,15 +21,21 @@ namespace ZeroMod.Survivors.Zero
         {
             string section = "Zero";
 
+            x4VoicesBool = Config.BindAndOptions(
+                section,
+                "X4 Voices",
+                false,
+                "Zero saber combo will have the Megaman X4 VFX. \n\n Zero Death SFX will also change to Megaman X4 SFX \n\n The voices NEED TO BE ENABLE or this will not work.");
+
             enableToolTipBool = Config.BindAndOptions(
                 section,
-                "EnableToolTipBool",
+                "Enable ToolTip",
                 true,
                 "Show a visual tooltip for certain skills that require holding mouse buttons. Disable to hide this indicator.");
 
             enableVoiceBool = Config.BindAndOptions(
                 section,
-                "EnableVoice",
+                "Enable Voice",
                 true,
                 "At certain moments or when using a skill, Zero may talk or scream. If you prefer to disable this feature, you can turn it off here.");
 
@@ -42,13 +49,13 @@ namespace ZeroMod.Survivors.Zero
 
             ChungLeePoseBool = Config.BindAndOptions(
                 section,
-                "ChungLeePoseBool",
+                "ChungLee Pose",
                 true,
                 "Enable ChungLee Idle pose with BFan");
 
             ZeroFirstUpgradeInt = Config.BindAndOptions(
                 section,
-                "FistUpgrade",
+                "First Upgrade",
                 3,
                 2,
                 5,
@@ -56,7 +63,7 @@ namespace ZeroMod.Survivors.Zero
 
             ZeroSecondUpgradeInt = Config.BindAndOptions(
                 section,
-                "SecondUpgrade",
+                "Second Upgrade",
                 5,
                 3,
                 7,
@@ -64,7 +71,7 @@ namespace ZeroMod.Survivors.Zero
 
             ZeroThirdUpgradeInt = Config.BindAndOptions(
                 section,
-                "ThirdUpgrade",
+                "Third Upgrade",
                 7,
                 4,
                 9,
@@ -72,7 +79,7 @@ namespace ZeroMod.Survivors.Zero
 
             ZeroFourthUpgradeInt = Config.BindAndOptions(
                 section,
-                "FourthUpgrade",
+                "Fourth Upgrade",
                 10,
                 5,
                 12,

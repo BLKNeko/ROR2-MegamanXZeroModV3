@@ -53,7 +53,10 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             if (ZeroConfig.enableVoiceBool.Value)
             {
-                AkSoundEngine.PostEvent(ZeroStaticValues.zSlash1Voice, this.gameObject);
+                if (ZeroConfig.x4VoicesBool.Value)
+                    AkSoundEngine.PostEvent(ZeroStaticValues.zeroX4Hu, this.gameObject);  
+                else
+                    AkSoundEngine.PostEvent(ZeroStaticValues.zSlash1Voice, this.gameObject);
             }
 
             if (characterBody.HasBuff(ZeroBuffs.TBreakerBuff))
