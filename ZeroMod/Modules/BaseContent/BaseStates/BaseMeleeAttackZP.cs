@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using ZeroMod.Survivors.Zero;
+using ZeroMod.Characters.Survivors.Zero.Components;
 
 namespace ZeroMod.Modules.BaseStates
 {
@@ -58,6 +59,8 @@ namespace ZeroMod.Modules.BaseStates
         private int amountOfHits = 1;
         private bool shouldResetHit = false;
 
+        ZeroBaseComponent ZBC;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -81,6 +84,15 @@ namespace ZeroMod.Modules.BaseStates
             attack.hitBoxGroup = FindHitBoxGroup(hitboxGroupName);
             attack.isCrit = RollCrit();
             attack.impactSound = impactSound;
+
+            ZBC = GetComponent<ZeroBaseComponent>();
+
+            ZBC.ChangeZeroHand(base.GetModelTransform(),
+                base.GetModelTransform().GetComponent<CharacterModel>(),
+                base.GetModelTransform().GetComponent<CharacterModel>().GetComponent<ChildLocator>(),
+                base.characterBody,
+                false);
+
         }
 
         protected virtual void PlayAttackAnimation()

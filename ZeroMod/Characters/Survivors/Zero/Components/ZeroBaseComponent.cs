@@ -178,7 +178,9 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
                     childLocator.FindChildGameObject("ZSaberMesh").SetActive(false);
                     childLocator.FindChildGameObject("TBreaker").SetActive(false);
                     childLocator.FindChildGameObject("BFan").SetActive(false);
+                    childLocator.FindChildGameObject("BFan2").SetActive(false);
                     childLocator.FindChildGameObject("KKnuckle").SetActive(false);
+                    childLocator.FindChildGameObject("KKnuckle2").SetActive(false);
                     childLocator.FindChildGameObject("SigmaBlade").SetActive(false);
 
                     switch (id)
@@ -193,15 +195,52 @@ namespace ZeroMod.Characters.Survivors.Zero.Components
 
                         case 2:
                             childLocator.FindChildGameObject("BFan").SetActive(true);
+                            childLocator.FindChildGameObject("BFan2").SetActive(true);
                         break;
 
                         case 3:
                             childLocator.FindChildGameObject("KKnuckle").SetActive(true);
+                            childLocator.FindChildGameObject("KKnuckle2").SetActive(true);
                         break;
 
                         case 4:
                             childLocator.FindChildGameObject("SigmaBlade").SetActive(true);
                         break;
+                    }
+
+
+                }
+            }
+        }
+
+        public void ChangeZeroHand(Transform modelTransform, CharacterModel characterModel, ChildLocator childLocator,CharacterBody characterBody, bool buster)
+        {
+            if (modelTransform)
+            {
+
+                if (characterModel)
+                {
+
+                    childLocator.FindChildGameObject("ZeroLHand").SetActive(false);
+                    childLocator.FindChildGameObject("ZBusterMesh").SetActive(false);
+                    childLocator.FindChildGameObject("BFan2").SetActive(false);
+                    childLocator.FindChildGameObject("KKnuckle2").SetActive(false);
+
+                    if (buster)
+                    {
+                        childLocator.FindChildGameObject("ZBusterMesh").SetActive(true);
+
+                    }
+                    else
+                    {
+                        childLocator.FindChildGameObject("ZeroLHand").SetActive(true);
+
+                        if(characterBody.HasBuff(ZeroBuffs.BFanBuff))
+                            childLocator.FindChildGameObject("BFan2").SetActive(true);
+
+                        if(characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
+                            childLocator.FindChildGameObject("KKnuckle2").SetActive(true);
+
                     }
 
 

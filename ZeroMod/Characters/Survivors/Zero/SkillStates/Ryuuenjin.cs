@@ -3,6 +3,7 @@ using ZeroMod.Modules.BaseStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
+using ZeroMod.Characters.Survivors.Zero.Components;
 
 namespace ZeroMod.Survivors.Zero.SkillStates
 {
@@ -12,6 +13,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         private float upwardForce = 2000f;
         private float yVelocityCurve = 20f;
         private float moveSpeedBonusCoefficient = 4f;
+
+        ZeroBaseComponent ZBC;
 
         public override void OnEnter()
         {
@@ -69,10 +72,15 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             if (characterBody.level >= ZeroConfig.ZeroThirdUpgradeInt.Value && ZeroConfig.enableToolTipBool.Value && base.isAuthority)
                 ZeroSurvivor.instance.SetMouseIconActive(true);
 
+            ZBC = GetComponent<ZeroBaseComponent>();
+
+            ZBC.ChangeZeroHand(base.GetModelTransform(),
+                base.GetModelTransform().GetComponent<CharacterModel>(),
+                base.GetModelTransform().GetComponent<CharacterModel>().GetComponent<ChildLocator>(),
+                base.characterBody,
+                false);
+
             base.OnEnter();
-
-            
-
         }
 
         protected override void PlayAttackAnimation()

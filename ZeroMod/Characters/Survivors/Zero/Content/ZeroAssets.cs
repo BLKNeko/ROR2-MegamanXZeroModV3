@@ -22,6 +22,10 @@ namespace ZeroMod.Survivors.Zero
 
 
         public static GameObject ZSwordVFX;
+        public static GameObject BZSwordVFX;
+        public static GameObject NZSwordVFX;
+
+
         public static GameObject CFlasherVFX;
         public static GameObject ChangeWeaponVFX;
         public static GameObject SpinKickVFX;
@@ -100,6 +104,9 @@ namespace ZeroMod.Survivors.Zero
             //raikousenVFX = _assetBundle.LoadEffect("ElectricLine");
 
             ZSwordVFX = _assetBundle.LoadEffect("ZSaberSwing", true);
+            BZSwordVFX = _assetBundle.LoadEffect("BZSaberSwing", true);
+            NZSwordVFX = _assetBundle.LoadEffect("NZSaberSwing", true);
+
             CFlasherVFX = _assetBundle.LoadEffect("CFlasherVFX", true);
             ChangeWeaponVFX = _assetBundle.LoadEffect("ChangeWeaponVFX", true);
             SpinKickVFX = _assetBundle.LoadEffect("SpinKickVFX", true);

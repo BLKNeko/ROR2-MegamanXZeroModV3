@@ -4,6 +4,7 @@ using RoR2;
 using UnityEngine;
 using RoR2.Projectile;
 using ZeroMod.Modules;
+using ZeroMod.Characters.Survivors.Zero.Components;
 
 namespace ZeroMod.Survivors.Zero.SkillStates
 {
@@ -28,6 +29,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         int numberOfProjectiles = 12;
         float angleStep, angle;
 
+        ZeroBaseComponent ZBC;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -42,6 +45,15 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             muzzleEffectPrefab = ZeroAssets.CFlasherVFX;
 
             PlayAnimation("FullBody, Override", "CFlasher", "attackSpeed", (this.duration / 4));
+
+            ZBC = GetComponent<ZeroBaseComponent>();
+
+            ZBC.ChangeZeroHand(base.GetModelTransform(),
+                base.GetModelTransform().GetComponent<CharacterModel>(),
+                base.GetModelTransform().GetComponent<CharacterModel>().GetComponent<ChildLocator>(),
+                base.characterBody,
+                false);
+
         }
 
         public override void OnExit()

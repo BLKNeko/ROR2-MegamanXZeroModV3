@@ -120,6 +120,11 @@ namespace ZeroMod.Survivors.Zero
                 },
                 new CustomRendererInfo
                 {
+                    childName = "ZeroLHand",
+                    material = assetBundle.LoadMaterial("matZero"),
+                },
+                new CustomRendererInfo
+                {
                     childName = "TBreaker",
                     //material = assetBundle.LoadMaterial("matZeroBuster"),
                 },
@@ -130,7 +135,17 @@ namespace ZeroMod.Survivors.Zero
                 },
                 new CustomRendererInfo
                 {
+                    childName = "BFan2",
+                    //material = assetBundle.LoadMaterial("matZeroBuster"),
+                },
+                new CustomRendererInfo
+                {
                     childName = "KKnuckle",
+                    //material = assetBundle.LoadMaterial("matZeroBuster"),
+                },
+                new CustomRendererInfo
+                {
+                    childName = "KKnuckle2",
                     //material = assetBundle.LoadMaterial("matZeroBuster"),
                 },
                 new CustomRendererInfo
@@ -905,11 +920,19 @@ namespace ZeroMod.Survivors.Zero
                 null,
                 null,
                 null,
+                null,
+                null,
+                null,
                 null);
 
             //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
             defaultSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
             {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("ZBusterMesh"),
+                    shouldActivate = false,
+                },
                 new SkinDef.GameObjectActivation
                 {
                     gameObject = childLocator.FindChildGameObject("TBreaker"),
@@ -922,7 +945,17 @@ namespace ZeroMod.Survivors.Zero
                 },
                 new SkinDef.GameObjectActivation
                 {
+                    gameObject = childLocator.FindChildGameObject("BFan2"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
                     gameObject = childLocator.FindChildGameObject("KKnuckle"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("KKnuckle2"),
                     shouldActivate = false,
                 },
                 new SkinDef.GameObjectActivation
@@ -951,6 +984,9 @@ namespace ZeroMod.Survivors.Zero
                 null,
                 null,
                 null,
+                null,
+                null,
+                null,
                 null);
 
             //masterySkin has a new set of RendererInfos (based on default rendererinfos)
@@ -958,11 +994,17 @@ namespace ZeroMod.Survivors.Zero
             BZSkin.rendererInfos[0].defaultMaterial = assetBundle.LoadMaterial("matBlackZero");
             BZSkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matBSaber");
             BZSkin.rendererInfos[2].defaultMaterial = assetBundle.LoadMaterial("matBlackZeroBuster");
+            BZSkin.rendererInfos[3].defaultMaterial = assetBundle.LoadMaterial("matBlackZero");
             //masterySkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matGaea");
 
             //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
             BZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
             {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("ZBusterMesh"),
+                    shouldActivate = false,
+                },
                 new SkinDef.GameObjectActivation
                 {
                     gameObject = childLocator.FindChildGameObject("TBreaker"),
@@ -975,7 +1017,17 @@ namespace ZeroMod.Survivors.Zero
                 },
                 new SkinDef.GameObjectActivation
                 {
+                    gameObject = childLocator.FindChildGameObject("BFan2"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
                     gameObject = childLocator.FindChildGameObject("KKnuckle"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("KKnuckle2"),
                     shouldActivate = false,
                 },
                 new SkinDef.GameObjectActivation
@@ -1003,6 +1055,9 @@ namespace ZeroMod.Survivors.Zero
                 null,
                 null,
                 null,
+                null,
+                null,
+                null,
                 null);
 
             //masterySkin has a new set of RendererInfos (based on default rendererinfos)
@@ -1010,11 +1065,17 @@ namespace ZeroMod.Survivors.Zero
             NZSkin.rendererInfos[0].defaultMaterial = assetBundle.LoadMaterial("matNightmareZero");
             NZSkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matNSaber");
             NZSkin.rendererInfos[2].defaultMaterial = assetBundle.LoadMaterial("matZeroBusterNightmare");
+            NZSkin.rendererInfos[3].defaultMaterial = assetBundle.LoadMaterial("matNightmareZero");
             //masterySkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matGaea");
 
             //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
             NZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
             {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("ZBusterMesh"),
+                    shouldActivate = false,
+                },
                 new SkinDef.GameObjectActivation
                 {
                     gameObject = childLocator.FindChildGameObject("TBreaker"),
@@ -1027,7 +1088,17 @@ namespace ZeroMod.Survivors.Zero
                 },
                 new SkinDef.GameObjectActivation
                 {
+                    gameObject = childLocator.FindChildGameObject("BFan2"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
                     gameObject = childLocator.FindChildGameObject("KKnuckle"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("KKnuckle2"),
                     shouldActivate = false,
                 },
                 new SkinDef.GameObjectActivation

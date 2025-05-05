@@ -5178,7 +5178,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e18b71c2fb8ca6642ba03912a3b9e8d5, type: 2}
+  - {fileID: 2100000, guid: f844d0ea19a5a9b40bbe00a04ae432d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5239,7 +5239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7625403617700074350}
   m_Layer: 0
-  m_Name: ZSaberSwing
+  m_Name: BZSaberSwing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

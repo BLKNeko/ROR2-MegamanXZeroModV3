@@ -3,6 +3,7 @@ using ZeroMod.Survivors.Zero;
 using RoR2;
 using UnityEngine;
 using RoR2.Projectile;
+using ZeroMod.Characters.Survivors.Zero.Components;
 
 namespace ZeroMod.Survivors.Zero.SkillStates
 {
@@ -23,6 +24,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         private string muzzleString;
         private GameObject muzzleEffectPrefab;
 
+        ZeroBaseComponent ZBC;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -32,6 +35,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             muzzleString = "BusterMuzz";
             muzzleEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashFMJ");
 
+            ZBC = GetComponent<ZeroBaseComponent>();
+
             if (characterBody.HasBuff(ZeroBuffs.KKnuckleBuff))
             {
                 PlayAnimation("FullBody, Override", "Hadouken", "attackSpeed", this.duration);
@@ -39,9 +44,15 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             else
             {
                 PlayAnimation("Gesture, Override", "ZeroBuster", "attackSpeed", this.duration);
+
+                ZBC.ChangeZeroHand(base.GetModelTransform(),
+                base.GetModelTransform().GetComponent<CharacterModel>(),
+                base.GetModelTransform().GetComponent<CharacterModel>().GetComponent<ChildLocator>(),
+                base.characterBody,
+                true);
+
             }
 
-            
         }
 
         public override void OnExit()

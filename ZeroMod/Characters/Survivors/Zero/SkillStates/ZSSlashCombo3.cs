@@ -39,10 +39,16 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             //muzzleString = "SwordMuzzPos";
             muzzleString = "SwingLeft";
             playbackRateParam = "attackSpeed";
-            swingEffectPrefab = ZeroAssets.ZSwordVFX;
             hitEffectPrefab = ZeroAssets.swordHitImpactEffect;
 
             impactSound = ZeroAssets.swordHitSoundEvent.index;
+
+            if (base.characterBody.skinIndex == 0)
+                swingEffectPrefab = ZeroAssets.ZSwordVFX;
+            if (base.characterBody.skinIndex == 1)
+                swingEffectPrefab = ZeroAssets.BZSwordVFX;
+            if (base.characterBody.skinIndex == 2)
+                swingEffectPrefab = ZeroAssets.NZSwordVFX;
 
             SetHitReset(true, 2);
 

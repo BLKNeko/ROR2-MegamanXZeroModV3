@@ -115,7 +115,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.47138664, g: 0.7752164, b: 0.9339623, a: 1}
+      maxColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0.6862745}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2730,7 +2730,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
+      maxColor: {r: 0.990566, g: 0.990566, b: 0.990566, a: 0.7607843}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3240,9 +3240,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.5801887, g: 0.95873994, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0.80989677, g: 0.9811321, b: 0.96772236, a: 0}
+        key2: {r: 0.015218934, g: 0.16981131, b: 0.044801176, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -3250,7 +3250,7 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 65535
-        ctime2: 65535
+        ctime2: 49151
         ctime3: 0
         ctime4: 0
         ctime5: 0
@@ -3259,7 +3259,7 @@ ParticleSystem:
         atime0: 0
         atime1: 65535
         atime2: 65535
-        atime3: 0
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
@@ -5178,7 +5178,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e18b71c2fb8ca6642ba03912a3b9e8d5, type: 2}
+  - {fileID: 2100000, guid: eaa0636ffb1ce1540890c31c6e751828, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5239,7 +5239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7625403617700074350}
   m_Layer: 0
-  m_Name: ZSaberSwing
+  m_Name: NZSaberSwing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

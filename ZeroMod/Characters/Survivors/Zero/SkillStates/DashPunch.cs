@@ -31,6 +31,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         public GameObject lightningEffectPrefab2;
         public GameObject lightningEffectPrefab3;
 
+        ZeroBaseComponent ZBC;
+
         public override void OnEnter()
         {
 
@@ -102,6 +104,14 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                 AkSoundEngine.PostEvent(ZeroStaticValues.zeroAttackVFX, this.gameObject);
             }
             AkSoundEngine.PostEvent(ZeroStaticValues.zDash, this.gameObject);
+
+            ZBC = GetComponent<ZeroBaseComponent>();
+
+            ZBC.ChangeZeroHand(base.GetModelTransform(),
+                base.GetModelTransform().GetComponent<CharacterModel>(),
+                base.GetModelTransform().GetComponent<CharacterModel>().GetComponent<ChildLocator>(),
+                base.characterBody,
+                false);
 
             base.OnEnter();
         }

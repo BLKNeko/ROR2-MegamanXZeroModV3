@@ -28,7 +28,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         private bool canAttack = false;
         private float damagebonus = 1f;
 
-        private ZeroRetaliate ZR;
+        ZeroBaseComponent ZBC;
 
         public override void OnEnter()
         {
@@ -62,6 +62,15 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             {
                 AkSoundEngine.PostEvent(ZeroStaticValues.zGuard, this.gameObject);
             }
+
+            ZBC = GetComponent<ZeroBaseComponent>();
+
+            ZBC.ChangeZeroHand(base.GetModelTransform(),
+                base.GetModelTransform().GetComponent<CharacterModel>(),
+                base.GetModelTransform().GetComponent<CharacterModel>().GetComponent<ChildLocator>(),
+                base.characterBody,
+                false);
+
 
         }
 
