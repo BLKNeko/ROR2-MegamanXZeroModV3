@@ -52,11 +52,6 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
             //ZR = GetComponent<ZeroRetaliate>();
 
-            if (NetworkServer.active)
-            {
-                characterBody.RemoveOldestTimedBuff(ZeroBuffs.GokumonkenBuff);
-            }
-
             if (ZeroConfig.enableVoiceBool.Value)
             {
                 AkSoundEngine.PostEvent(ZeroStaticValues.zTakeThis, this.gameObject);
@@ -88,6 +83,12 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         {
 
             //ZR.SetAttackBool(false);
+
+            if (NetworkServer.active)
+            {
+                if (characterBody.HasBuff(ZeroBuffs.GokumonkenBuff))
+                    characterBody.RemoveBuff(ZeroBuffs.GokumonkenBuff);
+            }
 
             base.PlayAnimation("Gesture, Override", "BufferEmpty", "attackSpeed", this.duration);
             PlayAnimation("FullBody, Override", "BufferEmpty", "attackSpeed", this.duration);

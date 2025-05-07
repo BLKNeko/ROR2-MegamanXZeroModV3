@@ -42,7 +42,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             if (NetworkServer.active)
             {
                 characterBody.AddTimedBuff(RoR2Content.Buffs.Immune, 5f);
-                characterBody.AddTimedBuff(ZeroBuffs.GokumonkenBuff, 5f);
+                characterBody.AddBuff(ZeroBuffs.GokumonkenBuff);
             }
 
             //ZR = GetComponent<ZeroRetaliate>();
@@ -56,7 +56,6 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                 damagebonus = 1f;
             }
 
-            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
 
             if (ZeroConfig.enableVoiceBool.Value)
             {
@@ -77,8 +76,6 @@ namespace ZeroMod.Survivors.Zero.SkillStates
         public override void OnExit()
         {
 
-            //On.RoR2.GlobalEventManager.OnHitEnemy -= GlobalEventManager_OnHitEnemy;
-
             base.OnExit();
         }
 
@@ -89,75 +86,21 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             if ((fixedAge >= duration && isAuthority) || !base.inputBank.skill4.down)
             {
 
-                if (canAttack)
+                if (ZeroSurvivor.instance.GetGKAtk())
                 {
                     GokumonkenAtk GA = new GokumonkenAtk();
-                    canAttack = false;
-                    On.RoR2.GlobalEventManager.OnHitEnemy -= GlobalEventManager_OnHitEnemy;
+                    ZeroSurvivor.instance.SetGKAtk(false);
                     outer.SetNextState(GA);
                 }
                 else
                 {
                     GokumonkenEnd GE = new GokumonkenEnd();
-                    On.RoR2.GlobalEventManager.OnHitEnemy -= GlobalEventManager_OnHitEnemy;
                     outer.SetNextState(GE);
                 }
 
                 return;
             }
         }
-
-        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
-        {
-            Debug.Log(self.name);
-            Debug.Log(victim.name);
-            Debug.Log(damageInfo.damage);
-            Debug.Log(damageInfo.inflictor);
-
-            if (NetworkServer.active)
-            {
-
-                if (victim != null && damageInfo != null && damageInfo.attacker != null)
-                {
-                    if (victim.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenBuff))
-                    {
-
-                        Vector3 direction = (damageInfo.attacker.transform.position - victim.transform.position).normalized;
-
-
-                        FireProjectileInfo ZeroBusterProjectille = new FireProjectileInfo();
-                        ZeroBusterProjectille.projectilePrefab = ZeroAssets.CFlasherProjectile;
-                        ZeroBusterProjectille.position = victim.transform.position;
-                        ZeroBusterProjectille.rotation = Util.QuaternionSafeLookRotation(direction);
-                        ZeroBusterProjectille.owner = gameObject;
-                        ZeroBusterProjectille.damage = (damageInfo.damage * (damageStat * 0.1f)) * damagebonus;
-                        ZeroBusterProjectille.force = force;
-                        ZeroBusterProjectille.crit = RollCrit();
-                        ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
-                        ZeroBusterProjectille.damageTypeOverride = DamageTypeCombo.GenericSpecial;
-
-                        canAttack = true;
-
-                        ProjectileManager.instance.FireProjectile(ZeroBusterProjectille);
-
-                        if (characterBody.HasBuff(ZeroBuffs.BFanBuff))
-                        {
-                            characterBody.healthComponent.AddBarrier(((damageInfo.damage * (damageStat * 0.1f)) * damagebonus) / 5);
-                        }
-                        else
-                        {
-                            characterBody.healthComponent.AddBarrier(((damageInfo.damage * (damageStat * 0.1f)) * damagebonus) / 10);
-                        }
-
-                    }
-                }
-
-            }
-
-            
-
-        }
-
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.PrioritySkill;

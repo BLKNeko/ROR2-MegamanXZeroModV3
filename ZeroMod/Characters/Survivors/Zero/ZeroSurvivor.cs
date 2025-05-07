@@ -14,6 +14,8 @@ using ZeroMod.Modules.BaseContent.BaseStates;
 using EmotesAPI;
 using RoR2.UI;
 using UnityEngine.UI;
+using RoR2.Projectile;
+using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace ZeroMod.Survivors.Zero
 {
@@ -45,7 +47,7 @@ namespace ZeroMod.Survivors.Zero
         private GameObject ZMouseIconGO;
         private HUD hud = null;
 
-        private bool needToReApplyUpgrades = false;
+        private bool gokumonkenAtk = false;
 
         //SKILL DEFS
 
@@ -1177,6 +1179,51 @@ namespace ZeroMod.Survivors.Zero
             CustomEmotesAPI.animChanged += CustomEmotesAPI_animChanged;
             On.RoR2.CharacterMaster.OnBodyStart += RestoreHPAfterRespawn;
             On.RoR2.UI.HUD.Awake += HUD_Awake;
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+        }
+
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+            orig(self, damageInfo);
+
+            Debug.Log(self.name);
+            Debug.Log(damageInfo.damage);
+            Debug.Log(damageInfo.inflictor);
+
+            if (self != null && damageInfo != null && damageInfo.attacker != null)
+            {
+                if (!damageInfo.attacker.name.Contains("Zero") && self.name.Contains("Zero"))
+                {
+
+                    if (self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenBuff))
+                    {
+                        Vector3 direction = (damageInfo.attacker.transform.position - self.transform.position).normalized;
+
+                        float dmgBonus = self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.BFanBuff) ? 2f : 1f;
+
+                        FireProjectileInfo ZeroBusterProjectille = new FireProjectileInfo();
+                        ZeroBusterProjectille.projectilePrefab = ZeroAssets.CFlasherProjectile;
+                        ZeroBusterProjectille.position = self.transform.position;
+                        ZeroBusterProjectille.rotation = Util.QuaternionSafeLookRotation(direction);
+                        ZeroBusterProjectille.owner = self.GetComponent<CharacterBody>().gameObject;
+                        ZeroBusterProjectille.damage = (damageInfo.damage * (self.GetComponent<CharacterBody>().damage * 0.1f)) * dmgBonus;
+                        ZeroBusterProjectille.force = 500;
+                        ZeroBusterProjectille.crit = self.GetComponent<CharacterBody>().RollCrit();
+                        ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
+                        ZeroBusterProjectille.damageTypeOverride = DamageTypeCombo.GenericSpecial;
+
+                        ZeroSurvivor.instance.SetGKAtk(true);
+
+                        ProjectileManager.instance.FireProjectile(ZeroBusterProjectille);
+
+                        float barrier = damageInfo.damage / (self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.BFanBuff) ? 5 : 10);
+                        self.GetComponent<CharacterBody>().healthComponent.AddBarrier(barrier);
+
+                    }
+
+                }
+            }
+
         }
 
         private void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
@@ -1409,14 +1456,14 @@ namespace ZeroMod.Survivors.Zero
             }
         }
 
-        public bool GetApplyUpgrades()
+        public bool GetGKAtk()
         {
-            return needToReApplyUpgrades;
+            return gokumonkenAtk;
         }
 
-        public void SetApplyUpgrades(bool b)
+        public void SetGKAtk(bool b)
         {
-            needToReApplyUpgrades = b;
+            gokumonkenAtk = b;
         }
 
         private void CustomEmotesAPI_animChanged(string newAnimation, BoneMapper mapper)

@@ -34,10 +34,7 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
 
-            if (NetworkServer.active)
-            {
-                characterBody.RemoveOldestTimedBuff(ZeroBuffs.GokumonkenBuff);
-            }
+            
 
             base.PlayAnimation("Gesture, Override", "BufferEmpty", "attackSpeed", this.duration);
             PlayAnimation("FullBody, Override", "ZCounterEnd", "attackSpeed", this.duration);
@@ -46,6 +43,12 @@ namespace ZeroMod.Survivors.Zero.SkillStates
 
         public override void OnExit()
         {
+
+            if (NetworkServer.active)
+            {
+                if(characterBody.HasBuff(ZeroBuffs.GokumonkenBuff))
+                    characterBody.RemoveBuff(ZeroBuffs.GokumonkenBuff);
+            }
 
             base.OnExit();
         }

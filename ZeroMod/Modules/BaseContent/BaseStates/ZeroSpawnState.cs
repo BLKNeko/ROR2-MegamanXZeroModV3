@@ -22,11 +22,6 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
 
-            Debug.Log("Reapply: " + ZeroSurvivor.instance.GetApplyUpgrades());
-
-            if(ZeroSurvivor.instance.GetApplyUpgrades())
-                ReapplyUpgrades();
-
         }
         public override void OnExit()
         {
@@ -73,7 +68,6 @@ namespace ZeroMod.Modules.BaseContent.BaseStates
                 characterBody.baseJumpCount += 1;
             }
 
-            ZeroSurvivor.instance.SetApplyUpgrades(false);
         }
 
 
