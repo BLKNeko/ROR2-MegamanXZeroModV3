@@ -86,10 +86,10 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             if ((fixedAge >= duration && isAuthority) || !base.inputBank.skill4.down)
             {
 
-                if (ZeroSurvivor.instance.GetGKAtk())
+                if (characterBody.HasBuff(ZeroBuffs.GokumonkenAtkBuff))
                 {
                     GokumonkenAtk GA = new GokumonkenAtk();
-                    ZeroSurvivor.instance.SetGKAtk(false);
+                    //ZeroSurvivor.instance.SetGKAtk(false);
                     outer.SetNextState(GA);
                 }
                 else

@@ -1,15 +1,19 @@
 {
     "name": "MegamanXZeroMod",
     "author": "BLKNeko",
-    "version_number": "4.0.0",
-    "website_url": "",
-    "description": "I have not changed the manifest and now my mod will be deprecated",
+    "version_number": "2.0.0",
+    "website_url": "https://github.com/BLKNeko/ROR2-MegamanXZeroModV3",
+    "description": "Zero from Megaman X as a survivor for Risk Of Rain 2 - Time to hunt some maverick monsters!",
     "dependencies": [
         "bbepis-BepInExPack-5.4.1905",
         "RiskofThunder-R2API_Core-5.0.3",
-        "RiskofThunder-R2API_Prefab-1.0.1",
-        "RiskofThunder-R2API_RecalculateStats-1.0.0",
+        "RiskofThunder-R2API_Prefab-1.0.4",
+        "RiskofThunder-R2API_RecalculateStats-1.5.0",
         "RiskofThunder-R2API_Language-1.0.1",
-        "RiskofThunder-R2API_Sound-1.0.2"
+        "RiskofThunder-R2API_Sound-1.0.3",
+        "kinggrinyov-KingModUtilities-1.8.5",
+        "Rune580-Risk_Of_Options-2.8.2",
+        "MetrosexualFruitcake-CustomEmotesAPI-2.9.0",
+        "KingEnderBrine-ExtraSkillSlots-1.6.2"
     ]
 }

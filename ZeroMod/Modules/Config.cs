@@ -4,6 +4,7 @@ using RiskOfOptions;
 using RiskOfOptions.OptionConfigs;
 using RiskOfOptions.Options;
 using UnityEngine;
+using ZeroMod.Survivors.Zero;
 
 namespace ZeroMod.Modules
 {
@@ -63,6 +64,9 @@ namespace ZeroMod.Modules
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void TryRegisterOption<T>(ConfigEntry<T> entry, float min, float max, bool restartRequired)
         {
+
+            ModSettingsManager.SetModIcon(ZeroAssets.ZeroSkinIcon);
+
             if (entry is ConfigEntry<float>)
             {
                 ModSettingsManager.AddOption(new SliderOption(entry as ConfigEntry<float>, new SliderConfig() { min = min, max = max, formatString = "{0:0.00}", restartRequired = restartRequired }));

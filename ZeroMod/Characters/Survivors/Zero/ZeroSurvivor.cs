@@ -16,6 +16,7 @@ using RoR2.UI;
 using UnityEngine.UI;
 using RoR2.Projectile;
 using static UnityEngine.ParticleSystem.PlaybackState;
+using UnityEngine.Networking;
 
 namespace ZeroMod.Survivors.Zero
 {
@@ -1212,7 +1213,13 @@ namespace ZeroMod.Survivors.Zero
                         ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
                         ZeroBusterProjectille.damageTypeOverride = DamageTypeCombo.GenericSpecial;
 
-                        ZeroSurvivor.instance.SetGKAtk(true);
+                        //ZeroSurvivor.instance.SetGKAtk(true);
+
+                        if (NetworkServer.active)
+                        {
+                            if(!self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenAtkBuff))
+                                self.GetComponent<CharacterBody>().AddBuff(ZeroBuffs.GokumonkenAtkBuff);
+                        }
 
                         ProjectileManager.instance.FireProjectile(ZeroBusterProjectille);
 

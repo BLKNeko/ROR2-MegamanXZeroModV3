@@ -88,6 +88,9 @@ namespace ZeroMod.Survivors.Zero.SkillStates
             {
                 if (characterBody.HasBuff(ZeroBuffs.GokumonkenBuff))
                     characterBody.RemoveBuff(ZeroBuffs.GokumonkenBuff);
+
+                if (characterBody.HasBuff(ZeroBuffs.GokumonkenAtkBuff))
+                    characterBody.RemoveBuff(ZeroBuffs.GokumonkenAtkBuff);
             }
 
             base.PlayAnimation("Gesture, Override", "BufferEmpty", "attackSpeed", this.duration);

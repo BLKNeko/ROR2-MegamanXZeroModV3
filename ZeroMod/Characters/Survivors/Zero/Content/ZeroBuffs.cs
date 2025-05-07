@@ -14,6 +14,7 @@ namespace ZeroMod.Survivors.Zero
         public static BuffDef SigmaBladeBuff;
 
         public static BuffDef GokumonkenBuff;
+        public static BuffDef GokumonkenAtkBuff;
 
         public static void Init(AssetBundle assetBundle)
         {
@@ -48,6 +49,12 @@ namespace ZeroMod.Survivors.Zero
                 false);
 
             GokumonkenBuff = Modules.Content.CreateAndAddBuff("GokumonkenBuff",
+                ZeroAssets.GokumonkenSkillIcon,
+                Color.white,
+                false,
+                false);
+
+            GokumonkenAtkBuff = Modules.Content.CreateAndAddBuff("GokumonkenAtkBuff",
                 ZeroAssets.GokumonkenSkillIcon,
                 Color.white,
                 false,

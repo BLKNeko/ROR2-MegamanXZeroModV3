@@ -22,7 +22,7 @@ namespace ZeroMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.BLKNeko.ZeroMod";
         public const string MODNAME = "ZeroMod";
-        public const string MODVERSION = "4.0.0";
+        public const string MODVERSION = "2.0.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string DEVELOPER_PREFIX = "BLKNeko";

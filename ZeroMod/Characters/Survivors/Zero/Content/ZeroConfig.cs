@@ -21,12 +21,6 @@ namespace ZeroMod.Survivors.Zero
         {
             string section = "Zero";
 
-            x4VoicesBool = Config.BindAndOptions(
-                section,
-                "X4 Voices",
-                false,
-                "Zero saber combo will have the Megaman X4 VFX. \n\n Zero Death SFX will also change to Megaman X4 SFX \n\n The voices NEED TO BE ENABLE or this will not work.");
-
             enableToolTipBool = Config.BindAndOptions(
                 section,
                 "Enable ToolTip",
@@ -38,6 +32,12 @@ namespace ZeroMod.Survivors.Zero
                 "Enable Voice",
                 true,
                 "At certain moments or when using a skill, Zero may talk or scream. If you prefer to disable this feature, you can turn it off here.");
+
+            x4VoicesBool = Config.BindAndOptions(
+                section,
+                "X4 Voices",
+                false,
+                "Zero saber combo will have the Megaman X4 VFX. \n\n Zero Death SFX will also change to Megaman X4 SFX \n\n The voices NEED TO BE ENABLE or this will not work.");         
 
             enableZFootstep = Config.BindAndOptions(
                 section,
