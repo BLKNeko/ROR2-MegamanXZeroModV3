@@ -24,6 +24,7 @@ place the dll in your plugins folder or extract to a folder inside plugins.
 |ZERO|![](https://i.imgur.com/dNrq20y.png)|
 |BLACK ZERO|![](https://i.imgur.com/dkUhuXH.png)|
 |ZERO NIGHTMARE|![](https://i.imgur.com/70tSaZG.png)|
+|ViA|![](https://i.imgur.com/zJBngDi.png)|
 
 # Zero Weapons
 
@@ -41,6 +42,8 @@ place the dll in your plugins folder or extract to a folder inside plugins.
 
 
 # Changelog
+- V 2.1.0 Fix some hook erros, dependencies and add ViA Skin.
+- V 2.0.1 Small compatibility FIX with another ZeroMod (haha looks like we have a creativity of cents for bodynames) (Thanks Glaron)
 - V 2.0.0 Updated for SOTS Update, added Zero weapons, skins, EMOTEAPI compatibility, Risk Of Option compatibility and fixes, well, hope you enjoy!
 - V 1.3.0 Updated for Void Update
 - V 1.2.1 Updated the mod for the new version of RoR2.

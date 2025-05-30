@@ -45,6 +45,8 @@ namespace ZeroMod.Survivors.Zero
             Language.Add(prefix + "BZ_SKIN_NAME", "Black Zero");
 
             Language.Add(prefix + "NZ_SKIN_NAME", "Zero Nightmare");
+
+            Language.Add(prefix + "VZ_SKIN_NAME", "ViA");
             #endregion
 
             #region Weapons

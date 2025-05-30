@@ -50,6 +50,8 @@ namespace ZeroMod.Survivors.Zero.SkillStates
                 swingEffectPrefab = ZeroAssets.BZSwordVFX;
             if (base.characterBody.skinIndex == 2)
                 swingEffectPrefab = ZeroAssets.NZSwordVFX;
+            if (base.characterBody.skinIndex == 3)
+                swingEffectPrefab = ZeroAssets.ZSwordVFX;
 
 
             //SetHitReset(true, 3);

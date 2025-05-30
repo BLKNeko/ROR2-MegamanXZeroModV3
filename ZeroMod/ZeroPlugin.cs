@@ -13,6 +13,9 @@ using System.Security.Permissions;
 namespace ZeroMod
 {
     //[BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.KingEnderBrine.ExtraSkillSlots", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     public class ZeroPlugin : BaseUnityPlugin
@@ -22,7 +25,7 @@ namespace ZeroMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.BLKNeko.ZeroMod";
         public const string MODNAME = "ZeroMod";
-        public const string MODVERSION = "2.0.0";
+        public const string MODVERSION = "2.1.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string DEVELOPER_PREFIX = "BLKNeko";

@@ -1,7 +1,7 @@
 {
     "name": "MegamanXZeroMod",
     "author": "BLKNeko",
-    "version_number": "2.0.0",
+    "version_number": "2.1.0",
     "website_url": "https://github.com/BLKNeko/ROR2-MegamanXZeroModV3",
     "description": "Zero from Megaman X as a survivor for Risk Of Rain 2 - Time to hunt some maverick monsters!",
     "dependencies": [
@@ -11,7 +11,6 @@
         "RiskofThunder-R2API_RecalculateStats-1.5.0",
         "RiskofThunder-R2API_Language-1.0.1",
         "RiskofThunder-R2API_Sound-1.0.3",
-        "kinggrinyov-KingModUtilities-1.8.5",
         "Rune580-Risk_Of_Options-2.8.2",
         "MetrosexualFruitcake-CustomEmotesAPI-2.9.0",
         "KingEnderBrine-ExtraSkillSlots-1.6.2"

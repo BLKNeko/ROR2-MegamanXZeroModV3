@@ -26,7 +26,7 @@ namespace ZeroMod.Survivors.Zero
         public override string assetBundleName => "mmxzerobundle"; //if you do not change this, you are giving permission to deprecate the mod
 
         //the name of the prefab we will create. conventionally ending in "Body". must be unique
-        public override string bodyName => "ZeroBody"; //if you do not change this, you get the point by now
+        public override string bodyName => "MMXZeroBody"; //if you do not change this, you get the point by now
 
         //name of the ai master for vengeance and goobo. must be unique
         public override string masterName => "ZeroMonsterMaster"; //if you do not
@@ -917,10 +917,10 @@ namespace ZeroMod.Survivors.Zero
             //currently not needed as with only 1 skin they will simply take the default meshes
             //uncomment this when you have another skin
             defaultSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                "ZeroBodyMesh",
                 null,
                 null,
-                null,
-                null,
+                "ZeroLHandMesh",
                 null,
                 null,
                 null,
@@ -981,10 +981,10 @@ namespace ZeroMod.Survivors.Zero
             //adding the mesh replacements as above. 
             //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
             BZSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                "ZeroBodyMesh",
                 null,
                 null,
-                null,
-                null,
+                "ZeroLHandMesh",
                 null,
                 null,
                 null,
@@ -1052,10 +1052,10 @@ namespace ZeroMod.Survivors.Zero
             //adding the mesh replacements as above. 
             //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
             NZSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                "ZeroBodyMesh",
                 null,
                 null,
-                null,
-                null,
+                "ZeroLHandMesh",
                 null,
                 null,
                 null,
@@ -1113,6 +1113,77 @@ namespace ZeroMod.Survivors.Zero
             //simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
 
             skins.Add(NZSkin);
+
+            //creating a new skindef as we did before
+            SkinDef VZSkin = Modules.Skins.CreateSkinDef(ZERO_X_PREFIX + "VZ_SKIN_NAME",
+                ZeroAssets.VZeroSkinIcon,
+                defaultRendererinfos,
+                prefabCharacterModel.gameObject);
+
+            //adding the mesh replacements as above. 
+            //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
+            VZSkin.meshReplacements = Modules.Skins.getMeshReplacements(assetBundle, defaultRendererinfos,
+                "ViaBodyMesh",
+                null,
+                null,
+                "ViaLHandMesh",
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+            //masterySkin has a new set of RendererInfos (based on default rendererinfos)
+            //you can simply access the RendererInfos' materials and set them to the new materials for your skin.
+            VZSkin.rendererInfos[0].defaultMaterial = assetBundle.LoadMaterial("matVia");
+            VZSkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matZSaber");
+            VZSkin.rendererInfos[2].defaultMaterial = assetBundle.LoadMaterial("matViaBuster");
+            VZSkin.rendererInfos[3].defaultMaterial = assetBundle.LoadMaterial("matVia");
+            //masterySkin.rendererInfos[1].defaultMaterial = assetBundle.LoadMaterial("matGaea");
+
+            //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
+            VZSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
+            {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("ZBusterMesh"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("TBreaker"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("BFan"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("BFan2"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("KKnuckle"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("KKnuckle2"),
+                    shouldActivate = false,
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = childLocator.FindChildGameObject("SigmaBlade"),
+                    shouldActivate = false,
+                }
+            };
+            //simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
+
+            skins.Add(VZSkin);
 
             //uncomment this when you have a mastery skin
             #region MasterySkin
@@ -1187,49 +1258,56 @@ namespace ZeroMod.Survivors.Zero
         {
             orig(self, damageInfo);
 
-            Debug.Log(self.name);
-            Debug.Log(damageInfo.damage);
-            Debug.Log(damageInfo.inflictor);
+            //Debug.Log(self.name);
+            //Debug.Log(damageInfo.damage);
+            //Debug.Log(damageInfo.inflictor);
 
-            if (self != null && damageInfo != null && damageInfo.attacker != null)
+            if (self == null || damageInfo == null)
+                return;
+
+            if (damageInfo.inflictor == null || damageInfo.attacker == null)
+                return;
+
+            if (self.GetComponent<CharacterBody>() == null)
+                return;
+
+            if (!damageInfo.attacker.name.Contains("Zero") && self.name.Contains("Zero"))
             {
-                if (!damageInfo.attacker.name.Contains("Zero") && self.name.Contains("Zero"))
+
+                if (self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenBuff))
                 {
+                    Vector3 direction = (damageInfo.attacker.transform.position - self.transform.position).normalized;
 
-                    if (self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenBuff))
+                    float dmgBonus = self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.BFanBuff) ? 2f : 1f;
+
+                    FireProjectileInfo ZeroBusterProjectille = new FireProjectileInfo();
+                    ZeroBusterProjectille.projectilePrefab = ZeroAssets.CFlasherProjectile;
+                    ZeroBusterProjectille.position = self.transform.position;
+                    ZeroBusterProjectille.rotation = Util.QuaternionSafeLookRotation(direction);
+                    ZeroBusterProjectille.owner = self.GetComponent<CharacterBody>().gameObject;
+                    ZeroBusterProjectille.damage = (damageInfo.damage * (self.GetComponent<CharacterBody>().damage * 0.1f)) * dmgBonus;
+                    ZeroBusterProjectille.force = 500;
+                    ZeroBusterProjectille.crit = self.GetComponent<CharacterBody>().RollCrit();
+                    ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
+                    ZeroBusterProjectille.damageTypeOverride = DamageTypeCombo.GenericSpecial;
+
+                    //ZeroSurvivor.instance.SetGKAtk(true);
+
+                    if (NetworkServer.active)
                     {
-                        Vector3 direction = (damageInfo.attacker.transform.position - self.transform.position).normalized;
-
-                        float dmgBonus = self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.BFanBuff) ? 2f : 1f;
-
-                        FireProjectileInfo ZeroBusterProjectille = new FireProjectileInfo();
-                        ZeroBusterProjectille.projectilePrefab = ZeroAssets.CFlasherProjectile;
-                        ZeroBusterProjectille.position = self.transform.position;
-                        ZeroBusterProjectille.rotation = Util.QuaternionSafeLookRotation(direction);
-                        ZeroBusterProjectille.owner = self.GetComponent<CharacterBody>().gameObject;
-                        ZeroBusterProjectille.damage = (damageInfo.damage * (self.GetComponent<CharacterBody>().damage * 0.1f)) * dmgBonus;
-                        ZeroBusterProjectille.force = 500;
-                        ZeroBusterProjectille.crit = self.GetComponent<CharacterBody>().RollCrit();
-                        ZeroBusterProjectille.damageColorIndex = DamageColorIndex.Luminous;
-                        ZeroBusterProjectille.damageTypeOverride = DamageTypeCombo.GenericSpecial;
-
-                        //ZeroSurvivor.instance.SetGKAtk(true);
-
-                        if (NetworkServer.active)
-                        {
-                            if(!self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenAtkBuff))
-                                self.GetComponent<CharacterBody>().AddBuff(ZeroBuffs.GokumonkenAtkBuff);
-                        }
-
-                        ProjectileManager.instance.FireProjectile(ZeroBusterProjectille);
-
-                        float barrier = damageInfo.damage / (self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.BFanBuff) ? 5 : 10);
-                        self.GetComponent<CharacterBody>().healthComponent.AddBarrier(barrier);
-
+                        if(!self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.GokumonkenAtkBuff))
+                            self.GetComponent<CharacterBody>().AddBuff(ZeroBuffs.GokumonkenAtkBuff);
                     }
 
+                    ProjectileManager.instance.FireProjectile(ZeroBusterProjectille);
+
+                    float barrier = damageInfo.damage / (self.GetComponent<CharacterBody>().HasBuff(ZeroBuffs.BFanBuff) ? 5 : 10);
+                    self.GetComponent<CharacterBody>().healthComponent.AddBarrier(barrier);
+
                 }
+
             }
+            
 
         }
 
@@ -1369,43 +1447,43 @@ namespace ZeroMod.Survivors.Zero
 
             if (sender.HasBuff(ZeroBuffs.TBreakerBuff))
             {
-                args.baseDamageAdd *= 3f;
-                args.armorAdd *= 1.5f;
-                args.baseMoveSpeedAdd *= 0.7f;
-                args.baseJumpPowerAdd *= 0.7f;
+                args.damageMultAdd += 3f;
+                args.armorAdd += sender.baseArmor * 0.5f;
+                args.moveSpeedMultAdd -= 0.3f;
+                args.jumpPowerMultAdd -= 0.3f;
             }
 
             if (sender.HasBuff(ZeroBuffs.BFanBuff))
             {
-                args.baseDamageAdd *= 0.8f;
+                args.damageMultAdd -= 0.2f;
                 args.armorAdd += 100;
-                args.armorAdd *= 2f;
-                args.baseMoveSpeedAdd *= 1.5f;
-                args.baseJumpPowerAdd *= 2f;
-                args.baseAttackSpeedAdd *= 1.5f;
-                args.baseShieldAdd *= 2f;
-                args.regenMultAdd *= 1.5f;
+                args.armorAdd += sender.baseArmor * 2f;
+                args.moveSpeedMultAdd += 0.5f;
+                args.jumpPowerMultAdd += 1f;
+                args.attackSpeedMultAdd += 0.5f;
+                args.shieldMultAdd += 1f;
+                args.regenMultAdd += 0.5f;
 
             }
 
             if (sender.HasBuff(ZeroBuffs.KKnuckleBuff))
             {
-                args.baseDamageAdd *= 0.7f;
-                args.baseMoveSpeedAdd *= 2f;
-                args.baseJumpPowerAdd *= 1.5f;
-                args.baseAttackSpeedAdd *= 2f;
+                args.damageMultAdd -= 0.3f;
+                args.moveSpeedMultAdd += 1f;
+                args.jumpPowerMultAdd += 0.5f;
+                args.attackSpeedMultAdd += 1f;
             }
 
             if (sender.HasBuff(ZeroBuffs.SigmaBladeBuff))
             {
-                args.baseDamageAdd *= 2f;
-                args.armorAdd *= 1.5f;
-                args.baseMoveSpeedAdd *= 1.5f;
-                args.baseJumpPowerAdd *= 1.5f;
-                args.baseAttackSpeedAdd *= 1.5f;
-                args.baseShieldAdd *= 1.2f;
-                args.critAdd *= 1.5f;
-                args.critDamageMultAdd *= 1.5f;
+                args.damageMultAdd += 1f;
+                args.armorAdd += sender.baseArmor * 1.5f;
+                args.moveSpeedMultAdd += 0.5f;
+                args.jumpPowerMultAdd += 0.5f;
+                args.attackSpeedMultAdd += 0.25f;
+                args.shieldMultAdd += 0.2f;
+                args.critAdd += sender.baseCrit * 1.5f;
+                args.critDamageMultAdd += 0.5f;
             }
 
         }

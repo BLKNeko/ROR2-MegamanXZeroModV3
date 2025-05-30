@@ -66,6 +66,7 @@ namespace ZeroMod.Survivors.Zero
         public static Sprite ZeroSkinIcon;
         public static Sprite BZeroSkinIcon;
         public static Sprite NZeroSkinIcon;
+        public static Sprite VZeroSkinIcon;
 
 
         //projectiles
@@ -144,6 +145,7 @@ namespace ZeroMod.Survivors.Zero
             ZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroSkinIcon");
             BZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroBSkinIcon");
             NZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroNSkinIcon");
+            VZeroSkinIcon = _assetBundle.LoadAsset<Sprite>("ZeroViaSkinIcon");
 
 
         }
